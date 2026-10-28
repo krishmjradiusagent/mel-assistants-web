@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mel voice, web, prototype</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/radius-ui/styles.css">
+<link rel="stylesheet" href="brand/mel-brand.css">
+<link rel="stylesheet" href="brand/mel-voice-web.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+button,input,textarea{font-family:inherit}
+</style>
+</helmet>
+<div class="rm-root wm ws-root wv"><div class="mk-app">
+<nav class="w-rail" aria-label="App navigation"><span class="ws">C</span><button type="button" class="tile w-railbtn" aria-label="Mel chat" data-on="{{railMel}}" onClick="{{goChat}}"><svg class="mel-mark" width="24" height="24" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" stroke="#FFFFFF" stroke-width="3" fill="none"><animate attributeName="r" values="13;34;13" dur="2.4s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0.9;0;0.9" dur="2.4s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="13" fill="#FFFFFF"><animate attributeName="r" values="13;15;13" dur="2.4s" repeatCount="indefinite"></animate></circle></svg></button><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><button type="button" class="ic w-railbtn" aria-label="Contacts" data-on="{{railContacts}}" data-hint="{{hintContacts}}" onClick="{{goContacts}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14a6.5 6.5 0 0 1 3 6"/></svg></button><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"/></svg></span><button type="button" class="ic w-railbtn" aria-label="Dashboard" data-on="{{railHome}}" data-hint="{{hintHome}}" onClick="{{goHome}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></button><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span><span class="ic" style="opacity:.6">…</span><span class="sp"></span><span class="av"></span></nav>
+<main class="g-frame">
+<sc-if value="{{isChatPage}}" hint-placeholder-val="{{ true }}">
+<aside class="g-side" aria-label="Mel">
+<div class="g-shead"><span class="g-brand"><svg class="mel-mark" width="22" height="22" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg><span>mel</span></span><span class="g-sicons"><button class="g-ibtn" aria-label="Search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg></button><button class="g-ibtn" aria-label="Collapse sidebar"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path></svg></button></span></div>
+<button class="g-new" onClick="{{newChat}}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg><span>New chat</span></button>
+<button class="g-nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"></rect><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9M10 14h4"></path></svg><span>Library</span></button>
+<button class="g-nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path><path d="M12 8v4l3 2"></path></svg><span>Routines</span></button>
+<div class="g-label">Chats</div>
+<button class="g-item">123 Ocean View Drive</button>
+<button class="g-item">Follow up with Jordan</button>
+<button class="g-item">Listing at 124 Oak Street</button>
+<button class="g-item">Instagram post for Palo Alto</button>
+<button class="g-item">Saturday tour schedule</button>
+<button class="g-seeall">See all</button>
+<div class="g-sp"></div>
+<div class="g-me"><span class="av"></span><span><b>Agent name</b><span><span class="g-cr">10K</span> credits</span></span></div>
+</aside>
+<section class="g-center">
+<div class="g-top"><span class="g-skill"><sc-if value="{{hasSkill}}" hint-placeholder-val="{{ false }}"><span class="mb-mark" data-skill="{{skin}}" role="img" aria-label="Mel"><svg viewBox="0 0 120 120" fill="none" aria-hidden="true"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="currentColor"></path><circle class="mb-dot" cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg></span><span class="w-pill" data-skill="{{skin}}">{{skillName}}</span></sc-if></span>
+<span class="g-tright"><button class="g-ibtn" aria-label="More"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle></svg></button><button class="g-share"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg><span>Share</span></button></span></div>
+<sc-if value="{{askPrompt}}" hint-placeholder-val="{{ false }}"><div class="vb-prompt" role="dialog" aria-label="Browser microphone prompt"><p class="vb-prompt__k">Browser</p><p>app.radiusagent.com wants to use your microphone</p><div class="vb-prompt__row"><button type="button" class="w-btn w-btn--ghost">Block</button><button type="button" class="w-btn">Allow</button></div></div></sc-if>
+<div class="g-thread"><div class="g-col">
+<sc-for list="{{msgs}}" as="m" hint-placeholder-count="2">
+<sc-if value="{{m.isDiv}}" hint-placeholder-val="{{ false }}"><p class="w-divider">{{m.text}}</p></sc-if>
+<sc-if value="{{m.isUser}}" hint-placeholder-val="{{ false }}"><div class="w-user" aria-label="Your message">{{m.text}}</div></sc-if>
+<sc-if value="{{m.isMel}}" hint-placeholder-val="{{ true }}"><div class="w-mel" aria-label="MEL message">
+<sc-if value="{{m.hasText}}" hint-placeholder-val="{{ true }}"><div class="typeset typeset-chat"><p style="white-space: pre-line">{{m.text}}</p></div></sc-if>
+<sc-if value="{{m.isDraft}}" hint-placeholder-val="{{ false }}"><section class="w-cardbox w-w560" aria-label="Email draft to Sarah Reynolds"><div class="w-head"><span class="w-tile" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path></svg></span><span class="w-head__t"><span class="w-t">Sarah Reynolds · Email</span><span class="w-m">Re: 412 Marina Blvd</span></span></div><p class="w-b">Hi Sarah, checking in on 412 Marina Blvd. Want me to set up a time to walk through?</p><div class="w-dfoot"><span class="w-m">Sends from your Radius email</span><sc-if value="{{m.dNotSent}}" hint-placeholder-val="{{ true }}"><button type="button" class="w-btn" onClick="{{m.sendDraft}}">Send</button></sc-if><sc-if value="{{m.dSent}}" hint-placeholder-val="{{ false }}"><span class="w-sent"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>Sent</span></sc-if></div></section></sc-if>
+<sc-if value="{{m.isResult}}" hint-placeholder-val="{{ false }}"><section class="w-cardbox w-w480" aria-label="{{m.cTitle}}"><div class="w-head"><span class="w-tile" aria-hidden="true"><sc-if value="{{m.iUser}}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg></sc-if><sc-if value="{{m.iNote}}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M88,96a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H96A8,8,0,0,1,88,96Zm8,40h64a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16Zm32,16H96a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16ZM224,48V156.69A15.86,15.86,0,0,1,219.31,168L168,219.310A15.86,15.86,0,0,1,156.69,224H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48ZM48,208H152V160a8,8,0,0,1,8-8h48V48H48Zm120-40v28.7L196.69,168Z"></path></svg></sc-if><sc-if value="{{m.iBell}}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path></svg></sc-if></span><span class="w-head__t"><span class="w-t">{{m.cTitle}}</span><span class="w-m">{{m.cSub}}</span></span></div><sc-if value="{{m.hasCBody}}" hint-placeholder-val="{{ false }}"><p class="w-b">{{m.cBody}}</p></sc-if><sc-if value="{{m.hasCFoot}}" hint-placeholder-val="{{ true }}"><div class="w-dfoot"><span class="w-m">{{m.cFoot}}</span></div></sc-if></section></sc-if>
+<sc-if value="{{m.isLink}}" hint-placeholder-val="{{ false }}"><a class="w-link" href="#crm" aria-label="Open Sarah Reynolds in Radius CRM" onClick="{{m.openView}}"><span class="w-tile" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg></span><span class="w-link__t"><span class="w-t">Sarah Reynolds</span><span class="w-m">Radius CRM</span></span><span class="w-link__go"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></a></sc-if>
+<sc-if value="{{m.isPick}}" hint-placeholder-val="{{ false }}"><section class="w-pick w-w480" aria-label="Pick a contact"><button type="button" class="w-pick__row"><span class="w-tile" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg></span><span>Sarah Reynolds</span></button><button type="button" class="w-pick__row"><span class="w-tile" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg></span><span>Sarah Kim</span></button></section></sc-if>
+<sc-if value="{{m.isConnect}}" hint-placeholder-val="{{ false }}"><section class="w-cardbox w-w480" aria-label="Connect Gmail"><div class="w-head"><span class="w-tile" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path></svg></span><span class="w-head__t"><span class="w-t">Gmail</span><span class="w-m">Google</span></span></div><ul class="w-perms"><li><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>Send email</li><li><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>Read replies</li></ul><div class="w-dfoot" style="justify-content: flex-end"><button type="button" class="w-btn">Connect</button></div></section></sc-if>
+<sc-if value="{{m.hasRows}}" hint-placeholder-val="{{ false }}"><div class="c-prompt-rows" aria-label="Suggested prompts"><sc-for list="{{m.rows}}" as="c" hint-placeholder-count="2"><button type="button" class="c-prompt-row"><svg class="c-prompt-row__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2.5v6a2 2 0 0 0 2 2h6.5"></path><path d="M10 7.5l3 3-3 3"></path></svg><span class="c-prompt-row__text">{{c.text}}</span></button></sc-for></div></sc-if>
+</div></sc-if>
+</sc-for>
+</div></div>
+<div class="g-dock">
+<sc-if value="{{isVoice}}" hint-placeholder-val="{{ true }}">
+<section class="vd" data-off="{{off}}" data-card="{{cardStr}}" aria-label="Mel Voice">
+<sc-if value="{{hasCard}}" hint-placeholder-val="{{ false }}"><div class="vd-slot">
+<sc-if value="{{isDraft}}" hint-placeholder-val="{{ false }}"><section class="w-cardbox w-w560" aria-label="Email draft to Sarah Reynolds"><div class="w-head"><span class="w-tile" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path></svg></span><span class="w-head__t"><span class="w-t">Sarah Reynolds · Email</span><span class="w-m">Re: 412 Marina Blvd</span></span></div><p class="w-b">Hi Sarah, checking in on 412 Marina Blvd. Want me to set up a time to walk through?</p><div class="w-dfoot"><span class="w-m">Sends from your Radius email</span><sc-if value="{{dNotSent}}" hint-placeholder-val="{{ true }}"><button type="button" class="w-btn" onClick="{{sendDraft}}">Send</button></sc-if><sc-if value="{{dSent}}" hint-placeholder-val="{{ false }}"><span class="w-sent"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>Sent</span></sc-if></div></section></sc-if>
+<sc-if value="{{isResult}}" hint-placeholder-val="{{ false }}"><section class="w-cardbox w-w480" aria-label="{{cTitle}}"><div class="w-head"><span class="w-tile" aria-hidden="true"><sc-if value="{{iUser}}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg></sc-if><sc-if value="{{iNote}}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M88,96a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H96A8,8,0,0,1,88,96Zm8,40h64a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16Zm32,16H96a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16ZM224,48V156.69A15.86,15.86,0,0,1,219.31,168L168,219.310A15.86,15.86,0,0,1,156.69,224H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48ZM48,208H152V160a8,8,0,0,1,8-8h48V48H48Zm120-40v28.7L196.69,168Z"></path></svg></sc-if><sc-if value="{{iBell}}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path></svg></sc-if></span><span class="w-head__t"><span class="w-t">{{cTitle}}</span><span class="w-m">{{cSub}}</span></span></div><sc-if value="{{hasCBody}}" hint-placeholder-val="{{ false }}"><p class="w-b">{{cBody}}</p></sc-if><sc-if value="{{hasCFoot}}" hint-placeholder-val="{{ true }}"><div class="w-dfoot"><span class="w-m">{{cFoot}}</span></div></sc-if></section></sc-if>
+<sc-if value="{{isLink}}" hint-placeholder-val="{{ false }}"><a class="w-link" href="#crm" aria-label="Open Sarah Reynolds in Radius CRM" onClick="{{openView}}"><span class="w-tile" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg></span><span class="w-link__t"><span class="w-t">Sarah Reynolds</span><span class="w-m">Radius CRM</span></span><span class="w-link__go"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></a></sc-if>
+<sc-if value="{{isPick}}" hint-placeholder-val="{{ false }}"><section class="w-pick w-w480" aria-label="Pick a contact"><button type="button" class="w-pick__row"><span class="w-tile" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg></span><span>Sarah Reynolds</span></button><button type="button" class="w-pick__row"><span class="w-tile" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg></span><span>Sarah Kim</span></button></section></sc-if>
+<sc-if value="{{isConnect}}" hint-placeholder-val="{{ false }}"><section class="w-cardbox w-w480" aria-label="Connect Gmail"><div class="w-head"><span class="w-tile" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path></svg></span><span class="w-head__t"><span class="w-t">Gmail</span><span class="w-m">Google</span></span></div><ul class="w-perms"><li><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>Send email</li><li><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>Read replies</li></ul><div class="w-dfoot" style="justify-content: flex-end"><button type="button" class="w-btn">Connect</button></div></section></sc-if>
+</div></sc-if>
+<div class="vd-main">
+<div class="vd-field" aria-hidden="true"></div>
+<div class="vd-zone" aria-hidden="true"><sc-for list="{{rings}}" as="r" hint-placeholder-count="2"><div class="vd-ring" style="{{r.style}}"></div></sc-for><sc-if value="{{shimmer}}" hint-placeholder-val="{{ false }}"><div class="vd-shimmer" style="{{shimmerStyle}}"></div></sc-if></div>
+<button type="button" class="vd-mark" aria-label="Mel" style="transform: {{markScale}}">
+<sc-if value="{{kReady}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, ready"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" stroke="#FFFFFF" stroke-width="3" fill="none"><animate attributeName="r" values="13;34;13" dur="2.4s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0.9;0;0.9" dur="2.4s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="13" fill="#FFFFFF"><animate attributeName="r" values="13;15;13" dur="2.4s" repeatCount="indefinite"></animate></circle></svg></sc-if>
+<sc-if value="{{kListen}}" hint-placeholder-val="{{ true }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, listening"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="38" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-opacity="0"><animate attributeName="r" values="40;15" dur="1.8s" begin="0s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0;0.85" dur="1.8s" begin="0s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="38" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-opacity="0"><animate attributeName="r" values="40;15" dur="1.8s" begin="0.6s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0;0.85" dur="1.8s" begin="0.6s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="38" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-opacity="0"><animate attributeName="r" values="40;15" dur="1.8s" begin="1.2s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0;0.85" dur="1.8s" begin="1.2s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="15" fill="#FFFFFF"></circle></svg></sc-if>
+<sc-if value="{{kThink}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, working"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="42" cy="60" r="7" fill="#FFFFFF"><animate attributeName="cy" values="60;52;60;60" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" values="0.45;1;0.45;0.45" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="7" fill="#FFFFFF"><animate attributeName="cy" values="60;52;60;60" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0.15s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" values="0.45;1;0.45;0.45" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0.15s" repeatCount="indefinite"></animate></circle><circle cx="78" cy="60" r="7" fill="#FFFFFF"><animate attributeName="cy" values="60;52;60;60" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0.3s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" values="0.45;1;0.45;0.45" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0.3s" repeatCount="indefinite"></animate></circle></svg></sc-if>
+<sc-if value="{{kSpeak}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, speaking"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><rect x="35.5" y="55" width="7" height="10" rx="3.5" fill="#FFFFFF"><animate attributeName="height" values="10;26;10" dur="0.9s" begin="0s" repeatCount="indefinite"></animate><animate attributeName="y" values="55;47;55" dur="0.9s" begin="0s" repeatCount="indefinite"></animate></rect><rect x="46" y="49" width="7" height="22" rx="3.5" fill="#FFFFFF"><animate attributeName="height" values="22;8;22" dur="0.9s" begin="0.11s" repeatCount="indefinite"></animate><animate attributeName="y" values="49;56;49" dur="0.9s" begin="0.11s" repeatCount="indefinite"></animate></rect><rect x="56.5" y="45" width="7" height="30" rx="3.5" fill="#FFFFFF"><animate attributeName="height" values="30;14;30" dur="0.9s" begin="0.22s" repeatCount="indefinite"></animate><animate attributeName="y" values="45;53;45" dur="0.9s" begin="0.22s" repeatCount="indefinite"></animate></rect><rect x="67" y="53" width="7" height="14" rx="3.5" fill="#FFFFFF"><animate attributeName="height" values="14;30;14" dur="0.9s" begin="0.33s" repeatCount="indefinite"></animate><animate attributeName="y" values="53;45;53" dur="0.9s" begin="0.33s" repeatCount="indefinite"></animate></rect><rect x="77.5" y="55" width="7" height="10" rx="3.5" fill="#FFFFFF"><animate attributeName="height" values="10;20;10" dur="0.9s" begin="0.44s" repeatCount="indefinite"></animate><animate attributeName="y" values="55;50;55" dur="0.9s" begin="0.44s" repeatCount="indefinite"></animate></rect></svg></sc-if>
+<sc-if value="{{kAttn}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, needs you"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" style="fill: var(--vm-attn)"></path><circle cx="60" cy="60" r="13" fill="#3DDC97"><animate attributeName="fill-opacity" values="1;0.35;1" dur="0.9s" repeatCount="indefinite"></animate></circle><circle cx="98" cy="22" r="11" fill="#3DDC97" stroke-width="4" style="stroke: var(--bg-page)"><animate attributeName="r" values="11;13;11" dur="0.9s" repeatCount="indefinite"></animate></circle></svg></sc-if>
+<sc-if value="{{kDone}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, done"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="20" fill="#FFFFFF"><animate attributeName="r" values="13;22;20;20" keyTimes="0;0.2;0.3;1" dur="2.8s" repeatCount="indefinite"></animate></circle><path d="M51 60.5 L57.5 67 L70 54" stroke="#12A867" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="30" stroke-dashoffset="30"><animate attributeName="stroke-dashoffset" values="30;30;0;0" keyTimes="0;0.2;0.38;1" dur="2.8s" repeatCount="indefinite"></animate></path></svg></sc-if>
+<sc-if value="{{kOff}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, paused"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" style="fill: var(--vm-paused)"></path><circle cx="60" cy="60" r="13" style="fill: var(--vm-paused-dot)"></circle></svg></sc-if>
+<sc-if value="{{kRest}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, pausing"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg></sc-if>
+</button>
+<div class="vd-cap" aria-live="polite">
+<sc-if value="{{hasHeard}}" hint-placeholder-val="{{ false }}"><p class="vd-heard">{{heard}}</p></sc-if>
+<sc-if value="{{showWords}}" hint-placeholder-val="{{ true }}"><div class="vd-capwin"><p class="vd-line" data-who="{{who}}" aria-label="{{line}}"><sc-for list="{{words}}" as="w" hint-placeholder-count="6"><span>{{w.t}} </span></sc-for></p></div></sc-if>
+<sc-if value="{{hasHint}}" hint-placeholder-val="{{ false }}"><p class="vd-hint">{{hint}}</p></sc-if>
+</div>
+</div>
+<div class="vd-bar">
+<p class="vd-status" role="status"><span class="vd-dot" aria-hidden="true"></span><b>Mel Voice</b><span>{{status}}</span></p>
+<span class="vd-ctrls">
+<button type="button" class="vd-btn" aria-label="{{muteLabel}}" aria-pressed="{{mutedStr}}" onClick="{{toggleMute}}"><sc-if value="{{isMuted}}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.92,218.62l-160-176A8,8,0,0,0,42.08,53.38L80,95.09V128a48,48,0,0,0,69.11,43.12l11.1,12.2A63.41,63.41,0,0,1,128,192a64.07,64.07,0,0,1-64-64,8,8,0,0,0-16,0,80.11,80.11,0,0,0,72,79.6V240a8,8,0,0,0,16,0V207.59a78.83,78.83,0,0,0,35.16-12.22l30.92,34a8,8,0,1,0,11.84-10.760ZM128,160a32,32,0,0,1-32-32V112.69l41.66,45.82A32,32,0,0,1,128,160Zm57.52-3.91A63.32,63.32,0,0,0,192,128a8,8,0,0,1,16,0,79.16,79.16,0,0,1-8.11,35.12,8,8,0,0,1-7.19,4.49,7.880,7.880,0,0,1-3.51-.82A8,8,0,0,1,185.52,156.09ZM84,44.87A48,48,0,0,1,176,64v64a49.19,49.19,0,0,1-.26,5,8,8,0,0,1-8,7.17,8.130,8.130,0,0,1-.84,0,8,8,0,0,1-7.12-8.79c.11-1.1.17-2.24.17-3.36V64A32,32,0,0,0,98.64,51.25,8,8,0,1,1,84,44.87Z"></path></svg></sc-if><sc-if value="{{notMuted}}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"></path></svg></sc-if></button>
+<button type="button" class="vd-btn" aria-label="Switch to typing" onClick="{{end}}"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,144H32V64H224V192Zm-16-64a8,8,0,0,1-8,8H56a8,8,0,0,1,0-16H200A8,8,0,0,1,208,128Zm0-32a8,8,0,0,1-8,8H56a8,8,0,0,1,0-16H200A8,8,0,0,1,208,96ZM72,160a8,8,0,0,1-8,8H56a8,8,0,0,1,0-16h8A8,8,0,0,1,72,160Zm96,0a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,160Zm40,0a8,8,0,0,1-8,8h-8a8,8,0,0,1,0-16h8A8,8,0,0,1,208,160Z"></path></svg></button>
+<button type="button" class="vd-end" aria-label="End voice" onClick="{{end}}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg><span>End</span></button>
+</span>
+</div>
+</section>
+</sc-if>
+<sc-if value="{{isComposer}}" hint-placeholder-val="{{ false }}">
+<form class="g-box" aria-label="Message composer" data-typing="{{typingStr}}" data-generating="false">
+<textarea rows="1" class="g-field c-chat-composer__field" aria-label="Message MEL" placeholder="Ask anything" value="{{dictText}}"></textarea>
+<div class="g-brow"><button type="button" class="g-ibtn" aria-label="Attach a file"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+<span class="g-bright">
+<sc-if value="{{isDictating}}" hint-placeholder-val="{{ false }}"><button type="button" class="vd-dictstop" aria-label="Stop dictating" onClick="{{stopDictate}}"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="2"></rect></svg></button></sc-if>
+<sc-if value="{{notDictating}}" hint-placeholder-val="{{ true }}"><button type="button" class="g-ibtn" aria-label="Dictate" onClick="{{startDictate}}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></button></sc-if>
+<button type="submit" class="g-voice w-send" aria-label="Send"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
+<button type="button" class="g-voice w-speak" aria-label="Speak with MEL" data-on="{{voiceOn}}" onClick="{{startVoice}}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"></path></svg></button>
+</span></div>
+</form>
+</sc-if>
+</div>
+</section>
+<sc-if value="{{viewOpen}}" hint-placeholder-val="{{ false }}">
+<aside class="g-view" aria-label="Viewer" style="flex: none; width: 520px">
+<div class="g-vtop"><span class="g-vtitle"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg>Sarah Reynolds<span>Radius CRM</span></span><span class="g-tright"><button class="g-btn g-btn--ghost">Open in CRM</button><button class="g-ibtn" aria-label="Close viewer" onClick="{{closeView}}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button></span></div>
+<div class="g-vbody--crm">
+<div class="vv-head"><span class="vv-av" aria-hidden="true">SR</span><span><p class="vv-name">Sarah Reynolds</p><p class="w-m" style="font-size: 13.5px">Buyer · 412 Marina Blvd</p></span></div>
+<div class="vv-sec"><div class="w-kv" style="border-top: 0; padding-top: 0"><div><span class="w-m">Phone</span><span class="w-b">[PHONE]</span></div><div><span class="w-m">Email</span><span class="w-b">[EMAIL]</span></div><div><span class="w-m">Last touch</span><span class="w-b">5 days ago</span></div><div><span class="w-m">Budget</span><span class="w-b">Under 900K</span></div></div></div>
+<div class="vv-sec"><span class="w-t">Notes</span><p class="w-b">Wants 3 beds under 900K</p></div>
+<div class="vv-sec"><span class="w-t">Follow-ups</span><div class="w-head"><span class="w-tile" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path></svg></span><span class="w-head__t"><span class="w-b">Call Sarah Reynolds</span><span class="w-m">Tomorrow, 10:00 AM</span></span></div></div>
+</div>
+</aside>
+</sc-if>
+</sc-if>
+<sc-if value="{{isPage}}" hint-placeholder-val="{{ false }}">
+<section class="pk" aria-label="{{pageTitle}}, page content">
+<div class="pk-top"><h1 class="pk-h">{{pageTitle}}</h1><span class="pk-acts"><span class="pk-btn"></span><span class="pk-btn pk-btn--p"></span></span></div>
+<sc-if value="{{pageHome}}" hint-placeholder-val="{{ true }}">
+<div class="pk-grid"><div class="pk-tile"></div><div class="pk-tile"></div><div class="pk-tile"></div><div class="pk-tile"></div></div>
+<div class="pk-two"><div class="pk-card"><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div></div><div class="pk-card pk-card--chart"></div></div>
+</sc-if>
+<sc-if value="{{pageContacts}}" hint-placeholder-val="{{ false }}">
+<div class="pk-filters"><span class="pk-search"></span><span class="pk-chip"></span><span class="pk-chip"></span><span class="pk-chip"></span></div>
+<div class="pk-card"><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div><div class="pk-row"><span class="pk-av"></span><span class="pk-bar" style="width: 22%"></span><span class="pk-bar pk-bar--s" style="width: 18%"></span><span class="pk-bar pk-bar--s" style="width: 14%"></span><span class="pk-pill"></span></div></div>
+</sc-if>
+</section>
+</sc-if>
+<sc-if value="{{showMini}}" hint-placeholder-val="{{ false }}">
+<section class="vm-mini" data-needs="{{miniNeeds}}" data-off="{{off}}" aria-label="Mel Voice, minimised">
+<button type="button" class="vm-mini__open" aria-label="Back to Mel chat" onClick="{{goChat}}">
+<span class="vm-mini__mark" aria-hidden="true">
+<sc-if value="{{kReady}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, ready"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" stroke="#FFFFFF" stroke-width="3" fill="none"><animate attributeName="r" values="13;34;13" dur="2.4s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0.9;0;0.9" dur="2.4s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="13" fill="#FFFFFF"><animate attributeName="r" values="13;15;13" dur="2.4s" repeatCount="indefinite"></animate></circle></svg></sc-if>
+<sc-if value="{{kListen}}" hint-placeholder-val="{{ true }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, listening"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="38" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-opacity="0"><animate attributeName="r" values="40;15" dur="1.8s" begin="0s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0;0.85" dur="1.8s" begin="0s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="38" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-opacity="0"><animate attributeName="r" values="40;15" dur="1.8s" begin="0.6s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0;0.85" dur="1.8s" begin="0.6s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="38" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-opacity="0"><animate attributeName="r" values="40;15" dur="1.8s" begin="1.2s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0;0.85" dur="1.8s" begin="1.2s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="15" fill="#FFFFFF"></circle></svg></sc-if>
+<sc-if value="{{kThink}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, working"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="42" cy="60" r="7" fill="#FFFFFF"><animate attributeName="cy" values="60;52;60;60" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" values="0.45;1;0.45;0.45" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="7" fill="#FFFFFF"><animate attributeName="cy" values="60;52;60;60" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0.15s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" values="0.45;1;0.45;0.45" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0.15s" repeatCount="indefinite"></animate></circle><circle cx="78" cy="60" r="7" fill="#FFFFFF"><animate attributeName="cy" values="60;52;60;60" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0.3s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" values="0.45;1;0.45;0.45" keyTimes="0;0.25;0.5;1" dur="1.2s" begin="0.3s" repeatCount="indefinite"></animate></circle></svg></sc-if>
+<sc-if value="{{kSpeak}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, speaking"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><rect x="35.5" y="55" width="7" height="10" rx="3.5" fill="#FFFFFF"><animate attributeName="height" values="10;26;10" dur="0.9s" begin="0s" repeatCount="indefinite"></animate><animate attributeName="y" values="55;47;55" dur="0.9s" begin="0s" repeatCount="indefinite"></animate></rect><rect x="46" y="49" width="7" height="22" rx="3.5" fill="#FFFFFF"><animate attributeName="height" values="22;8;22" dur="0.9s" begin="0.11s" repeatCount="indefinite"></animate><animate attributeName="y" values="49;56;49" dur="0.9s" begin="0.11s" repeatCount="indefinite"></animate></rect><rect x="56.5" y="45" width="7" height="30" rx="3.5" fill="#FFFFFF"><animate attributeName="height" values="30;14;30" dur="0.9s" begin="0.22s" repeatCount="indefinite"></animate><animate attributeName="y" values="45;53;45" dur="0.9s" begin="0.22s" repeatCount="indefinite"></animate></rect><rect x="67" y="53" width="7" height="14" rx="3.5" fill="#FFFFFF"><animate attributeName="height" values="14;30;14" dur="0.9s" begin="0.33s" repeatCount="indefinite"></animate><animate attributeName="y" values="53;45;53" dur="0.9s" begin="0.33s" repeatCount="indefinite"></animate></rect><rect x="77.5" y="55" width="7" height="10" rx="3.5" fill="#FFFFFF"><animate attributeName="height" values="10;20;10" dur="0.9s" begin="0.44s" repeatCount="indefinite"></animate><animate attributeName="y" values="55;50;55" dur="0.9s" begin="0.44s" repeatCount="indefinite"></animate></rect></svg></sc-if>
+<sc-if value="{{kAttn}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, needs you"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" style="fill: var(--vm-attn)"></path><circle cx="60" cy="60" r="13" fill="#3DDC97"><animate attributeName="fill-opacity" values="1;0.35;1" dur="0.9s" repeatCount="indefinite"></animate></circle><circle cx="98" cy="22" r="11" fill="#3DDC97" stroke-width="4" style="stroke: var(--bg-page)"><animate attributeName="r" values="11;13;11" dur="0.9s" repeatCount="indefinite"></animate></circle></svg></sc-if>
+<sc-if value="{{kDone}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, done"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="20" fill="#FFFFFF"><animate attributeName="r" values="13;22;20;20" keyTimes="0;0.2;0.3;1" dur="2.8s" repeatCount="indefinite"></animate></circle><path d="M51 60.5 L57.5 67 L70 54" stroke="#12A867" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="30" stroke-dashoffset="30"><animate attributeName="stroke-dashoffset" values="30;30;0;0" keyTimes="0;0.2;0.38;1" dur="2.8s" repeatCount="indefinite"></animate></path></svg></sc-if>
+<sc-if value="{{kOff}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, paused"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" style="fill: var(--vm-paused)"></path><circle cx="60" cy="60" r="13" style="fill: var(--vm-paused-dot)"></circle></svg></sc-if>
+<sc-if value="{{kRest}}" hint-placeholder-val="{{ false }}"><svg viewBox="-10 -10 140 140" fill="none" role="img" aria-label="Mel, pausing"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg></sc-if>
+</span>
+<span class="vm-mini__t"><span class="vm-mini__s"><span class="vd-dot" aria-hidden="true"></span><b>Mel Voice</b> {{miniStatus}}</span><span class="vm-mini__c">{{miniCap}}</span></span>
+</button>
+<sc-if value="{{miniNeeds}}" hint-placeholder-val="{{ false }}"><button type="button" class="w-btn" onClick="{{goChat}}">Open</button></sc-if>
+<button type="button" class="vd-btn" aria-label="{{muteLabel}}" aria-pressed="{{mutedStr}}" onClick="{{toggleMute}}"><sc-if value="{{isMuted}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.92,218.62l-160-176A8,8,0,0,0,42.08,53.38L80,95.09V128a48,48,0,0,0,69.11,43.12l11.1,12.2A63.41,63.41,0,0,1,128,192a64.07,64.07,0,0,1-64-64,8,8,0,0,0-16,0,80.11,80.11,0,0,0,72,79.6V240a8,8,0,0,0,16,0V207.59a78.83,78.83,0,0,0,35.16-12.22l30.92,34a8,8,0,1,0,11.84-10.760ZM128,160a32,32,0,0,1-32-32V112.69l41.66,45.82A32,32,0,0,1,128,160Zm57.52-3.91A63.32,63.32,0,0,0,192,128a8,8,0,0,1,16,0,79.16,79.16,0,0,1-8.11,35.12,8,8,0,0,1-7.19,4.49,7.880,7.880,0,0,1-3.51-.82A8,8,0,0,1,185.52,156.09ZM84,44.87A48,48,0,0,1,176,64v64a49.19,49.19,0,0,1-.26,5,8,8,0,0,1-8,7.17,8.130,8.130,0,0,1-.84,0,8,8,0,0,1-7.12-8.79c.11-1.1.17-2.24.17-3.36V64A32,32,0,0,0,98.64,51.25,8,8,0,1,1,84,44.87Z"></path></svg></sc-if><sc-if value="{{notMuted}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"></path></svg></sc-if></button>
+<button type="button" class="vd-btn vm-mini__end" aria-label="End voice" onClick="{{end}}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg></button>
+</section>
+</sc-if>
+</main>
+</div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"fixedState": {"editor": null}, "$preview": {"width": 1440, "height": 900}}'>
+// Mel voice, web (KJ approved 28 Oct): inline dock, steps 1-4 + CRM by voice, mic permission as chat turns.
+// Copy from the mobile voice canvas (KJ approved). New web lines are listed on the orange sticky.
+const USER1 = 'Follow up with Sarah Reynolds about 412 Marina Blvd';
+const MEL1 = 'Sarah hasn’t replied in 5 days. I drafted a short follow-up.';
+const CRM_S = 'Try one of these, or ask in your own words.';
+const CRM_ROWS = ['Find Jordan Lee', 'Update Jordan’s preferences to 3 beds', 'Draft a message to Jordan', 'Remind me to call Jordan on Tuesday', 'Start a check-in campaign for inactive clients', 'Show my top buyers this month'];
+const DONE_ROWS = ['Remind me if Sarah doesn’t reply', 'Check in with Grace Lee'];
+const DICT = 'Follow up with Sarah Reynolds about…';
+const DICT_WORDS = DICT.split(' ');
+function timeline(line) {
+  let t = 0;
+  return line.split(' ').map((w) => {
+    const bare = w.replace(/[^A-Za-z0-9’]/g, '');
+    const start = t;
+    t += 0.13 + 0.042 * bare.length;
+    if (/[.?]$/.test(w)) t += 0.55; else if (/,$/.test(w)) t += 0.28;
+    const stress = bare.length <= 2 ? 0.22 : Math.min(1, 0.35 + bare.length * 0.08);
+    return { t: w, start: start, s: stress };
+  });
+}
+const C_FIND = { k: 'result', i: 'user', title: 'Sarah Reynolds', sub: 'Buyer · 412 Marina Blvd', foot: 'Last touch 5 days' };
+const C_NOTE = { k: 'result', i: 'note', title: 'Note saved', sub: 'Sarah Reynolds', body: '“Wants 3 beds under 900K”' };
+const C_REMIND = { k: 'result', i: 'bell', title: 'Reminder', sub: 'Call Sarah Reynolds', foot: 'Tomorrow, 10:00 AM' };
+// Voice dock states. kind = mascot motion, field = what the dot field does.
+const VIEWS = {
+  listening: { kind: 'listen', field: 'in', you: USER1, status: 'Listening' },
+  working: { kind: 'think', field: 'think', you: USER1, still: true, status: 'Checking Sarah’s last email' },
+  speaking: { kind: 'speak', field: 'out', mel: MEL1, status: 'Speaking' },
+  needs: { kind: 'attn', field: 'none', mel: 'Here’s the draft. Say send, or tap Send.', card: { k: 'draft' }, status: 'Needs you' },
+  confirm: { kind: 'attn', field: 'none', heard: 'Send it', mel: 'Send this to Sarah now?', card: { k: 'draft' }, status: 'Needs you · say yes or tap Send' },
+  done: { kind: 'done', field: 'done', mel: 'Sent to Sarah. Anything else?', status: 'Listening' },
+  live: { kind: 'ready', field: 'ready', hint: 'Ask anything', status: 'Listening' },
+  muted: { kind: 'off', field: 'none', off: true, status: 'Muted', hint: 'Click the mic to talk again' },
+  crmFind: { kind: 'speak', field: 'out', heard: 'Pull up Sarah Reynolds', mel: 'Here’s Sarah. You last talked 5 days ago.', card: C_FIND, status: 'Speaking' },
+  crmNote: { kind: 'speak', field: 'out', heard: 'Add a note, she wants 3 beds under 900K', mel: 'Saved to Sarah’s notes.', card: C_NOTE, status: 'Speaking' },
+  crmRemind: { kind: 'speak', field: 'out', heard: 'Remind me to call her tomorrow at 10', mel: 'Done. I’ll remind you tomorrow at 10 AM.', card: C_REMIND, status: 'Speaking' },
+  crmOpen: { kind: 'speak', field: 'out', heard: 'Open her profile', mel: 'Here’s Sarah in your CRM.', card: { k: 'link' }, status: 'Speaking' },
+  crmOpenView: { kind: 'ready', field: 'ready', hint: 'Ask anything', card: { k: 'link' }, status: 'Listening', view: true },
+  crmNone: { kind: 'speak', field: 'out', heard: 'Find Mike Torres', mel: 'No Mike Torres in your contacts. Want me to add him?', status: 'Speaking' },
+  crmTwo: { kind: 'attn', field: 'none', heard: 'Call Sarah', mel: 'You have two Sarahs. Reynolds or Kim?', card: { k: 'pick' }, status: 'Needs you' },
+  crmGmail: { kind: 'attn', field: 'none', heard: 'Email Sarah the listing', mel: 'I need Gmail to send that. Connect it and I’ll send.', card: { k: 'connect' }, status: 'Needs you' }
+};
+const LINES = {};
+Object.keys(VIEWS).forEach((k) => { const v = VIEWS[k]; const l = v.you || v.mel; if (l) LINES[k] = timeline(l); });
+function lineEnd(k) { const tl = LINES[k]; if (!tl) return 0; const w = tl[tl.length - 1]; return w.start + 0.13 + 0.042 * w.t.length; }
+const LIVE_NEXT = { listening: ['working', lineEnd('listening') + 0.6], working: ['speaking', 2.4], speaking: ['needs', lineEnd('speaking') + 0.9], done: ['live', lineEnd('done') + 1.6] };
+const CYCLE = { live: 3.2, crmOpenView: 3.2, done: 2.8, working: 2.4 };
+function cycleOf(k) { return CYCLE[k] || (LINES[k] ? lineEnd(k) + 3 : 3); }
+const OUT_LIFE = 4.5, IN_LIFE = 2.0;
+function ringStyle(vr, op) { return '--vr: ' + vr.toFixed(1) + 'px; opacity: ' + op.toFixed(3); }
+
+// Thread
+function usr(t) { return { role: 'user', text: t }; }
+function mel(t, extra) { return Object.assign({ role: 'mel', text: t, rows: [] }, extra || {}); }
+const BASE = [usr('What can you do with them?'), mel(CRM_S)];
+const BASE_ROWS = [usr('What can you do with them?'), mel(CRM_S, { rows: CRM_ROWS })];
+const DIV = { role: 'div', text: 'Voice chat · 1:12' };
+const T_FIND = [usr('Pull up Sarah Reynolds'), mel('Here’s Sarah. You last talked 5 days ago.', { card: C_FIND })];
+const T_NOTE = [usr('Add a note, she wants 3 beds under 900K'), mel('Saved to Sarah’s notes.', { card: C_NOTE })];
+const T_REMIND = [usr('Remind me to call her tomorrow at 10'), mel('Done. I’ll remind you tomorrow at 10 AM.', { card: C_REMIND })];
+const T_OPEN = [usr('Open her profile'), mel('Here’s Sarah in your CRM.', { card: { k: 'link' } })];
+const MIC = 'Mel needs your microphone to talk.';
+const THREADS = {
+  idle: BASE_ROWS,
+  dictating: BASE,
+  listening: BASE,
+  working: BASE.concat([usr(USER1)]),
+  speaking: BASE.concat([usr(USER1)]),
+  needs: BASE.concat([usr(USER1), mel(MEL1)]),
+  confirm: BASE.concat([usr(USER1), mel(MEL1)]),
+  done: BASE.concat([usr(USER1), mel(MEL1), mel('Here’s the draft.', { card: { k: 'draft', sent: true } }), usr('Send it'), usr('Yes')]),
+  live: BASE.concat([usr(USER1), mel(MEL1), mel('Here’s the draft.', { card: { k: 'draft', sent: true } }), mel('Sent to Sarah. Anything else?')]),
+  muted: BASE.concat([usr(USER1), mel(MEL1), mel('Here’s the draft.', { card: { k: 'draft', sent: true } }), mel('Sent to Sarah. Anything else?')]),
+  ended: BASE.concat([DIV, usr(USER1), mel(MEL1), mel('Here’s the draft.', { card: { k: 'draft', sent: true } }), mel('Sent to Sarah. Anything else?', { rows: DONE_ROWS })]),
+  crmFind: BASE,
+  crmNote: BASE.concat(T_FIND),
+  crmRemind: BASE.concat(T_FIND, T_NOTE),
+  crmOpen: BASE.concat(T_FIND, T_NOTE, T_REMIND),
+  crmOpenView: BASE.concat(T_FIND, T_NOTE, T_REMIND, T_OPEN),
+  crmNone: BASE,
+  crmTwo: BASE,
+  crmGmail: BASE,
+  micAsk: BASE.concat([mel(MIC + ' Allow it in the browser prompt and I start listening.')]),
+  micDenied: BASE.concat([mel(MIC + ' Your browser blocked it. Allow the microphone for Radius in your browser’s site settings, then click voice again.', { rows: ['How do I allow the microphone?'] })]),
+  micNone: BASE.concat([mel(MIC + ' I can’t find one on this computer. Plug one in, then click voice again.', { rows: ['Check again'] })])
+};
+const COMPOSER = { idle: 1, dictating: 1, ended: 1, micAsk: 1, micDenied: 1, micNone: 1 };
+
+function cardVals(c, sendDraft, openView) {
+  c = c || {};
+  return {
+    isDraft: c.k === 'draft', dSent: !!c.sent, dNotSent: !c.sent, sendDraft: sendDraft || (() => {}),
+    isResult: c.k === 'result', isLink: c.k === 'link', isPick: c.k === 'pick', isConnect: c.k === 'connect',
+    iUser: c.i === 'user', iNote: c.i === 'note', iBell: c.i === 'bell',
+    cTitle: c.title || '', cSub: c.sub || '', cBody: c.body || '', hasCBody: !!c.body, cFoot: c.foot || '', hasCFoot: !!c.foot,
+    openView: openView || (() => {})
+  };
+}
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { st: 'idle', muted: false, view: false, now: 0, dictAt: 0, page: null };
+    this.enter = 0; this.t = null;
+  }
+  componentDidMount() {
+    this.enter = performance.now();
+    const tick = (now) => { this.setState({ now: now }); this.raf = requestAnimationFrame(tick); };
+    this.raf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); clearTimeout(this.t); }
+  live() { return !this.props.fixedState; }
+  go(st, extra) {
+    clearTimeout(this.t); this.enter = performance.now();
+    this.setState(Object.assign({ st: st }, extra || {}));
+    const f = LIVE_NEXT[st];
+    if (f && this.live()) this.t = setTimeout(() => { if (!this.state.muted) this.go(f[0]); }, f[1] * 1000);
+  }
+  renderVals() {
+    const fixedRaw = this.props.fixedState;
+    const s = this.state;
+    // Minimised across pages (KJ, 28 Oct): fixed boards = [voice state, page, rail hint].
+    const PGW = { pgLeave: ['listening', null, 'home'], pgHome: ['listening', 'home'], pgContacts: ['speaking', 'contacts'], pgNeeds: ['needs', 'contacts'], pgEnded: ['ended', 'home'] };
+    const pgw = PGW[fixedRaw] || null;
+    const fixed = pgw ? pgw[0] : fixedRaw;
+    const page = pgw ? pgw[1] : s.page;
+    const st = fixed || (s.muted && VIEWS[s.st] ? 'muted' : s.st);
+    const v = VIEWS[st];
+    const isVoice = !!v;
+    const raw = Math.max(0, ((s.now || 0) - this.enter) / 1000);
+    const cyc = cycleOf(st);
+    const n = fixed ? raw % cyc : raw;
+    const tl = LINES[st] || [];
+    const end = lineEnd(st);
+    const vv = v || {};
+    const words = tl.filter((w) => { let lit = n >= w.start; if (fixed && n > end + 2.4) lit = false; if (vv.still) lit = true; return lit; }).map((w) => ({ t: w.t }));
+    // Dot field emissions, centred on the Mel mark.
+    const rings = [];
+    const offsets = fixed ? [0, -cyc] : [0];
+    const out = (t0, str) => offsets.forEach((o) => { const a = n - (t0 + o); if (a < 0 || a > OUT_LIFE) return; const p = a / OUT_LIFE; const e = 1 - Math.pow(1 - p, 2.2); rings.push({ style: ringStyle(40 + 600 * e, str * Math.min(1, a / 0.15) * (p > 0.96 ? (1 - p) / 0.04 : 1)) }); });
+    const inn = (t0, str) => offsets.forEach((o) => { const a = n - (t0 + o); if (a < 0 || a > IN_LIFE) return; const p = a / IN_LIFE; const e = 1 - Math.pow(1 - p, 1.6); rings.push({ style: ringStyle(420 - 380 * e, str * Math.min(1, a / 0.3) * (1 - Math.pow(p, 4))) }); });
+    let env = 0;
+    if (vv.field === 'out') { tl.forEach((w) => { out(w.start, 0.1 + 0.9 * w.s); if (n >= w.start) env = w.s * Math.min(1, (n - w.start) / 0.08) * Math.exp(-(n - w.start) / 0.38); }); if (n > end + 0.2) env = 0; }
+    if (vv.field === 'in') tl.forEach((w) => inn(w.start, 0.15 + 0.75 * w.s));
+    if (vv.field === 'ready') { for (let k = 0; k * 3.2 < Math.max(n, 3.2) + 0.01; k++) out(k * 3.2, 0.35); }
+    if (vv.field === 'done') out(0.55, 0.8);
+    const sx = -200 + ((n % 2.4) / 2.4) * 1000;
+    const muted = st === 'muted';
+    const sendDraft = () => { if (this.live()) this.go('done'); };
+    const openView = (e) => { if (e && e.preventDefault) e.preventDefault(); if (this.live()) this.setState({ view: true }); };
+    let thread = THREADS[st] || THREADS[s.st] || BASE;
+    const dictating = st === 'dictating' && (!this.live() || true);
+    let dictText = '';
+    if (st === 'dictating') { const dn = fixed ? DICT_WORDS.length : Math.min(DICT_WORDS.length, Math.floor((((s.now || 0) - s.dictAt) / 1000) / 0.32) + 1); dictText = DICT_WORDS.slice(0, dn).join(' '); }
+    if (st === 'idle' && s.dictDone) dictText = DICT;
+    const card = vv.card || null;
+    const lit = words.map((w) => w.t);
+    const miniNeeds = vv.kind === 'attn';
+    const goPage = (p) => { if (this.live()) this.setState({ page: p, view: false }); };
+    return Object.assign({
+      isChatPage: !page, isPage: !!page, pageHome: page === 'home', pageContacts: page === 'contacts', pageTitle: page === 'home' ? 'Dashboard' : 'Contacts',
+      railMel: !page, railHome: page === 'home', railContacts: page === 'contacts',
+      hintHome: !!(pgw && pgw[2] === 'home'), hintContacts: false,
+      goHome: () => goPage('home'), goContacts: () => goPage('contacts'), goChat: () => goPage(null),
+      showMini: !!page && isVoice, miniNeeds: miniNeeds,
+      miniStatus: miniNeeds ? '· Needs you' : (vv.status ? '· ' + vv.status : ''),
+      miniCap: miniNeeds ? (vv.card && vv.card.k === 'draft' ? 'Draft ready for Sarah Reynolds' : (vv.mel || '')) : (lit.length ? (lit.length > 8 ? '…' : '') + lit.slice(-8).join(' ') : (vv.hint || '')),
+      hasSkill: true, skin: 'crm', skillName: 'CRM',
+      msgs: thread.map((m) => Object.assign({
+        isDiv: m.role === 'div', isUser: m.role === 'user', isMel: m.role === 'mel', text: m.text, hasText: !!m.text,
+        hasRows: !!(m.rows && m.rows.length), rows: (m.rows || []).map((r) => ({ text: r }))
+      }, cardVals(m.card, () => {}, openView))),
+      isVoice: isVoice, isComposer: !isVoice,
+      off: vv.off ? 'true' : 'false', cardStr: card ? 'true' : 'false', hasCard: !!card,
+      status: vv.status || '',
+      kReady: vv.kind === 'ready', kListen: vv.kind === 'listen', kThink: vv.kind === 'think', kSpeak: vv.kind === 'speak' && n <= end + 0.2,
+      kAttn: vv.kind === 'attn', kDone: vv.kind === 'done', kOff: vv.kind === 'off', kRest: vv.kind === 'speak' && n > end + 0.2,
+      markScale: 'scale(' + (1 + 0.06 * env).toFixed(3) + ')',
+      rings: rings, shimmer: vv.field === 'think', shimmerStyle: '--sx: ' + sx.toFixed(1) + 'px',
+      hasHeard: !!vv.heard, heard: vv.heard || '',
+      showWords: tl.length > 0, words: words, line: vv.you || vv.mel || '', who: vv.you ? 'you' : 'mel',
+      hasHint: !!vv.hint, hint: vv.hint || '',
+      isMuted: muted, notMuted: !muted, mutedStr: muted ? 'true' : 'false', muteLabel: muted ? 'Unmute microphone' : 'Mute microphone',
+      toggleMute: () => { if (!this.live()) return; clearTimeout(this.t); if (s.muted) { this.setState({ muted: false }); this.go('live'); } else this.setState({ muted: true }); },
+      end: () => { if (!this.live()) return; clearTimeout(this.t); this.setState({ st: 'ended', muted: false, view: false }); },
+      isDictating: st === 'dictating', notDictating: st !== 'dictating', dictText: dictText,
+      typingStr: dictText ? 'true' : 'false',
+      startDictate: () => { if (this.live()) this.setState({ st: 'dictating', dictAt: performance.now(), dictDone: false }); },
+      stopDictate: () => { if (this.live()) this.setState({ st: 'idle', dictDone: true }); },
+      startVoice: () => { if (this.live()) { this.setState({ muted: false, view: false, dictDone: false }); this.go('listening'); } },
+      voiceOn: st === 'micAsk' ? 'true' : 'false', askPrompt: st === 'micAsk',
+      viewOpen: !!vv.view || (this.live() && s.view), closeView: () => { if (this.live()) this.setState({ view: false }); }
+    }, cardVals(card, sendDraft, openView));
+  }
+}
+
+</script>
+</body>
+</html>

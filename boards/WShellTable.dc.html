@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MEL chat, table in chat</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/radius-ui/styles.css">
+<link rel="stylesheet" href="brand/mel-brand.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+button,input{font-family:inherit}
+.ws-root{width:1440px;height:900px;overflow:hidden}
+.mk-app{display:flex;height:900px;background:#14173F;font-family:'Mona Sans',system-ui,sans-serif;color:#0E2B30}
+.w-rail{width:56px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:4px;color:#C9CDEA}
+.w-rail .ws{width:30px;height:30px;border-radius:999px;background:#fff;color:#14173F;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+.w-rail .tile{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+.w-rail .tile.on{background:#222861;border:1px solid #4350A8}
+.w-rail .ic{width:40px;height:34px;display:flex;align-items:center;justify-content:center;opacity:.85}
+.w-rail .sp{flex-grow:1}
+.w-rail .av{width:30px;height:30px;border-radius:999px;background:linear-gradient(135deg,#F6A28B,#7A6BE0)}
+.g-frame{flex:1;min-width:0;margin:12px 12px 12px 0;background:#fff;border-radius:24px;display:flex;overflow:hidden}
+.ic{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* sidebar */
+.g-side{width:260px;flex:none;box-sizing:border-box;background:#F3F9F6;border-right:1px solid #DCE8E4;display:flex;flex-direction:column;padding:12px 10px}
+.g-shead{display:flex;align-items:center;justify-content:space-between;height:36px;padding:0 2px 0 8px;margin-bottom:10px}
+.g-brand{display:inline-flex;align-items:center;gap:7px;font-size:20px;font-weight:600;letter-spacing:-.045em;color:#0E2B30}
+.g-sicons{display:flex;gap:2px}
+.g-ibtn{width:32px;height:32px;border:none;background:none;border-radius:8px;color:#4A5E61;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.g-ibtn:hover{background:#DCE8E4;color:#0E2B30}
+.g-new{height:40px;border:none;border-radius:999px;background:#0E2B30;color:#fff;display:flex;align-items:center;gap:10px;padding:0 16px;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:6px}
+.g-new:hover{background:#173B41}
+.g-nav{height:38px;border:none;background:none;border-radius:10px;display:flex;align-items:center;gap:10px;padding:0 12px;font-size:14px;color:#0E2B30;cursor:pointer;text-align:left;width:100%}
+.g-nav:hover{background:#DCE8E4}
+.g-label{font-size:12.5px;color:#7D9093;padding:18px 12px 6px}
+.g-item{border:none;background:none;text-align:left;border-radius:10px;padding:9px 12px;color:#0E2B30;font-size:13.5px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;width:100%}
+.g-item:hover{background:#DCE8E4}
+.g-item--on{background:#DCE8E4;font-weight:500}
+.g-seeall{border:none;background:none;text-align:left;padding:9px 12px;font-size:13.5px;font-weight:600;color:#4A5E61;cursor:pointer}
+.g-sp{flex:1}
+.g-me{display:flex;align-items:center;gap:10px;padding:8px 8px;border-radius:10px}
+.g-me .av{width:30px;height:30px;border-radius:999px;background:linear-gradient(135deg,#F6A28B,#7A6BE0);flex:none}
+.g-me b{display:block;font-size:13.5px;font-weight:600}
+.g-me>span>span{display:block;font-size:12px;color:#4A5E61}
+.g-me .g-cr{display:inline;color:#0B7A4D;font-weight:600}
+/* center */
+.g-center{flex:1;min-width:0;display:flex;flex-direction:column;position:relative}
+.g-top{height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 20px}
+.g-skill{display:inline-flex;align-items:center;gap:8px}
+.ws-pill{height:22px;border-radius:999px;padding:0 9px;display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;letter-spacing:.04em}
+.g-tright{display:flex;gap:4px;align-items:center}
+.g-share{height:34px;border-radius:999px;border:1px solid #DCE8E4;background:#fff;display:inline-flex;align-items:center;gap:6px;padding:0 14px;font-size:13px;font-weight:500;color:#0E2B30;cursor:pointer}
+.g-thread{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column-reverse;align-items:center;padding:0 24px}
+.g-col{width:100%;max-width:720px;display:flex;flex-direction:column;gap:22px;padding:8px 0 24px}
+.g-user{align-self:flex-end;max-width:80%;background:#F3F9F6;border-radius:22px;padding:12px 18px;font-size:16px;line-height:24px}
+.g-mel{display:flex;flex-direction:column;gap:12px}
+.g-mel p{margin:0;font-size:16px;line-height:24px}
+.g-rows{display:flex;flex-direction:row;flex-wrap:wrap;gap:4px 6px;margin-left:-10px}
+.g-row{border:none;background:none;text-align:left;display:flex;gap:10px;align-items:baseline;padding:7px 10px;border-radius:8px;font-size:14px;line-height:20px;color:#4A5E61;cursor:pointer}
+.g-row:hover{background:#F3F9F6;color:#0E2B30}
+.g-row i{font-style:normal;color:#7D9093}
+.g-dock{flex:none;display:flex;justify-content:center;padding:0 24px 20px}
+.g-box{width:100%;max-width:720px;box-sizing:border-box;border:1px solid #DCE8E4;border-radius:26px;background:#fff;box-shadow:0 2px 10px rgba(14,43,48,.05);padding:14px 12px 10px 18px;display:flex;flex-direction:column;gap:10px}
+.g-box:focus-within{border-color:#DCE8E4;box-shadow:0 0 0 4px rgba(14,43,48,.05)}
+.g-field{border:none;outline:none;background:none;font-size:15.5px;color:#0E2B30;padding:2px 0;width:100%}
+.g-field::placeholder{color:#7D9093}
+.g-brow{display:flex;align-items:center;justify-content:space-between;margin-left:-6px}
+.g-bright{display:flex;align-items:center;gap:6px}
+.g-voice{width:38px;height:38px;border-radius:999px;border:none;background:#0E2B30;color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.g-voice .ic{width:18px;height:18px}
+/* draft card */
+.g-card{border:1px solid #DCE8E4;border-radius:18px;background:#fff;overflow:hidden}
+.g-chead{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid #DCE8E4;font-size:13.5px}
+.g-chead b{font-weight:600}
+.g-chead span{color:#4A5E61}
+.g-pieces{display:flex;gap:12px;padding:14px;overflow-x:auto}
+.g-piece{width:204px;flex:none;display:flex;flex-direction:column;gap:8px}
+.g-thumb{position:relative;width:204px;height:204px;border-radius:12px;overflow:hidden;background:#F3F9F6}
+.g-thumb--tall{height:256px}
+.g-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.g-exp{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:999px;border:none;background:rgba(255,255,255,.92);color:#0E2B30;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.g-exp .ic{width:14px;height:14px}
+.g-badge{position:absolute;left:8px;bottom:8px;height:22px;border-radius:999px;background:rgba(14,43,48,.75);color:#fff;font-size:11px;font-weight:600;display:inline-flex;align-items:center;gap:4px;padding:0 8px}
+.g-badge .ic{width:10px;height:10px;fill:currentColor;stroke:none}
+.g-cap{font-size:12.5px;line-height:18px;margin:0}
+.g-tags{font-size:12px;line-height:17px;color:#1F5A7A;margin:0}
+.g-cfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-top:1px solid #DCE8E4}
+.g-cfoot span{font-size:12.5px;color:#4A5E61}
+.g-btn{height:32px;border-radius:999px;border:1px solid #0E2B30;background:#0E2B30;color:#fff;padding:0 14px;font-size:13px;font-weight:600;cursor:pointer}
+.g-btn--ghost{background:#fff;color:#0E2B30;border-color:#DCE8E4}
+.g-done{font-size:13px;font-weight:600;color:#0B7A4D}
+/* viewer */
+.g-view{width:600px;flex:none;box-sizing:border-box;border-left:1px solid #DCE8E4;background:#F3F9F6;display:flex;flex-direction:column}
+.g-vtop{height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 10px 0 18px;border-bottom:1px solid #DCE8E4;background:#fff}
+.g-vtitle{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600}
+.g-vtitle span{font-weight:400;color:#4A5E61}
+.g-vbody{flex:1;min-height:0;display:flex;gap:14px;padding:18px}
+.g-strip{display:flex;flex-direction:column;gap:8px;justify-content:center}
+.g-sthumb{width:56px;height:56px;border-radius:8px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;background:none}
+.g-sthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.g-sthumb--on{border-color:#0E2B30}
+.g-stage{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center}
+.g-big{max-width:100%;max-height:560px;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(14,43,48,.12);position:relative}
+.g-big img{display:block;width:420px;height:420px;object-fit:cover}
+.g-big--tall img{width:360px;height:560px}
+.g-vcap{width:100%;max-width:420px;display:flex;flex-direction:column;gap:4px}
+.g-vcap p{margin:0;font-size:13.5px;line-height:20px}
+.g-vcap .g-tags{font-size:13px}
+/* table */
+.g-tbl{border:1px solid #DCE8E4;border-radius:14px;overflow-x:auto;background:#fff}
+.g-tbl table{border-collapse:collapse;width:100%;font-size:14px;line-height:20px;color:#0E2B30}
+.g-tbl th{text-align:left;font-size:13px;font-weight:600;padding:10px 14px;border-bottom:1px solid #DCE8E4;background:#F3F9F6;white-space:nowrap}
+.g-tbl td{padding:11px 14px;border-bottom:1px solid #DCE8E4;white-space:nowrap}
+.g-tbl tr:last-child td{border-bottom:none}
+.g-tbl .num{text-align:right;font-variant-numeric:tabular-nums}
+.g-tbl td:first-child{font-weight:500}
+
+/* Mel brand layer (Mel brand guidelines): Deep Teal primary + text, Slate secondary, Line borders, Cloud tints, Mint Mist selected, mint focus ring, Night pressed, outline secondary buttons, rounded-square composer buttons */
+.ws-root .g-item--on{background:#E2F5EA}
+.ws-root .g-new:active,.ws-root .g-voice:active,.ws-root .g-btn:not(.g-btn--ghost):active,.ws-root .w-btn:active{background:#08191C}
+.ws-root .g-voice{border-radius:12px}
+.ws-root .g-share,.ws-root .g-btn--ghost,.ws-root .v-sharebtn{background:#FFFFFF;color:#0E2B30;border:1.5px solid #0E2B30}
+.ws-root .g-share:hover,.ws-root .g-btn--ghost:hover,.ws-root .v-sharebtn:hover{background:#F3F9F6}
+.ws-root .v-sharebtn[aria-expanded="true"]{background:#E2F5EA;border-color:#0E2B30}
+.ws-root button:focus-visible,.ws-root a:focus-visible,.ws-root input[type="text"]:focus-visible{outline:none !important;box-shadow:0 0 0 3px #FFFFFF,0 0 0 6px #5ED6A0 !important}
+</style>
+</helmet>
+<div class="ws-root"><div class="mk-app">
+<nav class="w-rail" aria-label="App navigation"><span class="ws">C</span><span class="tile on" aria-label="Mel"><svg class="mel-mark" width="24" height="24" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" stroke="#FFFFFF" stroke-width="3" fill="none"><animate attributeName="r" values="13;34;13" dur="2.4s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0.9;0;0.9" dur="2.4s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="13" fill="#FFFFFF"><animate attributeName="r" values="13;15;13" dur="2.4s" repeatCount="indefinite"></animate></circle></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"></path></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14a6.5 6.5 0 0 1 3 6"></path></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"></path></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M7 10h10M7 14h6"></path></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"></path></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></span><span class="ic" style="opacity:.6">…</span><span class="sp"></span><span class="av"></span></nav>
+<main class="g-frame">
+<aside class="g-side" aria-label="Mel">
+<div class="g-shead"><span class="g-brand"><svg class="mel-mark" width="22" height="22" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg><span>mel</span></span><span class="g-sicons"><button class="g-ibtn" aria-label="Search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg></button><button class="g-ibtn" aria-label="Collapse sidebar"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path></svg></button></span></div>
+<button class="g-new" onClick="{{newChat}}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg><span>New chat</span></button>
+<button class="g-nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"></rect><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9M10 14h4"></path></svg><span>Library</span></button>
+<button class="g-nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path><path d="M12 8v4l3 2"></path></svg><span>Routines</span></button>
+<div class="g-label">Chats</div>
+<button class="g-item g-item--on">Compare 3 listings</button>
+<button class="g-item">123 Ocean View Drive</button>
+<button class="g-item">Follow up with Jordan</button>
+<button class="g-item">Listing at 124 Oak Street</button>
+<button class="g-item">Instagram post for Palo Alto</button>
+<button class="g-item">Saturday tour schedule</button>
+<button class="g-seeall">See all</button>
+<div class="g-sp"></div>
+<div class="g-me"><span class="av"></span><span><b>Agent name</b><span><span class="g-cr">10K</span> credits</span></span></div>
+</aside>
+<section class="g-center">
+<div class="g-top"><span class="g-skill"><svg class="mel-mark" width="22" height="22" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#8B6BC8"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg><span class="ws-pill" style="background:#EFE9F8;color:#5B3F94">MLS</span></span>
+<span class="g-tright"><button class="g-ibtn" aria-label="More"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle></svg></button><button class="g-share"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg><span>Share</span></button></span></div>
+<div class="g-thread"><div class="g-col">
+<div class="g-user">Compare 123 Ocean View Drive, 45 Harbor Lane and 9 Cliff Road</div>
+<div class="g-mel"><p>Here’s how the 3 listings compare.</p>
+<div class="g-tbl"><table aria-label="Listing comparison"><thead><tr><th scope="col">Listing</th><th scope="col" class="num">Price</th><th scope="col" class="num">Beds</th><th scope="col" class="num">Baths</th><th scope="col" class="num">Sq ft</th><th scope="col" class="num">$/sq ft</th><th scope="col" class="num">Days on market</th></tr></thead><tbody><tr><td>123 Ocean View Drive</td><td class="num">$1,250,000</td><td class="num">3</td><td class="num">2</td><td class="num">1,850</td><td class="num">$676</td><td class="num">12</td></tr><tr><td>45 Harbor Lane</td><td class="num">$1,095,000</td><td class="num">3</td><td class="num">2.5</td><td class="num">1,720</td><td class="num">$637</td><td class="num">28</td></tr><tr><td>9 Cliff Road</td><td class="num">$1,380,000</td><td class="num">4</td><td class="num">3</td><td class="num">2,240</td><td class="num">$616</td><td class="num">5</td></tr></tbody></table></div>
+</div>
+<div class="g-rows"><sc-for list="{{rows}}" as="r" hint-placeholder-count="3"><button class="g-row" onClick="{{r.pick}}"><i>↳</i><span>{{r.text}}</span></button></sc-for></div>
+</div></div>
+<div class="g-dock"><div class="g-box">
+<input class="g-field" type="text" aria-label="Message MEL" placeholder="{{placeholder}}" value="{{draft}}" onChange="{{setDraft}}">
+<div class="g-brow"><button class="g-ibtn" aria-label="Attach a file"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+<span class="g-bright"><button class="g-ibtn" aria-label="Dictate"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></button>
+<sc-if value="{{hasDraft}}" hint-placeholder-val="{{ false }}"><button class="g-voice" aria-label="Send"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button></sc-if>
+<sc-if value="{{noDraft}}" hint-placeholder-val="{{ true }}"><button class="g-voice" aria-label="Speak with MEL"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"></path></svg></button></sc-if>
+</span></div>
+</div></div>
+</section>
+</main>
+</div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+const ROWS = [["Add school ratings", "Add school ratings"], ["Sort by price per sq ft", "Sort by price per sq ft"], ["Export as Excel", "Export as Excel"]];
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { draft: '' }; }
+  renderVals() {
+    const s = this.state, d = s.draft.trim();
+    return {
+      draft: s.draft, hasDraft: !!d, noDraft: !d,
+      placeholder: 'Tell Mel what to change',
+      setDraft: (e) => this.setState({ draft: String(e.target.value) }),
+      newChat: () => this.setState({ draft: '' }),
+      rows: ROWS.map(([t, f]) => ({ text: t, pick: () => this.setState({ draft: f }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

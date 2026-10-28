@@ -1,0 +1,69 @@
+/* Mel mascot, ported unchanged from Radius Mobile. Mel Copilot = brand green. Marketing Assistant = cyan. */
+:root{--size-mel-dock:40px;--size-mel-inline:26px;--size-mel-hero:64px;--space-3:12px;--gradient-mel-body:#12A867;--mel-eye:#FFFFFF;--text-secondary:#4A5E61;--mel-assistant-crm:#4AA0AE;--mel-assistant-marketing:#DE7256;--mel-assistant-mls:#75B938;--mel-assistant-compliance:#5178AE;--mel-assistant-document:#936D54}
+.mel {
+  --mel-size: var(--size-mel-dock);
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  padding: calc(var(--mel-size) * .15);
+}
+.mel--inline { --mel-size: var(--size-mel-inline); padding: calc(var(--mel-size) * .14); }
+.mel--dock { --mel-size: var(--size-mel-dock); }
+.mel--hero { --mel-size: var(--size-mel-hero); }
+.mel--hero-large { --mel-size: calc(var(--size-mel-hero) + var(--space-3)); }
+.mel__body {
+  width: var(--mel-size);
+  height: var(--mel-size);
+  display: grid;
+  place-items: center;
+  background: var(--gradient-mel-body);
+  /* Brand artwork, not a generic icon. Coordinates retain the exact 120-unit source path. */
+  -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"%3E%3Cpath d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z"/%3E%3C/svg%3E') center / contain no-repeat;
+  mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"%3E%3Cpath d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z"/%3E%3C/svg%3E') center / contain no-repeat;
+}
+.mel__eyes, .mel__smile { grid-area: 1 / 1; width: calc(var(--mel-size) * .40); fill: var(--mel-eye); }
+.mel__smile { display: none; }
+.mel__eye { transform-box: fill-box; transform-origin: center; animation: mel-blink 6s ease-in-out infinite; }
+.mel[data-state="idle"] .mel__eye { transform: scaleY(.75); animation: mel-rest 7s ease-in-out infinite; }
+.mel[data-state="ready"] .mel__eyes { transform: scale(1.05); }
+.mel[data-state="listening"] .mel__eyes { transform: scaleY(1.15); }
+.mel[data-state="thinking"] .mel__eyes,
+.mel[data-state="working"] .mel__eyes { transform: translateY(-12%); animation: mel-thinking 3.2s ease-in-out infinite; }
+.mel[data-state="speaking"] .mel__eye { animation: mel-speaking 1.8s ease-in-out infinite; }
+.mel[data-state="speaking"] .mel__eye:last-child { animation-delay: .15s; }
+.mel[data-state="done"] .mel__eyes { display: none; }
+.mel[data-state="done"] .mel__smile { display: block; }
+.mel[data-state="heads-up"] .mel__eye:first-child,
+.mel[data-state="attention"] .mel__eye:first-child { transform: scaleY(.65); animation: none; }
+.mel[data-state="offline"] .mel__body,
+.mel[data-state="paused"] .mel__body { background: var(--text-secondary); }
+.mel[data-state="offline"] .mel__eye,
+.mel[data-state="paused"] .mel__eye { transform: scaleY(.3); animation: none; }
+@keyframes mel-blink { 0%, 91%, 100% { transform: scaleY(1); } 94% { transform: scaleY(.1); } }
+@keyframes mel-rest { 0%, 91%, 100% { transform: scaleY(.75); } 94% { transform: scaleY(.1); } }
+@keyframes mel-thinking { 0%, 100% { transform: translate(-5%,-12%); } 50% { transform: translate(5%,-12%); } }
+@keyframes mel-speaking { 0%, 100% { transform: scaleY(.75); } 50% { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .mel, .mel * { animation: none !important; transition: none !important; }
+}
+.c-mel-mascot__cue, .c-mel-mascot__lids { display:none; }
+.mel.c-mel-mascot { pointer-events:none; }
+.mel.c-mel-mascot[data-expression="attentive"] .mel__eyes { transform:scaleY(1.15); }
+.mel.c-mel-mascot[data-expression="curious"] .mel__eyes,
+.mel.c-mel-mascot[data-expression="idea"] .mel__eyes,
+.mel.c-mel-mascot[data-expression="home-search"] .mel__eyes { transform:translateY(-12%); }
+.mel.c-mel-mascot[data-expression="snoozing"] .mel__eye { transform:scaleY(.3); animation:none; }
+.mel.c-mel-mascot[data-expression="happy"] .mel__eyes,
+.mel.c-mel-mascot[data-expression="closing-celebration"] .mel__eyes { display:none; }
+.mel.c-mel-mascot[data-expression="happy"] .mel__smile,
+.mel.c-mel-mascot[data-expression="closing-celebration"] .mel__smile { display:block; }
+.mel.c-mel-mascot[data-motion="paused"] * { animation:none!important; transition:none!important; }
+
+/* Approved assistant identities: original colors, flat brand silhouette and white eyes. */
+.mel.c-mel-mascot[data-theme="crm"] { --gradient-mel-body: var(--mel-assistant-crm); }
+.mel.c-mel-mascot[data-theme="marketing"] { --gradient-mel-body: var(--mel-assistant-marketing); }
+.mel.c-mel-mascot[data-theme="mls"] { --gradient-mel-body: var(--mel-assistant-mls); }
+.mel.c-mel-mascot[data-theme="compliance"] { --gradient-mel-body: var(--mel-assistant-compliance); }
+.mel.c-mel-mascot[data-theme="document"] { --gradient-mel-body: var(--mel-assistant-document); }
+.w-msg>.mel{align-self:flex-start}

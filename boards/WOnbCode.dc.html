@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Onboarding, Code sent, enter code</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/radius-ui/styles.css">
+<link rel="stylesheet" href="brand/mel-brand.css">
+<link rel="stylesheet" href="brand/mel-mascot.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+button,input{font-family:inherit}
+.ob-root{width:1440px;height:900px;display:flex;background:#fff;color:#0E2B30;font-family:'Mona Sans',system-ui,sans-serif;overflow:hidden}
+.ob-left{width:640px;flex:none;box-sizing:border-box;background:linear-gradient(180deg,#E2F5EA,#E8F1F6);display:flex;flex-direction:column;justify-content:center;padding:56px 72px;gap:24px;border-right:1px solid #DCE8E4}
+.ob-hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.ob-lockup{display:flex;align-items:center;gap:12px}
+.ob-word{margin:0;font-family:'Mona Sans',sans-serif;font-weight:600;font-size:80px;line-height:1;letter-spacing:-0.045em;color:#0E2B30}
+.ob-right{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;padding:48px}
+.ob-col{width:100%;max-width:400px;display:flex;flex-direction:column;gap:20px}
+.ob-col--wide{max-width:520px}
+.ob-h1{margin:0;font-size:40px;line-height:44px;font-weight:700;letter-spacing:-.02em}
+.ob-h2{margin:0;font-size:24px;line-height:32px;font-weight:600;letter-spacing:-.01em}
+.ob-h3{margin:0;font-size:16px;line-height:24px;font-weight:600}
+.ob-sub{margin:0;font-size:14.5px;line-height:22px;color:#4A5E61}
+.ob-meta{margin:0;font-size:13px;line-height:18px;color:#4A5E61}
+.ob-stack{display:flex;flex-direction:column;gap:6px}
+.ob-list{background:#fff;border:1px solid #DCE8E4;border-radius:14px;overflow:hidden}
+.ob-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border-top:1px solid #E6EEEB;min-height:56px;box-sizing:border-box;width:100%;background:none;border-left:none;border-right:none;border-bottom:none;text-align:left;color:inherit;text-decoration:none;font:inherit}
+.ob-item:first-child{border-top:none}
+.ob-item-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.ob-item-body b{font-size:14px;font-weight:600}
+.ob-item-body span{font-size:12.5px;color:#4A5E61}
+a.ob-item:hover,button.ob-item:hover{background:#F3F9F6;cursor:pointer}
+.ob-tile{width:40px;height:40px;border-radius:10px;background:#F3F9F6;display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden}
+.ob-tile img{width:100%;height:100%;object-fit:cover}
+.ob-tile svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ob-tile--green{background:#E2F5EA;color:#0B7A4D}
+.ob-tile--sky{background:#E8F1F6;color:#1F5A7A}
+.ob-credits{background:#fff;border:1px solid #DCE8E4;border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ob-credits b{font-size:28px;line-height:32px;font-weight:700;font-variant-numeric:tabular-nums}
+.ob-chans{display:flex;gap:8px;color:#4A5E61;margin-top:6px}
+.ob-chans svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ob-field{display:flex;flex-direction:column;gap:6px}
+.ob-field>span{font-size:13.5px;font-weight:600}
+.ob-input{height:44px;border:1px solid #DCE8E4;border-radius:10px;padding:0 14px;font-size:15px;color:#0E2B30;background:#fff;outline:none;box-sizing:border-box;width:100%}
+.ob-input:focus{border-color:#3DDC97;box-shadow:0 0 0 4px rgba(61,220,151,.2)}
+.ob-input[readonly]{background:#F3F9F6;color:#4A5E61}
+.ob-input--bad{border-color:#B42318}
+.ob-boxes{display:flex;gap:10px}
+.ob-box{width:56px;height:56px;border:1px solid #DCE8E4;border-radius:10px;text-align:center;font-size:24px;font-weight:600;color:#0E2B30;outline:none;background:#fff;box-sizing:border-box}
+.ob-box:focus{border-color:#3DDC97;box-shadow:0 0 0 4px rgba(61,220,151,.2)}
+.ob-box--bad{border-color:#B42318}
+.ob-alert{display:flex;gap:8px;align-items:center;border-radius:10px;padding:10px 12px;font-size:13.5px;font-weight:600}
+.ob-alert--bad{background:#FDE8E6;color:#B42318}
+.ob-alert--ok{background:#E2F5EA;color:#0B7A4D}
+.ob-alert svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ob-btn{height:44px;border-radius:999px;border:1px solid #DCE8E4;background:#fff;color:#0E2B30;font-size:14px;font-weight:600;cursor:pointer;width:100%}
+.ob-btn--primary{background:#0E2B30;border-color:#0E2B30;color:#fff}
+.ob-green{color:#0B7A4D;font-weight:700}
+.ob-row{display:flex;gap:10px}
+.ob-row .ob-btn{flex:1}
+.ob-link{border:none;background:none;padding:0;font-size:13.5px;font-weight:600;color:#0B7A4D;cursor:pointer;align-self:flex-start}
+.ob-foot{display:flex;justify-content:center;gap:6px;font-size:13.5px;color:#4A5E61}
+.ob-small{height:32px;border-radius:999px;border:1px solid #DCE8E4;background:#fff;padding:0 14px;font-size:13px;font-weight:600;color:#0E2B30;cursor:pointer;flex:none}
+.ob-small--on{background:#E2F5EA;border-color:#BDEED4;color:#0B7A4D}
+.ob-chev{width:16px;height:16px;stroke:#7A8D90;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ob-scroll{max-height:560px;overflow-y:auto}
+</style>
+</helmet>
+<div class="ob-root">
+<sc-if value="{{isSignup}}" hint-placeholder-val="{{ true }}">
+<aside class="ob-left">
+<div class="ob-hero"><div class="ob-lockup"><svg class="mel-mark" width="64" height="64" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" stroke="#FFFFFF" stroke-width="3" fill="none"><animate attributeName="r" values="13;34;13" dur="2.4s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0.9;0;0.9" dur="2.4s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="13" fill="#FFFFFF"><animate attributeName="r" values="13;15;13" dur="2.4s" repeatCount="indefinite"></animate></circle></svg><h1 class="ob-word">mel</h1></div><p class="ob-sub">Your AI assistant for real estate.</p></div>
+<div class="ob-list" aria-label="What MEL can do">
+<sc-for list="{{skills}}" as="k" hint-placeholder-count="5">
+<div class="ob-item"><svg class="mel-mark" width="26" height="26" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="{{k.color}}"></path><circle cx="60" cy="60" r="13" stroke="#FFFFFF" stroke-width="3" fill="none"><animate attributeName="r" values="13;34;13" dur="2.4s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0.9;0;0.9" dur="2.4s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="13" fill="#FFFFFF"><animate attributeName="r" values="13;15;13" dur="2.4s" repeatCount="indefinite"></animate></circle></svg><div class="ob-item-body"><b>{{k.name}}</b><span>{{k.sub}}</span></div></div>
+</sc-for>
+</div>
+<div class="ob-credits">
+<div><p class="ob-h3">Built for agents &amp; teams</p><div class="ob-chans" aria-label="Chat, text, WhatsApp, email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"></rect><path d="M11 18h2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.6-4.8A9 9 0 1 1 8 19.6z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></div></div>
+<div style="text-align:right"><b style="color:#12A867">10K</b><p class="ob-meta">free credits</p></div>
+</div>
+</aside>
+<main class="ob-right">
+<div class="ob-col">
+<div class="ob-stack">
+<h2 class="ob-h2">{{title}}</h2>
+<sc-if value="{{isPhone}}" hint-placeholder-val="{{ true }}"><p class="ob-sub">Your <b class="ob-green">10K</b> free credits are ready.</p></sc-if>
+<sc-if value="{{isCode}}" hint-placeholder-val="{{ false }}"><p class="ob-sub">{{sub}}</p></sc-if>
+</div>
+<label class="ob-field"><span>Phone number (+1)</span>
+<sc-if value="{{isPhone}}" hint-placeholder-val="{{ true }}"><input class="{{phoneCls}}" type="tel" inputmode="tel" autocomplete="tel-national" value="{{phoneShown}}" onChange="{{setPhone}}" onKeyDown="{{phoneKey}}"></sc-if>
+<sc-if value="{{isCode}}" hint-placeholder-val="{{ false }}"><input class="ob-input" type="tel" readonly="" value="{{phoneShown}}"></sc-if>
+</label>
+<sc-if value="{{isCode}}" hint-placeholder-val="{{ false }}">
+<div class="ob-field" role="group" aria-label="4-digit code"><span>4-digit code</span>
+<div class="ob-boxes">
+<sc-for list="{{boxes}}" as="b" hint-placeholder-count="4"><input class="{{b.cls}}" type="text" inputmode="numeric" maxlength="1" aria-label="{{b.label}}" value="{{b.value}}" onChange="{{b.set}}" onKeyDown="{{b.key}}"></sc-for>
+</div>
+<button class="ob-link" type="button" onClick="{{resend}}">Resend code</button>
+</div>
+</sc-if>
+<sc-if value="{{hasError}}" hint-placeholder-val="{{ false }}">
+<div class="ob-alert ob-alert--bad" role="alert"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg><span>{{error}}</span></div>
+</sc-if>
+<sc-if value="{{hasResent}}" hint-placeholder-val="{{ false }}">
+<div class="ob-alert ob-alert--ok" role="status"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5L20 7"></path></svg><span>{{resentText}}</span></div>
+</sc-if>
+<sc-if value="{{isPhone}}" hint-placeholder-val="{{ true }}">
+<button class="ob-btn ob-btn--primary" type="button" onClick="{{submitPhone}}">Send code</button>
+</sc-if>
+<sc-if value="{{isCode}}" hint-placeholder-val="{{ false }}">
+<div class="ob-row">
+<button class="ob-btn" type="button" onClick="{{changeNumber}}">Change number</button>
+<button class="ob-btn ob-btn--primary" type="button" onClick="{{submitCode}}">Verify number</button>
+</div>
+</sc-if>
+</div>
+</main>
+</sc-if>
+<sc-if value="{{isConnectors}}" hint-placeholder-val="{{ false }}">
+<aside class="ob-left">
+<svg class="mel-mark" width="64" height="64" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" stroke="#FFFFFF" stroke-width="3" fill="none"><animate attributeName="r" values="13;34;13" dur="2.4s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0.9;0;0.9" dur="2.4s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="13" fill="#FFFFFF"><animate attributeName="r" values="13;15;13" dur="2.4s" repeatCount="indefinite"></animate></circle></svg>
+<h1 class="ob-h2" style="font-size:32px;line-height:38px">Your MEL, one message away</h1>
+<div class="ob-stack"><h2 class="ob-h3">Let’s stay connected</h2><p class="ob-meta">Message me wherever you prefer.</p></div>
+<div class="ob-list">
+<a class="ob-item" href="WShell.dc.html" aria-label="Open chat with MEL"><span class="ob-tile ob-tile--green"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span><span class="ob-item-body"><b>Chat with MEL</b><span>In the app</span></span><svg class="ob-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a>
+<sc-for list="{{contacts}}" as="c" hint-placeholder-count="3">
+<div class="ob-item">
+<sc-if value="{{c.isText}}" hint-placeholder-val="{{ false }}"><span class="ob-tile ob-tile--sky"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"></rect><path d="M11 18h2"></path></svg></span></sc-if>
+<sc-if value="{{c.isWa}}" hint-placeholder-val="{{ false }}"><span class="ob-tile"><img src="assets/1cb87b40d35a999d2537fa6c92a310df.jpg" alt=""></span></sc-if>
+<sc-if value="{{c.isEmail}}" hint-placeholder-val="{{ false }}"><span class="ob-tile ob-tile--green"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span></sc-if>
+<span class="ob-item-body"><b>{{c.name}}</b><span>{{c.value}}</span></span>
+<button class="{{c.cls}}" type="button" aria-label="{{c.aria}}" onClick="{{c.copy}}">{{c.btn}}</button>
+</div>
+</sc-for>
+</div>
+</aside>
+<main class="ob-right">
+<div class="ob-col ob-col--wide">
+<div class="ob-stack"><h2 class="ob-h2">Connect your tools</h2><p class="ob-sub">Connect now, or do it later.</p></div>
+<div class="ob-list ob-scroll">
+<sc-for list="{{tools}}" as="t" hint-placeholder-count="6">
+<div class="ob-item">
+<sc-if value="{{t.hasSrc}}" hint-placeholder-val="{{ true }}"><span class="ob-tile"><img src="{{t.src}}" alt=""></span></sc-if>
+<sc-if value="{{t.noSrc}}" hint-placeholder-val="{{ false }}"><span class="ob-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg></span></sc-if>
+<span class="ob-item-body"><b>{{t.name}}</b><span>{{t.group}}</span></span>
+<button class="{{t.cls}}" type="button" aria-label="{{t.aria}}" onClick="{{t.toggle}}">{{t.btn}}</button>
+</div>
+</sc-for>
+<button class="ob-item" type="button" onClick="{{toggleBrowse}}"><span class="ob-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg></span><span class="ob-item-body"><b>{{browseLabel}}</b></span><svg class="ob-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+</div>
+</div>
+</main>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"step": {"editor": "enum", "options": ["phone", "code", "connectors"], "default": "code"}, "phone": {"editor": "text", "default": "2025550147"}, "error": {"editor": "text", "default": ""}, "resent": {"editor": "boolean", "default": false}, "$preview": {"width": 1440, "height": 900}}'>
+const SKILLS = [
+  { name: 'Manage clients', sub: 'CRM. Import contacts, update records, follow up.', color: '#0FA3B1' },
+  { name: 'Create marketing', sub: 'Marketing. Posts, flyers, email, yard signs.', color: '#EE6A4C' },
+  { name: 'Explore listings', sub: 'MLS. Search homes, pull comps.', color: '#8B6BC8' },
+  { name: 'Check compliance', sub: 'Compliance. Flag what a file is missing.', color: '#4479B3' },
+  { name: 'Review documents', sub: 'Document. Summarise, prepare for signing.', color: '#9C6B4F' }
+];
+const NUMBER = '+1 (202) 555-0147';
+const EMAIL = 'hello@mel.example';
+const CONTACTS = [
+  { name: 'Text MEL', value: NUMBER, kind: 'text', aria: 'Copy Text MEL number' },
+  { name: 'WhatsApp', value: NUMBER, kind: 'wa', aria: 'Copy WhatsApp number' },
+  { name: 'Email MEL', value: EMAIL, kind: 'email', aria: 'Copy Email MEL address' }
+];
+const TOOLS = [
+  { name: 'Gmail', group: 'Email', src: 'assets/f60e16b8373ab6d005c792ccca9cfa57.webp' },
+  { name: 'Google Calendar', group: 'Calendar', src: 'assets/173916c11305382165d8a11d3163aa28.webp' },
+  { name: 'Follow Up Boss', group: 'CRM', src: 'assets/b37d2cfd62bc8656fd8e6bad7ab738b2.png' },
+  { name: 'Facebook', group: 'Marketing', src: 'assets/555f153c8d3b4f1db8043d675289154a.jpg' },
+  { name: 'Instagram', group: 'Marketing', src: 'assets/18e4b2f75c9b16fd4060a1e9ed628360.jpg' },
+  { name: 'ChatGPT', group: 'AI', src: 'assets/3677f0273c749f99d56df13fd1af6db0.jpg' },
+  { name: 'Claude', group: 'AI', src: 'assets/860040cbdabe9378ffd3cdde4ab00e77.jpg' },
+  { name: 'Outlook', group: 'Email & calendar', src: 'assets/8a546407b2ab60411ceaf035e87b53b8.jpg' },
+  { name: 'kvCORE', group: 'CRM', src: 'assets/9bb36cedf2f248cf52f9bfbe21ed944e.jpg' },
+  { name: 'Salesforce', group: 'CRM', src: 'assets/7e9e967e681f639f6eaa9ded0e21b2bc.jpg' },
+  { name: 'Google Drive', group: 'Files', src: 'assets/8df16e3f1473263d950db1c2f413fd36.jpg' },
+  { name: 'Dropbox', group: 'Files', src: 'assets/6b7a4195f219411b29fd35ae25718f4d.jpg' },
+  { name: 'OneDrive', group: 'Files', src: 'assets/95e855b4ce153d3cd34b3e51e63d854b.jpg' },
+  { name: 'DocuSign', group: 'Documents', src: 'assets/e32010247d1cba43aaf0cbffaf103949.jpg' },
+  { name: 'MLS provider', group: 'Property', src: '' }
+];
+function fmt(d) {
+  if (!d) return '';
+  if (d.length <= 3) return '(' + d;
+  if (d.length <= 6) return '(' + d.slice(0, 3) + ') ' + d.slice(3);
+  return '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
+}
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const D = {"step": "code", "phone": "2025550147"};
+    const q = props || {};
+    const p = Object.assign({}, D);
+    Object.keys(q).forEach((k) => { if (q[k] !== undefined && q[k] !== '' && q[k] !== false) p[k] = q[k]; });
+    this.state = { step: p.step || 'phone', phone: (p.phone || '').replace(/\D/g, '').slice(0, 10), digits: (p.digits || ['', '', '', '']).slice(), error: p.error || '', resent: !!p.resent, browse: false, connected: {}, copied: '' };
+  }
+  renderVals() {
+    const s = this.state;
+    const blank = ['', '', '', ''];
+    const submitPhone = () => {
+      if (s.phone.length !== 10) { this.setState({ error: 'Enter a valid US phone number.' }); return; }
+      this.setState({ step: 'code', digits: blank, error: '', resent: false });
+    };
+    const list = s.browse ? TOOLS : TOOLS.slice(0, 6);
+    return {
+      isSignup: s.step !== 'connectors', isConnectors: s.step === 'connectors',
+      isPhone: s.step === 'phone', isCode: s.step === 'code',
+      title: s.step === 'code' ? 'Verify your number' : 'Sign up',
+      sub: s.step === 'code' ? 'Enter the code sent to +1 ' + fmt(s.phone) + '.' : 'Your 10K free credits are ready.',
+      skills: SKILLS,
+      phoneShown: fmt(s.phone),
+      phoneCls: 'ob-input' + (s.error && s.step === 'phone' ? ' ob-input--bad' : ''),
+      setPhone: (e) => this.setState({ phone: String(e.target.value).replace(/\D/g, '').slice(0, 10), error: '' }),
+      phoneKey: (e) => { if (e.key === 'Enter') { e.preventDefault(); submitPhone(); } },
+      submitPhone: submitPhone,
+      error: s.error, hasError: !!s.error,
+      hasResent: s.resent && !s.error, resentText: 'New code sent to +1 ' + fmt(s.phone) + '.',
+      resend: () => this.setState({ resent: true, error: '', digits: blank }),
+      boxes: [0, 1, 2, 3].map((i) => ({
+        label: 'Digit ' + (i + 1) + ' of 4', value: s.digits[i], cls: 'ob-box' + (s.error ? ' ob-box--bad' : ''),
+        set: (e) => {
+          const v = String(e.target.value).replace(/\D/g, '').slice(-1);
+          const d = s.digits.slice(); d[i] = v;
+          this.setState({ digits: d, error: '' });
+          if (v && e.target.nextElementSibling) e.target.nextElementSibling.focus();
+        },
+        key: (e) => { if (e.key === 'Backspace' && !e.target.value && e.target.previousElementSibling) e.target.previousElementSibling.focus(); }
+      })),
+      submitCode: () => {
+        const code = s.digits.join('');
+        if (code.length !== 4) { this.setState({ error: 'Enter the 4-digit code.' }); return; }
+        if (code !== '1234') { this.setState({ error: 'That code doesn’t match. Check it and try again.' }); return; }
+        this.setState({ step: 'connectors', error: '', resent: false });
+      },
+      changeNumber: () => this.setState({ step: 'phone', digits: blank, error: '', resent: false }),
+      contacts: CONTACTS.map((c) => ({
+        name: c.name, value: c.value, aria: c.aria, isText: c.kind === 'text', isWa: c.kind === 'wa', isEmail: c.kind === 'email',
+        btn: s.copied === c.name ? 'Copied' : 'Copy', cls: 'ob-small' + (s.copied === c.name ? ' ob-small--on' : ''),
+        copy: () => this.setState({ copied: c.name })
+      })),
+      tools: list.map((t) => {
+        const on = !!s.connected[t.name];
+        return {
+          name: t.name, group: t.group, src: t.src, hasSrc: !!t.src, noSrc: !t.src,
+          btn: on ? 'Connected' : 'Connect', cls: 'ob-small' + (on ? ' ob-small--on' : ''),
+          aria: (on ? 'Disconnect ' : 'Connect ') + t.name,
+          toggle: () => { const c = Object.assign({}, s.connected); c[t.name] = !on; this.setState({ connected: c }); }
+        };
+      }),
+      browseLabel: s.browse ? 'Show fewer connectors' : 'Browse all connectors',
+      toggleBrowse: () => this.setState({ browse: !s.browse })
+    };
+  }
+}
+</script>
+</body>
+</html>

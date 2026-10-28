@@ -1,0 +1,2260 @@
+{
+ "v": 3,
+ "attachments": {},
+ "boards": {
+  "WCmpE01.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "No contacts yet",
+   "w": 1440,
+   "x": 0,
+   "y": 3300
+  },
+  "WCmpE02.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "No clients match",
+   "w": 1440,
+   "x": 1520,
+   "y": 3300
+  },
+  "WCmpE03.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "Connect email and texting",
+   "w": 1440,
+   "x": 3040,
+   "y": 3300
+  },
+  "WCmpE04.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "Playbook unreadable",
+   "w": 1440,
+   "x": 4560,
+   "y": 3300
+  },
+  "WCmpE05.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "Some messages bounced",
+   "w": 1440,
+   "x": 6080,
+   "y": 3300
+  },
+  "WCmpH01.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "1 Meet Mel",
+   "w": 1440,
+   "x": 0,
+   "y": 300
+  },
+  "WCmpH02.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "2 Who to reach",
+   "w": 1440,
+   "x": 1520,
+   "y": 300
+  },
+  "WCmpH03.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "3 Audience and playbook",
+   "w": 1440,
+   "x": 3040,
+   "y": 300
+  },
+  "WCmpH04.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "4 Campaign goals",
+   "w": 1440,
+   "x": 4560,
+   "y": 300
+  },
+  "WCmpH05.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "5 Channels and start",
+   "w": 1440,
+   "x": 6080,
+   "y": 300
+  },
+  "WCmpH06.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "6 Writing the campaign",
+   "w": 1440,
+   "x": 7600,
+   "y": 300
+  },
+  "WCmpH07.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "7 Campaign ready",
+   "w": 1440,
+   "x": 9120,
+   "y": 300
+  },
+  "WCmpH08.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "8 Change by asking",
+   "w": 1440,
+   "x": 10640,
+   "y": 300
+  },
+  "WCmpH09.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "9 Approve and launch",
+   "w": 1440,
+   "x": 12160,
+   "y": 300
+  },
+  "WCmpH09b.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "9b Full launch summary",
+   "w": 1440,
+   "x": 13680,
+   "y": 300
+  },
+  "WCmpH10.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "10 Campaign live",
+   "w": 1440,
+   "x": 15200,
+   "y": 300
+  },
+  "WCmpV01.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "campaign",
+   "title": "Variant: playbook uploaded",
+   "w": 1440,
+   "x": 0,
+   "y": 1800
+  },
+  "WCrmFlowS01.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "1 Intro, state 2",
+   "w": 1440,
+   "x": 0,
+   "y": 420
+  },
+  "WCrmFlowS02.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "2 Agent types Yes",
+   "w": 1440,
+   "x": 1520,
+   "y": 420
+  },
+  "WCrmFlowS03.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "3 Sent, Mel working",
+   "w": 1440,
+   "x": 3040,
+   "y": 420
+  },
+  "WCrmFlowS04.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "4 CRM assistant, how to add contacts",
+   "w": 1440,
+   "x": 4560,
+   "y": 420
+  },
+  "WCrmFlowS05.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "5 Upload a CSV sent",
+   "w": 1440,
+   "x": 6080,
+   "y": 420
+  },
+  "WCrmFlowS06.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "6 Mel asks for the file",
+   "w": 1440,
+   "x": 7600,
+   "y": 420
+  },
+  "WCrmFlowS07.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "7 File attached, sent",
+   "w": 1440,
+   "x": 9120,
+   "y": 420
+  },
+  "WCrmFlowS08.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "8 Reading the file",
+   "w": 1440,
+   "x": 10640,
+   "y": 420
+  },
+  "WCrmFlowS09.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "9 Found 1,280, duplicates question",
+   "w": 1440,
+   "x": 12160,
+   "y": 420
+  },
+  "WCrmFlowS10.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "10 Import sent, importing",
+   "w": 1440,
+   "x": 13680,
+   "y": 420
+  },
+  "WCrmFlowS11.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "11 Imported, result card, View my contacts",
+   "w": 1440,
+   "x": 15200,
+   "y": 420
+  },
+  "WCrmFlowS12.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "12 What can you do, sent",
+   "w": 1440,
+   "x": 16720,
+   "y": 420
+  },
+  "WCrmFlowS13.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "13 Mel offers 6 prompts",
+   "w": 1440,
+   "x": 18240,
+   "y": 420
+  },
+  "WCrmP1S1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "1 Sent, searching",
+   "w": 1440,
+   "x": 0,
+   "y": 2240
+  },
+  "WCrmP1S2.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "2 Contact card",
+   "w": 1440,
+   "x": 1520,
+   "y": 2240
+  },
+  "WCrmP1S3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "3 Draft a message sent",
+   "w": 1440,
+   "x": 3040,
+   "y": 2240
+  },
+  "WCrmP2S1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "1 Sent, reading record",
+   "w": 1440,
+   "x": 0,
+   "y": 3520
+  },
+  "WCrmP2S2.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "2 Change card, save it?",
+   "w": 1440,
+   "x": 1520,
+   "y": 3520
+  },
+  "WCrmP2S3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "3 Save it sent",
+   "w": 1440,
+   "x": 3040,
+   "y": 3520
+  },
+  "WCrmP2S4.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "4 Saved",
+   "w": 1440,
+   "x": 4560,
+   "y": 3520
+  },
+  "WCrmP2S5.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "5 What else sent",
+   "w": 1440,
+   "x": 6080,
+   "y": 3520
+  },
+  "WCrmP2S6.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "6 Six prompts again",
+   "w": 1440,
+   "x": 7600,
+   "y": 3520
+  },
+  "WCrmP3S1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "1 Sent, reading activity",
+   "w": 1440,
+   "x": 0,
+   "y": 4800
+  },
+  "WCrmP3S2.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "2 Draft card, Send",
+   "w": 1440,
+   "x": 1520,
+   "y": 4800
+  },
+  "WCrmP3S3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "3 Make it shorter sent",
+   "w": 1440,
+   "x": 3040,
+   "y": 4800
+  },
+  "WCrmP3S4.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "4 Shorter draft",
+   "w": 1440,
+   "x": 4560,
+   "y": 4800
+  },
+  "WCrmP3S5.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "5 Send tapped, sending",
+   "w": 1440,
+   "x": 6080,
+   "y": 4800
+  },
+  "WCrmP3S6.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "6 Sent and logged",
+   "w": 1440,
+   "x": 7600,
+   "y": 4800
+  },
+  "WCrmP3S7.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "7 What else sent",
+   "w": 1440,
+   "x": 9120,
+   "y": 4800
+  },
+  "WCrmP3S8.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "8 Six prompts again",
+   "w": 1440,
+   "x": 10640,
+   "y": 4800
+  },
+  "WCrmP4S1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "1 Sent, checking calendar",
+   "w": 1440,
+   "x": 0,
+   "y": 6080
+  },
+  "WCrmP4S2.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "2 Follow-up card, add it?",
+   "w": 1440,
+   "x": 1520,
+   "y": 6080
+  },
+  "WCrmP4S3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "3 Add it sent",
+   "w": 1440,
+   "x": 3040,
+   "y": 6080
+  },
+  "WCrmP4S4.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "4 Added to calendar",
+   "w": 1440,
+   "x": 4560,
+   "y": 6080
+  },
+  "WCrmP4S5.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "5 What else sent",
+   "w": 1440,
+   "x": 6080,
+   "y": 6080
+  },
+  "WCrmP4S6.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "6 Six prompts again",
+   "w": 1440,
+   "x": 7600,
+   "y": 6080
+  },
+  "WCrmP5S1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "1 Sent, finding clients",
+   "w": 1440,
+   "x": 0,
+   "y": 7360
+  },
+  "WCrmP5S2.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "2 Plan card, start it?",
+   "w": 1440,
+   "x": 1520,
+   "y": 7360
+  },
+  "WCrmP5S3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "3 Start sent",
+   "w": 1440,
+   "x": 3040,
+   "y": 7360
+  },
+  "WCrmP5S4.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "4 Started",
+   "w": 1440,
+   "x": 4560,
+   "y": 7360
+  },
+  "WCrmP5S5.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "5 What else sent",
+   "w": 1440,
+   "x": 6080,
+   "y": 7360
+  },
+  "WCrmP5S6.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "6 Six prompts again",
+   "w": 1440,
+   "x": 7600,
+   "y": 7360
+  },
+  "WCrmP6S1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "1 Sent, ranking",
+   "w": 1440,
+   "x": 0,
+   "y": 8640
+  },
+  "WCrmP6S2.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "2 Ranked list",
+   "w": 1440,
+   "x": 1520,
+   "y": 8640
+  },
+  "WCrmP6S3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "crmw",
+   "title": "3 Draft a message sent",
+   "w": 1440,
+   "x": 3040,
+   "y": 8640
+  },
+  "WCxE01.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "No contacts yet",
+   "w": 1440,
+   "x": 0,
+   "y": 3300
+  },
+  "WCxE02.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "Connect email and texting",
+   "w": 1440,
+   "x": 1520,
+   "y": 3300
+  },
+  "WCxE03.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "Some invites failed",
+   "w": 1440,
+   "x": 3040,
+   "y": 3300
+  },
+  "WCxE04.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "Portal build failed",
+   "w": 1440,
+   "x": 4560,
+   "y": 3300
+  },
+  "WCxE05.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "Legal question escalated",
+   "w": 1440,
+   "x": 6080,
+   "y": 3300
+  },
+  "WCxH01.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "1 Meet Mel",
+   "w": 1440,
+   "x": 0,
+   "y": 300
+  },
+  "WCxH02.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "2 Portal ready",
+   "w": 1440,
+   "x": 1520,
+   "y": 300
+  },
+  "WCxH03.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "3 What clients can do",
+   "w": 1440,
+   "x": 3040,
+   "y": 300
+  },
+  "WCxH04.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "4 Who to invite",
+   "w": 1440,
+   "x": 4560,
+   "y": 300
+  },
+  "WCxH05.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "5 How to invite",
+   "w": 1440,
+   "x": 6080,
+   "y": 300
+  },
+  "WCxH06.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "6 Invitation preview",
+   "w": 1440,
+   "x": 7600,
+   "y": 300
+  },
+  "WCxH06b.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "6b Change by asking",
+   "w": 1440,
+   "x": 9120,
+   "y": 300
+  },
+  "WCxH07.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "7 How Mel talks to clients",
+   "w": 1440,
+   "x": 10640,
+   "y": 300
+  },
+  "WCxH08.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "8 Insights",
+   "w": 1440,
+   "x": 12160,
+   "y": 300
+  },
+  "WCxH08b.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "8b Insights card first",
+   "w": 1440,
+   "x": 13680,
+   "y": 300
+  },
+  "WCxProto.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "Prototype H01 to H08",
+   "w": 1440,
+   "x": 0,
+   "y": 4800
+  },
+  "WCxV01.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "cx",
+   "title": "Variant: no branding",
+   "w": 1440,
+   "x": 0,
+   "y": 1800
+  },
+  "WIntroS1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "intimation",
+   "title": "State 1 intro, listing live",
+   "w": 1440,
+   "x": 9520,
+   "y": 420
+  },
+  "WIntroS1R.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "intimation",
+   "title": "State 1, yes, Mel reply",
+   "w": 1440,
+   "x": 11040,
+   "y": 420
+  },
+  "WIntroS3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "intimation",
+   "title": "1 Intro, state 3",
+   "w": 1440,
+   "x": 0,
+   "y": 420
+  },
+  "WIntroS3F1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "intimation",
+   "title": "2 Card tapped, box filled",
+   "w": 1440,
+   "x": 1520,
+   "y": 420
+  },
+  "WIntroS3F2.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "intimation",
+   "title": "3 Sent, Mel working",
+   "w": 1440,
+   "x": 3040,
+   "y": 420
+  },
+  "WIntroS3F3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "intimation",
+   "title": "4 Mel reply, trace, suggestions",
+   "w": 1440,
+   "x": 4560,
+   "y": 420
+  },
+  "WIntroS3F4.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "intimation",
+   "title": "5 Suggestion tapped, sent",
+   "w": 1440,
+   "x": 6080,
+   "y": 420
+  },
+  "WIntroS3F5.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "intimation",
+   "title": "6 Mel next step",
+   "w": 1440,
+   "x": 7600,
+   "y": 420
+  },
+  "WMktB1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "B1 What to create",
+   "w": 1440,
+   "x": 0,
+   "y": 10800
+  },
+  "WMktB1a.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "B1a Type your own",
+   "w": 1440,
+   "x": 0,
+   "y": 12300
+  },
+  "WMktB1b.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "B1b Sent, card locked",
+   "w": 1440,
+   "x": 1520,
+   "y": 12300
+  },
+  "WMktB2.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "B2 Where it goes",
+   "w": 1440,
+   "x": 1520,
+   "y": 10800
+  },
+  "WMktB3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "B3 Templates for your picks",
+   "w": 1440,
+   "x": 3040,
+   "y": 10800
+  },
+  "WMktB4.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "B4 One message skips steps",
+   "w": 1440,
+   "x": 4560,
+   "y": 10800
+  },
+  "WMktC1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "11 Review Facebook",
+   "w": 1440,
+   "x": 15200,
+   "y": 300
+  },
+  "WMktC2.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "6 Designing",
+   "w": 1440,
+   "x": 7600,
+   "y": 300
+  },
+  "WMktC2b.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "7 Package ready",
+   "w": 1440,
+   "x": 9120,
+   "y": 300
+  },
+  "WMktC3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Mixed result",
+   "w": 1440,
+   "x": 0,
+   "y": 9300
+  },
+  "WMktC4.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Failed result",
+   "w": 1440,
+   "x": 1520,
+   "y": 9300
+  },
+  "WMktC5.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Routine status",
+   "w": 1440,
+   "x": 3040,
+   "y": 3300
+  },
+  "WMktC6.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Connect destinations",
+   "w": 1440,
+   "x": 0,
+   "y": 3300
+  },
+  "WMktClientAdded.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Client added for the email",
+   "w": 1440,
+   "x": 7600,
+   "y": 9300
+  },
+  "WMktConfirm.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "4 Confirm your picks",
+   "w": 1440,
+   "x": 4560,
+   "y": 300
+  },
+  "WMktCsvDone.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "CSV uploaded for the email",
+   "w": 1440,
+   "x": 6080,
+   "y": 9300
+  },
+  "WMktM01.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "1 Meet Mel",
+   "w": 1440,
+   "x": 0,
+   "y": 300
+  },
+  "WMktM02.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "2 Pick a listing",
+   "w": 1440,
+   "x": 1520,
+   "y": 300
+  },
+  "WMktM03.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "3 Pick a style",
+   "w": 1440,
+   "x": 3040,
+   "y": 300
+  },
+  "WMktM04.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "5 Your brand",
+   "w": 1440,
+   "x": 6080,
+   "y": 300
+  },
+  "WMktM05.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Instagram, more than 3 pieces",
+   "w": 1440,
+   "x": 0,
+   "y": 1800
+  },
+  "WMktM06.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "8 Change by asking",
+   "w": 1440,
+   "x": 10640,
+   "y": 300
+  },
+  "WMktM07.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "9 Where it goes",
+   "w": 1440,
+   "x": 12160,
+   "y": 300
+  },
+  "WMktM08.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "10 Review Instagram",
+   "w": 1440,
+   "x": 13680,
+   "y": 300
+  },
+  "WMktM09.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "14 Campaign live",
+   "w": 1440,
+   "x": 19760,
+   "y": 300
+  },
+  "WMktM10.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "15 Save as routine",
+   "w": 1440,
+   "x": 21280,
+   "y": 300
+  },
+  "WMktM11.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "16 Routine set",
+   "w": 1440,
+   "x": 22800,
+   "y": 300
+  },
+  "WMktNewChat.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Typed while designing",
+   "w": 1440,
+   "x": 6080,
+   "y": 7800
+  },
+  "WMktNoClients.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "No clients for the email",
+   "w": 1440,
+   "x": 4560,
+   "y": 9300
+  },
+  "WMktPubEmail.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "13 Review email",
+   "w": 1440,
+   "x": 18240,
+   "y": 300
+  },
+  "WMktPubViewer.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Review all, Instagram",
+   "w": 1440,
+   "x": 1520,
+   "y": 1800
+  },
+  "WMktPubWeb.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "12 Review website",
+   "w": 1440,
+   "x": 16720,
+   "y": 300
+  },
+  "WMktR1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "No listings found",
+   "w": 1440,
+   "x": 0,
+   "y": 6300
+  },
+  "WMktR10.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Change or pause routine",
+   "w": 1440,
+   "x": 4560,
+   "y": 3300
+  },
+  "WMktR2.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Several profiles",
+   "w": 1440,
+   "x": 1520,
+   "y": 6300
+  },
+  "WMktR3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Missing photos or details",
+   "w": 1440,
+   "x": 3040,
+   "y": 6300
+  },
+  "WMktR4.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Missing logo",
+   "w": 1440,
+   "x": 4560,
+   "y": 6300
+  },
+  "WMktR5.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Partial generation",
+   "w": 1440,
+   "x": 0,
+   "y": 7800
+  },
+  "WMktR6.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Edit after approval",
+   "w": 1440,
+   "x": 1520,
+   "y": 7800
+  },
+  "WMktR7.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Expired connection",
+   "w": 1440,
+   "x": 1520,
+   "y": 3300
+  },
+  "WMktR8.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Partial publishing",
+   "w": 1440,
+   "x": 3040,
+   "y": 9300
+  },
+  "WMktR9.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Listing changed",
+   "w": 1440,
+   "x": 3040,
+   "y": 7800
+  },
+  "WMktStop.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Stopped while designing",
+   "w": 1440,
+   "x": 4560,
+   "y": 7800
+  },
+  "WMktV1.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Viewer, top",
+   "w": 1440,
+   "x": 0,
+   "y": 4800
+  },
+  "WMktV2.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Viewer, video page",
+   "w": 1440,
+   "x": 1520,
+   "y": 4800
+  },
+  "WMktV3.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Viewer, video playing",
+   "w": 1440,
+   "x": 3040,
+   "y": 4800
+  },
+  "WMktV4.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Share sheet",
+   "w": 1440,
+   "x": 4560,
+   "y": 4800
+  },
+  "WMktV5.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "mktchat",
+   "title": "Download sheet",
+   "w": 1440,
+   "x": 6080,
+   "y": 4800
+  },
+  "WOnbCode.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "onb",
+   "title": "Code sent, enter code",
+   "w": 1440,
+   "x": 1520,
+   "y": 300
+  },
+  "WOnbCodeResent.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "onb",
+   "title": "Edge: code resent",
+   "w": 1440,
+   "x": 3040,
+   "y": 1800
+  },
+  "WOnbCodeWrong.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "onb",
+   "title": "Edge: wrong code",
+   "w": 1440,
+   "x": 1520,
+   "y": 1800
+  },
+  "WOnbConnDlg.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "onb",
+   "title": "Connect: what Mel can do",
+   "w": 1440,
+   "x": 0,
+   "y": 4800
+  },
+  "WOnbConnDone.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "onb",
+   "title": "Connect: Gmail and Calendar connected",
+   "w": 1440,
+   "x": 4560,
+   "y": 4800
+  },
+  "WOnbConnGoogle.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "onb",
+   "title": "Connect: Sign in with Google",
+   "w": 1440,
+   "x": 1520,
+   "y": 4800
+  },
+  "WOnbConnMeta.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "onb",
+   "title": "Connect: Continue with Facebook",
+   "w": 1440,
+   "x": 3040,
+   "y": 4800
+  },
+  "WOnbConnectors.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "onb",
+   "title": "Connectors",
+   "w": 1440,
+   "x": 3040,
+   "y": 300
+  },
+  "WOnbPhone.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "onb",
+   "title": "Enter your phone number",
+   "w": 1440,
+   "x": 0,
+   "y": 300
+  },
+  "WOnbPhoneInvalid.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "onb",
+   "title": "Edge: invalid number",
+   "w": 1440,
+   "x": 0,
+   "y": 1800
+  },
+  "WOnbProto.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "onb",
+   "title": "Prototype: phone, code, connectors, Mel chat",
+   "w": 1440,
+   "x": 0,
+   "y": 3300
+  },
+  "WShell.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "melchat",
+   "title": "New chat",
+   "w": 1440,
+   "x": 0,
+   "y": 300
+  },
+  "WShellChat.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "melchat",
+   "title": "In chat, Instagram review",
+   "w": 1440,
+   "x": 1520,
+   "y": 300
+  },
+  "WShellTable.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "melchat",
+   "title": "Table in chat, 3 listings",
+   "w": 1440,
+   "x": 0,
+   "y": 2110
+  },
+  "WShellTable30.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "melchat",
+   "title": "Table in chat, 30 rows",
+   "w": 1440,
+   "x": 1520,
+   "y": 2110
+  },
+  "WShellTableView.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "melchat",
+   "title": "Viewer open, full table",
+   "w": 1440,
+   "x": 3040,
+   "y": 2110
+  },
+  "WShellViewer.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "melchat",
+   "title": "Viewer open, piece 1",
+   "w": 1440,
+   "x": 3040,
+   "y": 300
+  },
+  "WVoCoreConfirm.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "7 Spoken send, confirm",
+   "w": 1440,
+   "x": 9120,
+   "y": 1840
+  },
+  "WVoCoreDictating.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "2 Mic = dictate into input",
+   "w": 1440,
+   "x": 1520,
+   "y": 1840
+  },
+  "WVoCoreDone.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "8 Sent",
+   "w": 1440,
+   "x": 10640,
+   "y": 1840
+  },
+  "WVoCoreEnded.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "9 Ended, transcript in chat",
+   "w": 1440,
+   "x": 12160,
+   "y": 1840
+  },
+  "WVoCoreIdle.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "1 Idle, voice button in composer",
+   "w": 1440,
+   "x": 0,
+   "y": 1840
+  },
+  "WVoCoreListening.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "3 Voice live, listening",
+   "w": 1440,
+   "x": 3040,
+   "y": 1840
+  },
+  "WVoCoreNeeds.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "6 Draft card in dock",
+   "w": 1440,
+   "x": 7600,
+   "y": 1840
+  },
+  "WVoCoreSpeaking.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "5 Speaking, captions",
+   "w": 1440,
+   "x": 6080,
+   "y": 1840
+  },
+  "WVoCoreWorking.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "4 Working",
+   "w": 1440,
+   "x": 4560,
+   "y": 1840
+  },
+  "WVoCrmCrmFind.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "1 Find contact, result card",
+   "w": 1440,
+   "x": 0,
+   "y": 3240
+  },
+  "WVoCrmCrmGmail.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "8 Gmail not connected, connector card",
+   "w": 1440,
+   "x": 10640,
+   "y": 3240
+  },
+  "WVoCrmCrmNone.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "6 No match",
+   "w": 1440,
+   "x": 7600,
+   "y": 3240
+  },
+  "WVoCrmCrmNote.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "2 Add note, result card",
+   "w": 1440,
+   "x": 1520,
+   "y": 3240
+  },
+  "WVoCrmCrmOpen.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "4 Open profile, link card",
+   "w": 1440,
+   "x": 4560,
+   "y": 3240
+  },
+  "WVoCrmCrmOpenView.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "5 Profile in right viewer",
+   "w": 1440,
+   "x": 6080,
+   "y": 3240
+  },
+  "WVoCrmCrmRemind.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "3 Set follow-up, result card",
+   "w": 1440,
+   "x": 3040,
+   "y": 3240
+  },
+  "WVoCrmCrmTwo.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "7 Two matches, pick card",
+   "w": 1440,
+   "x": 9120,
+   "y": 3240
+  },
+  "WVoEdgeMicAsk.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "2 Browser asks for mic",
+   "w": 1440,
+   "x": 1520,
+   "y": 4640
+  },
+  "WVoEdgeMicDenied.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "3 Mic blocked",
+   "w": 1440,
+   "x": 3040,
+   "y": 4640
+  },
+  "WVoEdgeMicNone.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "4 No mic found",
+   "w": 1440,
+   "x": 4560,
+   "y": 4640
+  },
+  "WVoEdgeMuted.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "1 Muted",
+   "w": 1440,
+   "x": 0,
+   "y": 4640
+  },
+  "WVoMinBack.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "5 Open, back to Mel chat with the card",
+   "w": 1440,
+   "x": 6080,
+   "y": 6040
+  },
+  "WVoMinContacts.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "3 Contacts, mini dock speaking",
+   "w": 1440,
+   "x": 3040,
+   "y": 6040
+  },
+  "WVoMinEnded.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "6 Ended from mini dock, page stays",
+   "w": 1440,
+   "x": 7600,
+   "y": 6040
+  },
+  "WVoMinHome.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "2 Dashboard, mini dock listening",
+   "w": 1440,
+   "x": 1520,
+   "y": 6040
+  },
+  "WVoMinLeave.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "1 Voice live, agent clicks Dashboard in the rail",
+   "w": 1440,
+   "x": 0,
+   "y": 6040
+  },
+  "WVoMinNeeds.dc.html": {
+   "h": 900,
+   "page": "voicew",
+   "title": "4 Needs you, Draft ready, Open",
+   "w": 1440,
+   "x": 4560,
+   "y": 6040
+  },
+  "WVoice.dc.html": {
+   "h": 900,
+   "is_interactive": true,
+   "page": "voicew",
+   "title": "Prototype \u00b7 click the voice button",
+   "w": 1440,
+   "x": 0,
+   "y": 420
+  }
+ },
+ "createdOnFiles": {
+  "at": "2026-10-16T09:00:00Z",
+  "v": 1
+ },
+ "designSystems": [
+  {
+   "artifact": "https://claude.ai/artifact/LWPKZhvNAyVUJ3KmkWrm3N",
+   "copiedAt": "2026-10-16T09:00:00Z",
+   "namespace": "radius-ui",
+   "title": "Radius UI Design System",
+   "version": "1791863461-6ea9"
+  }
+ ],
+ "launch": {
+  "view": "canvas"
+ },
+ "notes": {
+  "campaignRow0": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "campaign",
+   "text": "Campaign happy path",
+   "w": 240,
+   "x": 0,
+   "y": 0
+  },
+  "campaignRow1": {
+   "kind": "title1",
+   "maxW": 2960,
+   "page": "campaign",
+   "text": "Variant: bring your playbook",
+   "w": 240,
+   "x": 0,
+   "y": 1500
+  },
+  "campaignRow2": {
+   "kind": "title1",
+   "maxW": 7520,
+   "page": "campaign",
+   "text": "Recovery",
+   "w": 240,
+   "x": 0,
+   "y": 3000
+  },
+  "cxRow0": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "cx",
+   "text": "Client experience happy path",
+   "w": 240,
+   "x": 0,
+   "y": 0
+  },
+  "cxRow1": {
+   "kind": "title1",
+   "maxW": 2960,
+   "page": "cx",
+   "text": "Variant: no branding",
+   "w": 240,
+   "x": 0,
+   "y": 1500
+  },
+  "cxRow2": {
+   "kind": "title1",
+   "maxW": 7520,
+   "page": "cx",
+   "text": "Recovery",
+   "w": 240,
+   "x": 0,
+   "y": 3000
+  },
+  "cxRow3": {
+   "kind": "title1",
+   "maxW": 2960,
+   "page": "cx",
+   "text": "Recovery",
+   "w": 240,
+   "x": 0,
+   "y": 4500
+  },
+  "melchatTitle": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "melchat",
+   "text": "MEL chat, web shell ",
+   "w": 240,
+   "x": 0,
+   "y": 0
+  },
+  "mktQOpen": {
+   "fill": "orange",
+   "maxH": 700,
+   "page": "mktchat",
+   "text": "OPEN FOR KJ\n\nNew chat part, web only: question card. Not on mobile yet.\nUsed on B1, B2 and 2 Pick a listing.\nSingle pick sends on tap. Multi pick checks, then Send.\nType your own is the last row on every card.\n\nNot Biju copy: \"Type your own\", \"Pick one\", \"a yard sign\" (sample typed answer).",
+   "w": 560,
+   "x": 3120,
+   "y": 12300
+  },
+  "mktQTitle": {
+   "kind": "title1",
+   "maxW": 2960,
+   "page": "mktchat",
+   "text": "Flow B: question card, type your own and sent",
+   "w": 240,
+   "x": 0,
+   "y": 12000
+  },
+  "mktchatRow0": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "mktchat",
+   "text": "Marketing happy path",
+   "w": 240,
+   "x": 0,
+   "y": 0
+  },
+  "mktchatRow1": {
+   "kind": "title1",
+   "maxW": 2960,
+   "page": "mktchat",
+   "text": "Variant: more than 3 pieces for one destination",
+   "w": 240,
+   "x": 0,
+   "y": 1500
+  },
+  "mktchatRow2": {
+   "kind": "title1",
+   "maxW": 6000,
+   "page": "mktchat",
+   "text": "Routine",
+   "w": 240,
+   "x": 0,
+   "y": 3000
+  },
+  "mktchatRow3": {
+   "kind": "title1",
+   "maxW": 7520,
+   "page": "mktchat",
+   "text": "Package viewer",
+   "w": 240,
+   "x": 0,
+   "y": 4500
+  },
+  "mktchatRow4": {
+   "kind": "title1",
+   "maxW": 6000,
+   "page": "mktchat",
+   "text": "Recovery: before designing",
+   "w": 240,
+   "x": 0,
+   "y": 6000
+  },
+  "mktchatRow5": {
+   "kind": "title1",
+   "maxW": 7520,
+   "page": "mktchat",
+   "text": "Recovery: while designing",
+   "w": 240,
+   "x": 0,
+   "y": 7500
+  },
+  "mktchatRow6": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "mktchat",
+   "text": "Recovery: publishing",
+   "w": 240,
+   "x": 0,
+   "y": 9000
+  },
+  "mktchatRow7": {
+   "kind": "title1",
+   "maxW": 6000,
+   "page": "mktchat",
+   "text": "Flow B: pick what to create",
+   "w": 240,
+   "x": 0,
+   "y": 10500
+  },
+  "note-5rrvjy": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "melchat",
+   "text": "MEL chat, web shell , table layout",
+   "w": 240,
+   "x": 0,
+   "y": 1829
+  },
+  "onbFlag": {
+   "page": "onb",
+   "text": "OPEN FOR KJ\n\nNot Biju copy: Enter a valid US phone number. / That code doesn\u2019t match. Check it and try again. / New code sent to +1 \u2026 / Resend code.\n\nCode 1234 passes in the prototype.\n\nChat with MEL opens the MEL chat new chat board.",
+   "w": 360,
+   "x": 4640,
+   "y": 300
+  },
+  "onbRow0": {
+   "kind": "title1",
+   "maxW": 4480,
+   "page": "onb",
+   "text": "Happy path",
+   "w": 240,
+   "x": 0,
+   "y": 0
+  },
+  "onbRow1": {
+   "kind": "title1",
+   "maxW": 4480,
+   "page": "onb",
+   "text": "Edge cases",
+   "w": 240,
+   "x": 0,
+   "y": 1500
+  },
+  "onbRow2": {
+   "kind": "title1",
+   "maxW": 2960,
+   "page": "onb",
+   "text": "Prototype",
+   "w": 240,
+   "x": 0,
+   "y": 3000
+  },
+  "onbRowConn": {
+   "kind": "title1",
+   "maxW": 6000,
+   "page": "onb",
+   "text": "Connect a tool",
+   "w": 240,
+   "x": 0,
+   "y": 4500
+  },
+  "wCrmCap": {
+   "fill": "gray",
+   "maxH": 131,
+   "page": "crmw",
+   "size": 40,
+   "text": "CRM happy path from the State 2 intro. Agent says yes, uploads a CSV, imports, gets the 6 prompts. Copy from the CRM page (Biju). Traces, working lines and the View my contacts link are new.",
+   "w": 2000,
+   "x": 0,
+   "y": 120
+  },
+  "wCrmOpen": {
+   "fill": "orange",
+   "maxH": 700,
+   "page": "crmw",
+   "text": "OPEN FOR KJ\n\nRight viewer not used: the mobile CRM flow has no full-screen step. Link cards (View my contacts, Open Jordan in CRM) stay links.\n\nOld web CRM boards are on Archived \u00b7 CRM skill.",
+   "w": 560,
+   "x": 20160,
+   "y": 420
+  },
+  "wCrmP1": {
+   "kind": "title1",
+   "maxW": 4480,
+   "page": "crmw",
+   "text": "CRM prompt: Find Jordan Lee",
+   "w": 240,
+   "x": 0,
+   "y": 1980
+  },
+  "wCrmP2": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "crmw",
+   "text": "CRM prompt: Update preferences",
+   "w": 240,
+   "x": 0,
+   "y": 3260
+  },
+  "wCrmP3": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "crmw",
+   "text": "CRM prompt: Draft a message",
+   "w": 240,
+   "x": 0,
+   "y": 4540
+  },
+  "wCrmP4": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "crmw",
+   "text": "CRM prompt: Remind me Tuesday",
+   "w": 240,
+   "x": 0,
+   "y": 5820
+  },
+  "wCrmP5": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "crmw",
+   "text": "CRM prompt: Check-in campaign",
+   "w": 240,
+   "x": 0,
+   "y": 7100
+  },
+  "wCrmP6": {
+   "kind": "title1",
+   "maxW": 4480,
+   "page": "crmw",
+   "text": "CRM prompt: Top buyers",
+   "w": 240,
+   "x": 0,
+   "y": 8380
+  },
+  "wCrmPCap": {
+   "fill": "gray",
+   "maxH": 110,
+   "page": "crmw",
+   "size": 40,
+   "text": "The 6 prompts Mel offers after import, each end to end. Every row starts from CRM board 13. Copy and cards from the CRM page (Biju). Traces and the shorter draft are new.",
+   "w": 2000,
+   "x": 0,
+   "y": 1840
+  },
+  "wCrmPTitle": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "crmw",
+   "text": "The 6 CRM prompts, each end to end",
+   "w": 240,
+   "x": 0,
+   "y": 1720
+  },
+  "wCrmTitle": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "crmw",
+   "text": "CRM skill, in-app web, end to end",
+   "w": 240,
+   "x": 0,
+   "y": 0
+  },
+  "wIntBr": {
+   "fill": "gray",
+   "maxH": 100,
+   "page": "intimation",
+   "size": 28,
+   "text": "Other starts. States 1 and 2: Mel leads with what it found. Agent says yes. Rest of the flow continues as on the left.",
+   "w": 1800,
+   "x": 9520,
+   "y": 120
+  },
+  "wIntCap": {
+   "fill": "gray",
+   "maxH": 184,
+   "page": "intimation",
+   "size": 40,
+   "text": "First chat after connectors. Mel speaks first: intro, what it can do, one question. Left to right = what happens next. Cards fill the box, suggestions send. Priority when several states are true: 1 > 2 > 3. State 2 starts the CRM skill page.",
+   "w": 2000,
+   "x": 0,
+   "y": 120
+  },
+  "wIntOpen": {
+   "fill": "orange",
+   "maxH": 700,
+   "page": "intimation",
+   "text": "OPEN FOR KJ\n\nNot from mobile:\nCompliance and Document pill colours are derived from their skill accents (#4479B3, #9C6B4F). Seen only if the agent types a number for those skills.",
+   "w": 560,
+   "x": 12560,
+   "y": 420
+  },
+  "wIntTitle": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "intimation",
+   "text": "Chat intimation, in-app web, end to end",
+   "w": 240,
+   "x": 0,
+   "y": 0
+  },
+  "wvCap": {
+   "fill": "gray",
+   "maxH": 184,
+   "page": "voicew",
+   "size": 40,
+   "text": "Voice on web stays inside the chat. The composer becomes the voice dock: Mel mark on the dot field, last 2 caption lines, mute \u00b7 keyboard \u00b7 End. Rail and history stay. Cards sit in the dock above the controls and stay in chat after. Ending drops the transcript into the thread.",
+   "w": 2000,
+   "x": 0,
+   "y": 120
+  },
+  "wvCopy": {
+   "fill": "orange",
+   "maxH": 760,
+   "page": "voicew",
+   "text": "COPY NOT FROM BIJU (web only, new)\n\n\u00b7 Status line: Listening, Speaking, Needs you, Muted\n\u00b7 Send this to Sarah now? (spoken send confirm)\n\u00b7 Needs you \u00b7 say yes or tap Send\n\u00b7 Click the mic to talk again\n\u00b7 Mic ask: Allow it in the browser prompt and I start listening.\n\u00b7 Mic blocked: Your browser blocked it. Allow the microphone for Radius in your browser\u2019s site settings, then click voice again.\n\u00b7 \u21b3 How do I allow the microphone?\n\u00b7 No mic: I can\u2019t find one on this computer. Plug one in, then click voice again.\n\u00b7 \u21b3 Check again\n\nRest of the copy is the approved mobile voice copy.",
+   "w": 560,
+   "x": 1520,
+   "y": 420
+  },
+  "wvCore": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "voicew",
+   "text": "Voice, happy path",
+   "w": 240,
+   "x": 0,
+   "y": 1580
+  },
+  "wvCrm": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "voicew",
+   "text": "CRM by voice \u00b7 cards in the dock",
+   "w": 240,
+   "x": 0,
+   "y": 2980
+  },
+  "wvEdge": {
+   "kind": "title1",
+   "maxW": 5920,
+   "page": "voicew",
+   "text": "Muted and mic permission, as chat turns",
+   "w": 240,
+   "x": 0,
+   "y": 4380
+  },
+  "wvMin": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "voicew",
+   "text": "Minimised across pages \u00b7 mini dock",
+   "w": 240,
+   "x": 0,
+   "y": 5780
+  },
+  "wvMinNote": {
+   "fill": "orange",
+   "maxH": 700,
+   "page": "voicew",
+   "text": "NEW (KJ, 28 Oct)\n\n\u00b7 Leave Mel chat from the rail and voice stays live in a mini dock, bottom-right, on any page.\n\u00b7 Click the dock or Open = back to Mel chat with the full dock.\n\u00b7 Needs you: dock flags it, Mel also says it. No popup.\n\u00b7 End from the dock keeps you on the page; transcript stays in the chat.\n\u00b7 Dashboard and Contacts are grey skeletons. Rail Dashboard + Contacts are now clickable in the prototype.\n\nCopy not from Biju: \"Needs you\", \"Draft ready for Sarah Reynolds\", \"Open\".",
+   "w": 560,
+   "x": 9200,
+   "y": 6040
+  },
+  "wvTitle": {
+   "kind": "title1",
+   "maxW": 8000,
+   "page": "voicew",
+   "text": "Mel voice, web \u00b7 inline dock",
+   "w": 240,
+   "x": 0,
+   "y": 0
+  }
+ },
+ "order": [
+  "WOnbPhone.dc.html",
+  "WOnbCode.dc.html",
+  "WOnbConnectors.dc.html",
+  "WOnbPhoneInvalid.dc.html",
+  "WOnbCodeWrong.dc.html",
+  "WOnbCodeResent.dc.html",
+  "WOnbProto.dc.html",
+  "WMktM01.dc.html",
+  "WMktM02.dc.html",
+  "WMktM03.dc.html",
+  "WMktConfirm.dc.html",
+  "WMktM04.dc.html",
+  "WMktC2.dc.html",
+  "WMktC2b.dc.html",
+  "WMktM06.dc.html",
+  "WMktM07.dc.html",
+  "WMktM08.dc.html",
+  "WMktC1.dc.html",
+  "WMktPubWeb.dc.html",
+  "WMktPubEmail.dc.html",
+  "WMktM09.dc.html",
+  "WMktM10.dc.html",
+  "WMktM11.dc.html",
+  "WMktM05.dc.html",
+  "WMktPubViewer.dc.html",
+  "WMktC6.dc.html",
+  "WMktR7.dc.html",
+  "WMktC5.dc.html",
+  "WMktR10.dc.html",
+  "WMktV1.dc.html",
+  "WMktV2.dc.html",
+  "WMktV3.dc.html",
+  "WMktV4.dc.html",
+  "WMktV5.dc.html",
+  "WMktR1.dc.html",
+  "WMktR2.dc.html",
+  "WMktR3.dc.html",
+  "WMktR4.dc.html",
+  "WMktR5.dc.html",
+  "WMktR6.dc.html",
+  "WMktR9.dc.html",
+  "WMktStop.dc.html",
+  "WMktNewChat.dc.html",
+  "WMktC3.dc.html",
+  "WMktC4.dc.html",
+  "WMktR8.dc.html",
+  "WMktNoClients.dc.html",
+  "WMktCsvDone.dc.html",
+  "WMktClientAdded.dc.html",
+  "WMktB1.dc.html",
+  "WMktB2.dc.html",
+  "WMktB3.dc.html",
+  "WMktB4.dc.html",
+  "WCmpH01.dc.html",
+  "WCmpH02.dc.html",
+  "WCmpH03.dc.html",
+  "WCmpH04.dc.html",
+  "WCmpH05.dc.html",
+  "WCmpH06.dc.html",
+  "WCmpH07.dc.html",
+  "WCmpH08.dc.html",
+  "WCmpH09.dc.html",
+  "WCmpH09b.dc.html",
+  "WCmpH10.dc.html",
+  "WCmpV01.dc.html",
+  "WCmpE01.dc.html",
+  "WCmpE02.dc.html",
+  "WCmpE03.dc.html",
+  "WCmpE04.dc.html",
+  "WCmpE05.dc.html",
+  "WCxH01.dc.html",
+  "WCxH02.dc.html",
+  "WCxH03.dc.html",
+  "WCxH04.dc.html",
+  "WCxH05.dc.html",
+  "WCxH06.dc.html",
+  "WCxH06b.dc.html",
+  "WCxH07.dc.html",
+  "WCxH08.dc.html",
+  "WCxH08b.dc.html",
+  "WCxV01.dc.html",
+  "WCxE01.dc.html",
+  "WCxE02.dc.html",
+  "WCxE03.dc.html",
+  "WCxE04.dc.html",
+  "WCxE05.dc.html",
+  "WCxProto.dc.html",
+  "WOnbConnDlg.dc.html",
+  "WOnbConnGoogle.dc.html",
+  "WOnbConnMeta.dc.html",
+  "WOnbConnDone.dc.html",
+  "WShell.dc.html",
+  "WShellChat.dc.html",
+  "WShellViewer.dc.html",
+  "WShellTable.dc.html",
+  "WShellTable30.dc.html",
+  "WShellTableView.dc.html",
+  "WIntroS3.dc.html",
+  "WIntroS3F1.dc.html",
+  "WIntroS3F2.dc.html",
+  "WIntroS3F3.dc.html",
+  "WIntroS3F4.dc.html",
+  "WIntroS3F5.dc.html",
+  "WIntroS1.dc.html",
+  "WIntroS1R.dc.html",
+  "WCrmFlowS01.dc.html",
+  "WCrmFlowS02.dc.html",
+  "WCrmFlowS03.dc.html",
+  "WCrmFlowS04.dc.html",
+  "WCrmFlowS05.dc.html",
+  "WCrmFlowS06.dc.html",
+  "WCrmFlowS07.dc.html",
+  "WCrmFlowS08.dc.html",
+  "WCrmFlowS09.dc.html",
+  "WCrmFlowS10.dc.html",
+  "WCrmFlowS11.dc.html",
+  "WCrmFlowS12.dc.html",
+  "WCrmFlowS13.dc.html",
+  "WCrmP1S1.dc.html",
+  "WCrmP1S2.dc.html",
+  "WCrmP1S3.dc.html",
+  "WCrmP2S1.dc.html",
+  "WCrmP2S2.dc.html",
+  "WCrmP2S3.dc.html",
+  "WCrmP2S4.dc.html",
+  "WCrmP2S5.dc.html",
+  "WCrmP2S6.dc.html",
+  "WCrmP3S1.dc.html",
+  "WCrmP3S2.dc.html",
+  "WCrmP3S3.dc.html",
+  "WCrmP3S4.dc.html",
+  "WCrmP3S5.dc.html",
+  "WCrmP3S6.dc.html",
+  "WCrmP3S7.dc.html",
+  "WCrmP3S8.dc.html",
+  "WCrmP4S1.dc.html",
+  "WCrmP4S2.dc.html",
+  "WCrmP4S3.dc.html",
+  "WCrmP4S4.dc.html",
+  "WCrmP4S5.dc.html",
+  "WCrmP4S6.dc.html",
+  "WCrmP5S1.dc.html",
+  "WCrmP5S2.dc.html",
+  "WCrmP5S3.dc.html",
+  "WCrmP5S4.dc.html",
+  "WCrmP5S5.dc.html",
+  "WCrmP5S6.dc.html",
+  "WCrmP6S1.dc.html",
+  "WCrmP6S2.dc.html",
+  "WCrmP6S3.dc.html",
+  "WMktB1a.dc.html",
+  "WMktB1b.dc.html",
+  "WVoice.dc.html",
+  "WVoCoreIdle.dc.html",
+  "WVoCoreDictating.dc.html",
+  "WVoCoreListening.dc.html",
+  "WVoCoreWorking.dc.html",
+  "WVoCoreSpeaking.dc.html",
+  "WVoCoreNeeds.dc.html",
+  "WVoCoreConfirm.dc.html",
+  "WVoCoreDone.dc.html",
+  "WVoCoreEnded.dc.html",
+  "WVoCrmCrmFind.dc.html",
+  "WVoCrmCrmNote.dc.html",
+  "WVoCrmCrmRemind.dc.html",
+  "WVoCrmCrmOpen.dc.html",
+  "WVoCrmCrmOpenView.dc.html",
+  "WVoCrmCrmNone.dc.html",
+  "WVoCrmCrmTwo.dc.html",
+  "WVoCrmCrmGmail.dc.html",
+  "WVoEdgeMuted.dc.html",
+  "WVoEdgeMicAsk.dc.html",
+  "WVoEdgeMicDenied.dc.html",
+  "WVoEdgeMicNone.dc.html",
+  "WVoMinLeave.dc.html",
+  "WVoMinHome.dc.html",
+  "WVoMinContacts.dc.html",
+  "WVoMinNeeds.dc.html",
+  "WVoMinBack.dc.html",
+  "WVoMinEnded.dc.html"
+ ],
+ "pages": [
+  {
+   "id": "onb",
+   "name": "Onboarding"
+  },
+  {
+   "id": "intimation",
+   "name": "chat intimation"
+  },
+  {
+   "id": "melchat",
+   "name": "MEL chat"
+  },
+  {
+   "id": "voicew",
+   "name": "Mel voice"
+  },
+  {
+   "id": "crmw",
+   "name": "CRM skill"
+  },
+  {
+   "id": "campaign",
+   "name": "Campaign skill"
+  },
+  {
+   "id": "cx",
+   "name": "Client experience skill"
+  },
+  {
+   "id": "mktchat",
+   "name": "Marketing skill"
+  }
+ ],
+ "title": "Mel assitants web"
+}

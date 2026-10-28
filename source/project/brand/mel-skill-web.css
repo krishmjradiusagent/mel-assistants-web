@@ -1,0 +1,62 @@
+/* Mel skill chat, web. Maps mobile chat classes and tokens onto the web thread.
+   Scope: .ws-thread only. Radius UI and the Mel brand layer load first. */
+.ws-thread{
+  --space-card-pad:14px;--space-gutter:16px;--space-section-gap:20px;--space-sheet-gutter:16px;--space-sheet-body-bottom:16px;--rm-gap:12px;
+  --size-icon-row:20px;--size-control:36px;--size-control-lg:44px;
+  --text-primary:#0E2B30;--text-secondary:#4A5E61;--text-tertiary:#7A8D90;--text-on-action:#FFFFFF;
+  --surface-card:#FFFFFF;--surface-card-bordered:#FFFFFF;--surface-tile:#F3F9F6;--surface-raised:#FFFFFF;--surface-sheet:#FFFFFF;--surface-sheet-card:#F3F9F6;
+  --border-card:#DCE8E4;--separator-on-card:#E6EEEB;--border-glass:#DCE8E4;
+  --action-primary:#0E2B30;--action-glass:#F3F9F6;
+  --radius-tile:10px;--radius-card:14px;--radius-badge:6px;--radius-sheet:18px;
+  --mel-client:#E0588A;--mel-campaign:#E9A320;
+  --status-success-fg:#0B7A4D;--status-warning-fg:#9A5B00;
+  color:var(--text-primary)
+}
+.ws-thread p{margin:0}
+.ws-thread .t-body{font-size:14.5px;line-height:23px}
+.ws-thread .t-body-strong{font-size:14px;line-height:20px;font-weight:600}
+.ws-thread .t-meta{font-size:12.5px;line-height:18px}
+.ws-thread .t-secondary{color:var(--text-secondary)}
+.ws-thread .t-chip{font-size:12px;font-weight:600}
+.ws-thread .ph{width:1em;height:1em;flex:none}
+.ws-thread .rm-stack{display:flex;flex-direction:column;gap:8px}
+.ws-thread .rm-stack--loose{gap:22px}
+.ws-thread .rm-card{background:var(--surface-card);border-radius:var(--radius-card)}
+.ws-thread .rm-card--bordered{border:1px solid var(--border-card)}
+.ws-thread .rm-card--list{border:1px solid var(--border-card);overflow:hidden}
+.ws-thread .rm-tile{background:var(--surface-tile);border-radius:var(--radius-tile);padding:10px 12px}
+.ws-thread .rm-tile:has(> svg),.ws-thread .rm-tile:has(> img){padding:0;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center}
+.ws-thread .rm-tile > svg{display:block;flex:none}
+.ws-thread .rm-item{display:flex;align-items:center;gap:10px}
+.ws-thread .rm-item__body{flex:1;min-width:0}
+.ws-thread .rm-chip{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:999px;background:var(--tone-bg,#F3F9F6);color:var(--tone-fg,#0E2B30);white-space:nowrap}
+.ws-thread .rm-btn{height:34px;border-radius:999px;padding:0 14px;font:600 13px/1 'Mona Sans',system-ui,sans-serif;border:1px solid var(--border-card);background:#FFFFFF;color:var(--text-primary);display:inline-flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.ws-thread .rm-btn--primary{background:var(--action-primary);border-color:var(--action-primary);color:#FFFFFF}
+.ws-thread .rm-btn--secondary{background:#FFFFFF}
+.ws-thread .tone-jade,.ws-thread .tone-success{--tone-bg:#E2F5EA;--tone-fg:#0B7A4D}
+.ws-thread .tone-sapphire{--tone-bg:#E8F1F6;--tone-fg:#1F5A7A}
+.ws-thread .tone-teal{--tone-bg:#E0F3F5;--tone-fg:#2E7480}
+.ws-thread .tone-gold,.ws-thread .tone-warning{--tone-bg:#FDF1E1;--tone-fg:#9A5B00}
+.ws-thread .tone-terracotta{--tone-bg:#FDECE6;--tone-fg:#A0452A}
+.ws-thread .tone-danger{--tone-bg:#FDE8E6;--tone-fg:#B42318}
+.ws-thread .tone-iris{--tone-bg:#EEF0F6;--tone-fg:#3F4A7A}
+.ws-thread .tone-plum{--tone-bg:#F6EBF1;--tone-fg:#7A3A62}
+.ws-thread .tone-sage{--tone-bg:#EEF3EA;--tone-fg:#4E6B3F}
+/* messages */
+.ws-thread .c-ai-message--user{align-self:flex-end;max-width:520px}
+.ws-thread .c-ai-message--user .rm-card{background:#F3F9F6;border:1px solid #DCE8E4;border-radius:18px 18px 4px 18px;padding:10px 14px}
+.ws-thread .c-ai-message--assistant{display:flex;gap:12px;align-items:flex-start}
+.ws-thread .c-ai-message__content{flex:1;min-width:0}
+.ws-thread .c-streaming-text .rm-stack{gap:10px}
+/* cards Mel returns sit under Mel's text column */
+.ws-thread .rm-stack--loose>section,.ws-thread .rm-stack--loose>div:not(.c-prompt-rows){margin-left:36px;max-width:520px}
+/* prompts: Grok follow-up lines, tap fills the input */
+.ws-thread .c-prompt-rows{display:flex;flex-direction:column;gap:2px;margin-left:28px}
+.ws-thread .c-prompt-row{border:none;background:none;text-align:left;display:flex;gap:8px;align-items:baseline;padding:6px 8px;border-radius:8px;color:#4A5E61;cursor:pointer;font-family:inherit}
+.ws-thread .c-prompt-row:hover{background:#F3F9F6;color:#0E2B30}
+.ws-thread .c-prompt-row__glyph{display:inline-flex;width:14px;flex:none}
+.ws-thread .c-prompt-row__glyph svg{display:none}
+.ws-thread .c-prompt-row__glyph::before{content:"↳";color:#7A8D90;font-size:13.5px}
+.ws-thread .c-prompt-row__text{font-size:13.5px;line-height:20px;font-weight:500}
+.ws-thread .m-status{display:flex;align-items:center;gap:8px;font-size:13px;color:#4A5E61}
+.ws-thread .m-status__dot{width:6px;height:6px;border-radius:999px;background:#12A867}

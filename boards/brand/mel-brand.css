@@ -1,0 +1,65 @@
+/* Mel Brand layer — sits ON TOP of Radius UI. Radius UI files are never edited.
+   Load order in every board: Radius styles.css first, then this file.
+   Source: Mel Brand Guidelines 3. No purple, no bright blue. Light theme only for now. */
+:root {
+  /* Mel brand primitives */
+  --mel-deep-teal: #0e2b30;
+  --mel-green: #12a867;
+  --mel-green-text: #0b7a4d;
+  --mel-mint: #3ddc97;
+  --mel-mint-pale: #bdeed4;
+  --mel-mint-mist: #e2f5ea;
+  --mel-sky-mist: #e8f1f6;
+  --mel-cloud: #f3f9f6;
+  --mel-slate: #4a5e61;
+  --mel-teal-2: #173b41;
+  --mel-night: #08191c;
+  --mel-line: #dce8e4;
+  --mel-error: #b42318;
+  --mel-panel: linear-gradient(160deg, #173b41, #08191c);
+  --mel-morning: linear-gradient(180deg, #e2f5ea, #e8f1f6);
+  --mel-glow: 0 0 0 4px rgba(61, 220, 151, 0.35);
+
+  /* Remap Radius semantic tokens to Mel Brand */
+  --primary: var(--mel-deep-teal);
+  --primary-foreground: #ffffff;
+  --primary-hover: var(--mel-teal-2);
+  --accent: var(--mel-mint-mist);
+  --accent-foreground: var(--mel-deep-teal);
+  --foreground: var(--mel-deep-teal);
+  --card-foreground: var(--mel-deep-teal);
+  --popover-foreground: var(--mel-deep-teal);
+  --secondary: var(--mel-cloud);
+  --secondary-foreground: var(--mel-deep-teal);
+  --muted: var(--mel-cloud);
+  --muted-foreground: var(--mel-slate);
+  --border: var(--mel-line);
+  --input: var(--mel-line);
+  --ring: var(--mel-mint);
+  --destructive: var(--mel-error);
+  --sidebar: var(--mel-cloud);
+  --sidebar-foreground: var(--mel-deep-teal);
+  --sidebar-primary: var(--mel-deep-teal);
+  --sidebar-accent: var(--mel-mint-mist);
+  --sidebar-accent-foreground: var(--mel-deep-teal);
+  --sidebar-border: var(--mel-line);
+  --sidebar-ring: var(--mel-mint);
+  --tint-indigo-bg: var(--mel-mint-mist);
+  --tint-indigo-fg: var(--mel-green-text);
+  --tint-green-bg: var(--mel-mint-mist);
+  --tint-green-fg: var(--mel-green-text);
+  --tint-blue-bg: var(--mel-sky-mist);
+  --tint-blue-fg: var(--mel-teal-2);
+  --tint-red-bg: #fde8e6;
+  --tint-red-fg: var(--mel-error);
+}
+
+/* Mona Sans only, sentence case */
+body, h1, h2, h3, h4, h5, h6 { font-family: "Mona Sans", system-ui, sans-serif; color: var(--mel-deep-teal); }
+
+/* Brand rules: pill buttons, uppercase tracked labels, mint focus ring */
+.rds-btn { border-radius: 999px; }
+:focus-visible { outline: none; box-shadow: var(--mel-glow); }
+.mel-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mel-slate); }
+.mel-panel { background: var(--mel-panel); color: #ffffff; border-radius: 14px; }
+.mel-soft { background: var(--mel-mint-mist); border-radius: 14px; }

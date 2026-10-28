@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>B1b Sent, card locked</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/radius-ui/styles.css">
+<link rel="stylesheet" href="brand/mel-brand.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+
+body{margin:0}
+button,input{font-family:inherit}
+.ws-root{width:1440px;height:900px;overflow:hidden}
+.mk-app{display:flex;height:900px;background:#14173F;font-family:'Mona Sans',system-ui,sans-serif;color:#0E2B30}
+.w-rail{width:56px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:4px;color:#C9CDEA}
+.w-rail .ws{width:30px;height:30px;border-radius:999px;background:#fff;color:#14173F;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+.w-rail .tile{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+.w-rail .tile.on{background:#222861;border:1px solid #4350A8}
+.w-rail .ic{width:40px;height:34px;display:flex;align-items:center;justify-content:center;opacity:.85}
+.w-rail .sp{flex-grow:1}
+.w-rail .av{width:30px;height:30px;border-radius:999px;background:linear-gradient(135deg,#F6A28B,#7A6BE0)}
+.g-frame{flex:1;min-width:0;margin:12px 12px 12px 0;background:#fff;border-radius:24px;display:flex;overflow:hidden}
+.ic{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* sidebar */
+.g-side{width:260px;flex:none;box-sizing:border-box;background:#F3F9F6;border-right:1px solid #DCE8E4;display:flex;flex-direction:column;padding:12px 10px}
+.g-shead{display:flex;align-items:center;justify-content:space-between;height:36px;padding:0 2px 0 8px;margin-bottom:10px}
+.g-brand{display:inline-flex;align-items:center;gap:7px;font-size:20px;font-weight:600;letter-spacing:-.045em;color:#0E2B30}
+.g-sicons{display:flex;gap:2px}
+.g-ibtn{width:32px;height:32px;border:none;background:none;border-radius:8px;color:#4A5E61;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.g-ibtn:hover{background:#DCE8E4;color:#0E2B30}
+.g-new{height:40px;border:none;border-radius:999px;background:#0E2B30;color:#fff;display:flex;align-items:center;gap:10px;padding:0 16px;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:6px}
+.g-new:hover{background:#173B41}
+.g-nav{height:38px;border:none;background:none;border-radius:10px;display:flex;align-items:center;gap:10px;padding:0 12px;font-size:14px;color:#0E2B30;cursor:pointer;text-align:left;width:100%}
+.g-nav:hover{background:#DCE8E4}
+.g-label{font-size:12.5px;color:#7D9093;padding:18px 12px 6px}
+.g-item{border:none;background:none;text-align:left;border-radius:10px;padding:9px 12px;color:#0E2B30;font-size:13.5px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;width:100%}
+.g-item:hover{background:#DCE8E4}
+.g-item--on{background:#DCE8E4;font-weight:500}
+.g-seeall{border:none;background:none;text-align:left;padding:9px 12px;font-size:13.5px;font-weight:600;color:#4A5E61;cursor:pointer}
+.g-sp{flex:1}
+.g-me{display:flex;align-items:center;gap:10px;padding:8px 8px;border-radius:10px}
+.g-me .av{width:30px;height:30px;border-radius:999px;background:linear-gradient(135deg,#F6A28B,#7A6BE0);flex:none}
+.g-me b{display:block;font-size:13.5px;font-weight:600}
+.g-me>span>span{display:block;font-size:12px;color:#4A5E61}
+.g-me .g-cr{display:inline;color:#0B7A4D;font-weight:600}
+/* center */
+.g-center{flex:1;min-width:0;display:flex;flex-direction:column;position:relative}
+.g-top{height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 20px}
+.g-skill{display:inline-flex;align-items:center;gap:8px}
+.ws-pill{height:22px;border-radius:999px;padding:0 9px;display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;letter-spacing:.04em}
+.g-tright{display:flex;gap:4px;align-items:center}
+.g-share{height:34px;border-radius:999px;border:1px solid #DCE8E4;background:#fff;display:inline-flex;align-items:center;gap:6px;padding:0 14px;font-size:13px;font-weight:500;color:#0E2B30;cursor:pointer}
+.g-thread{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column-reverse;align-items:center;padding:0 24px}
+.g-col{width:100%;max-width:720px;display:flex;flex-direction:column;gap:22px;padding:8px 0 24px}
+.g-user{align-self:flex-end;max-width:80%;background:#F3F9F6;border-radius:22px;padding:12px 18px;font-size:16px;line-height:24px}
+.g-mel{display:flex;flex-direction:column;gap:12px}
+.g-mel p{margin:0;font-size:16px;line-height:24px}
+.g-rows{display:flex;flex-direction:row;flex-wrap:wrap;gap:4px 6px;margin-left:-10px}
+.g-row{border:none;background:none;text-align:left;display:flex;gap:10px;align-items:baseline;padding:7px 10px;border-radius:8px;font-size:14px;line-height:20px;color:#4A5E61;cursor:pointer}
+.g-row:hover{background:#F3F9F6;color:#0E2B30}
+.g-row i{font-style:normal;color:#7D9093}
+.g-dock{flex:none;display:flex;justify-content:center;padding:0 24px 20px}
+.g-box{width:100%;max-width:720px;box-sizing:border-box;border:1px solid #DCE8E4;border-radius:26px;background:#fff;box-shadow:0 2px 10px rgba(14,43,48,.05);padding:14px 12px 10px 18px;display:flex;flex-direction:column;gap:10px}
+.g-box:focus-within{border-color:#DCE8E4;box-shadow:0 0 0 4px rgba(14,43,48,.05)}
+.g-field{border:none;outline:none;background:none;font-size:15.5px;color:#0E2B30;padding:2px 0;width:100%}
+.g-field::placeholder{color:#7D9093}
+.g-brow{display:flex;align-items:center;justify-content:space-between;margin-left:-6px}
+.g-bright{display:flex;align-items:center;gap:6px}
+.g-voice{width:38px;height:38px;border-radius:999px;border:none;background:#0E2B30;color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.g-voice .ic{width:18px;height:18px}
+
+/* Mel chat, web. Chat intimation parts ported from mobile: Typeset Mel text, chain-of-thought trace,
+   Thinking line, composer Stop state, ↳ prompt rows in the CTA colour, intro cards, CRM cards.
+   Scope: .wm (board root). Loads after the shell styles in each board. */
+.wm{--wm-text:#0E2B30;--wm-text-2:#4A5E61;--wm-text-3:#7D9093;--wm-border:#DCE8E4;--wm-sep:#DCE8E4;--wm-tile:#F3F9F6;--wm-card:#FFFFFF;--wm-cta:#0E2B30;--wm-ok:#0B7A4D;--wm-warn:#9A5B00}
+.wm .g-thread{display:block;overflow-y:auto;padding:0 24px}
+.wm .g-col{margin:0 auto;padding:16px 0 32px;gap:24px}
+.wm .g-top .g-skill{min-height:24px}
+/* skill mark + pill: skill accent colours the mark and its pill only */
+.wm .mb-mark{display:inline-block;flex:none;width:var(--mb-size,22px);height:var(--mb-size,22px);color:#12A867}
+.wm .mb-mark svg{width:100%;height:100%;display:block}
+.wm .mb-mark[data-skill="crm"]{color:#0FA3B1}.wm .mb-mark[data-skill="marketing"]{color:#EE6A4C}.wm .mb-mark[data-skill="campaign"]{color:#E9A320}.wm .mb-mark[data-skill="client"]{color:#E0588A}.wm .mb-mark[data-skill="compliance"]{color:#4479B3}.wm .mb-mark[data-skill="document"]{color:#9C6B4F}.wm .mb-mark[data-skill="mls"]{color:#8B6BC8}
+.wm .w-pill{height:22px;border-radius:999px;padding:0 9px;display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;letter-spacing:.04em;background:#E2F5EA;color:#0B7A4D}
+.wm .w-pill[data-skill="crm"]{background:#D5F1F3;color:#0A5F68}.wm .w-pill[data-skill="marketing"]{background:#FDE6DF;color:#9A3418}.wm .w-pill[data-skill="campaign"]{background:#FCEFD3;color:#7A5200}.wm .w-pill[data-skill="client"]{background:#FBE2EB;color:#9A2351}.wm .w-pill[data-skill="mls"]{background:#EFE9F8;color:#5B3F94}.wm .w-pill[data-skill="compliance"]{background:#E3ECF6;color:#2C5480}.wm .w-pill[data-skill="document"]{background:#F2E8E2;color:#6B4430}
+/* messages */
+.wm .w-user{align-self:flex-end;max-width:80%;background:#F3F9F6;border-radius:22px;padding:12px 18px;font-size:16px;line-height:24px;color:var(--wm-text)}
+.wm .w-file{align-self:flex-end;display:flex;align-items:center;gap:10px;border:1px solid var(--wm-border);border-radius:16px;padding:10px 16px 10px 12px;background:var(--wm-card)}
+.wm .w-file__ic{width:36px;height:36px;border-radius:10px;background:var(--wm-tile);display:inline-flex;align-items:center;justify-content:center;color:var(--wm-text)}
+.wm .w-file b{display:block;font-size:14px;line-height:20px;font-weight:600}
+.wm .w-file span{display:block;font-size:12.5px;line-height:18px;color:var(--wm-text-2)}
+.wm .w-mel{display:flex;flex-direction:column;gap:12px;min-width:0}
+/* Typeset, chat preset (WDS body font, Mona Sans) */
+.wm .typeset{font-family:'Mona Sans',system-ui,sans-serif;font-size:16px;line-height:1.6;color:var(--wm-text);overflow-wrap:anywhere}
+.wm .typeset p{margin:0}
+/* trace */
+.wm .c-trace{display:flex;flex-direction:column;gap:2px;color:var(--wm-text-2);font-size:13px;line-height:1.4}
+.wm .c-trace__sum{display:inline-flex;align-items:center;gap:8px;min-height:28px;padding:0;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;align-self:flex-start;border-radius:6px}
+.wm .c-trace__sum:hover{color:var(--wm-text)}
+.wm .c-trace__sum:focus-visible{outline:2px solid var(--wm-text);outline-offset:2px}
+.wm .c-trace__chev{width:14px;height:14px;flex:none;transition:transform .18s ease}
+.wm .c-trace__sum[aria-expanded="true"] .c-trace__chev{transform:rotate(180deg)}
+.wm .c-trace__icon{flex:none;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px}
+.wm .c-trace__icon svg{width:16px;height:16px;color:var(--wm-ok)}
+.wm .c-trace__spin{display:block;width:12px;height:12px;border-radius:50%;border:1.8px solid var(--wm-border);border-top-color:var(--wm-text);animation:wm-spin .8s linear infinite;box-sizing:border-box}
+.wm .c-trace__steps{display:flex;flex-direction:column;margin-left:7px;padding-left:16px;border-left:1px solid var(--wm-border)}
+.wm .c-trace__line{display:flex;align-items:center;gap:8px;min-height:26px}
+.wm .c-trace__line[data-status="running"] .c-trace__text,.wm .c-trace[data-running="true"] .c-trace__title{color:var(--wm-text)}
+/* Thinking line: spinner + text on one line */
+.wm .c-thinking{display:flex;flex-direction:row;align-items:center;gap:8px;margin:0;min-height:20px;line-height:20px;font-size:14px}
+.wm .c-thinking .c-trace__spin{flex:none}
+.wm .c-thinking__text{display:inline-block;line-height:20px;background:linear-gradient(90deg,var(--wm-text-2) 0%,var(--wm-text) 50%,var(--wm-text-2) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:wm-shimmer 1.6s linear infinite}
+@keyframes wm-spin{to{transform:rotate(360deg)}}
+@keyframes wm-shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.wm .c-trace__spin,.wm .c-thinking__text{animation:none}.wm .c-thinking__text{color:var(--wm-text-2);background:none}.wm .c-trace__chev{transition:none}}
+/* ↳ prompt rows: stacked, separators, CTA colour, tap = send */
+.wm .c-prompt-rows{display:flex;flex-direction:column;width:100%;max-width:560px}
+.wm .c-prompt-row{display:flex;align-items:flex-start;gap:12px;width:calc(100% + 16px);min-height:44px;padding:11px 8px;margin:0 -8px;border:0;border-top:1px solid var(--wm-sep);border-radius:0;background:transparent;color:var(--wm-cta);font:inherit;font-size:14.5px;line-height:22px;font-weight:600;text-align:left;cursor:pointer;box-sizing:border-box}
+.wm .c-prompt-row:first-child{border-top:0}
+.wm .c-prompt-row:hover{background:#F3F9F6;border-radius:8px}
+.wm .c-prompt-row:focus-visible{outline:2px solid var(--wm-text);outline-offset:2px}
+.wm .c-prompt-row__glyph{flex:none;width:16px;height:16px;margin-top:3px;color:var(--wm-cta)}
+.wm .c-prompt-row__text{flex:1;min-width:0}
+/* intro cards: 3 + 3, tap fills the box */
+.wm .w-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:4px}
+.wm .w-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-height:96px;padding:14px;border:1px solid var(--wm-border);border-radius:16px;background:var(--wm-card);color:var(--wm-text);font:inherit;font-size:14.5px;line-height:20px;font-weight:600;text-align:left;cursor:pointer;box-sizing:border-box}
+.wm .w-card:hover{border-color:#DCE8E4;background:#F3F9F6}
+.wm .w-card:focus-visible{outline:2px solid var(--wm-text);outline-offset:2px}
+/* cards */
+.wm .w-cardbox{display:flex;flex-direction:column;gap:10px;padding:14px 16px;border:1px solid var(--wm-border);border-radius:16px;background:var(--wm-card);box-sizing:border-box;width:100%}
+.wm .w-w360{max-width:360px}.wm .w-w480{max-width:480px}.wm .w-w560{max-width:560px}
+.wm .w-t{font-size:14px;line-height:20px;font-weight:600;margin:0;color:var(--wm-text)}
+.wm .w-m{font-size:12.5px;line-height:18px;color:var(--wm-text-2);margin:0}
+.wm .w-b{font-size:14px;line-height:21px;margin:0;color:var(--wm-text)}
+.wm .w-stats{display:grid;grid-template-columns:repeat(4,auto);gap:8px}
+.wm .w-stat{display:flex;flex-direction:column;padding:10px 12px;border-radius:10px;background:var(--wm-tile);white-space:nowrap}
+.wm .w-stat b{font-size:18px;line-height:24px;font-weight:600;font-variant-numeric:tabular-nums}
+.wm .w-warn{white-space:nowrap;display:flex;align-items:center;gap:8px;font-size:12.5px;line-height:18px;color:var(--wm-text)}
+.wm .w-warn__ic{display:inline-flex;color:var(--wm-warn)}
+.wm .w-link{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--wm-border);border-radius:14px;background:var(--wm-card);color:var(--wm-text);text-decoration:none;width:100%;max-width:360px;box-sizing:border-box}
+.wm .w-link:hover{border-color:#DCE8E4}
+.wm .w-link__t{flex:1;min-width:0;display:flex;flex-direction:column;white-space:nowrap}
+.wm .w-link__go{flex:none;color:var(--wm-text-3)}
+.wm .w-tile{flex:none;width:36px;height:36px;border-radius:10px;background:var(--wm-tile);display:inline-flex;align-items:center;justify-content:center;color:var(--wm-text)}
+.wm .w-head{display:flex;align-items:center;gap:12px}
+.wm .w-head__t{flex:1;min-width:0;display:flex;flex-direction:column}
+.wm .w-av{flex:none;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--wm-tile);font-size:12.5px;font-weight:600}
+.wm .w-kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px;padding-top:10px;border-top:1px solid var(--wm-sep)}
+.wm .w-kv--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.wm .w-kv>div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.wm .w-kv s{color:var(--wm-text-2)}
+.wm .w-list{display:flex;flex-direction:column;padding:4px 16px}
+.wm .w-lrow{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--wm-sep)}
+.wm .w-lrow:first-child{border-top:0}
+.wm .w-dfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;border-top:1px solid var(--wm-sep)}
+.wm .w-btn{height:32px;border-radius:999px;border:1px solid var(--wm-cta);background:var(--wm-cta);color:#fff;padding:0 16px;font:600 13px/1 'Mona Sans',system-ui,sans-serif;cursor:pointer}
+.wm .w-btn:hover{background:#173B41}
+.wm .w-status{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;line-height:18px;color:var(--wm-text-2);margin:0}
+.wm .w-status__dot{width:8px;height:8px;border-radius:50%;background:var(--wm-ok)}
+/* composer: Stop while Mel works, Send when typing, Speak when idle */
+.wm .w-stop,.wm .w-send{display:none}
+.wm .g-box[data-typing="true"] .w-send{display:inline-flex}
+.wm .g-box[data-typing="true"] .w-speak{display:none}
+.wm .g-box[data-generating="true"] .w-send,.wm .g-box[data-generating="true"] .w-speak{display:none}
+.wm .g-box[data-generating="true"] .w-stop{display:inline-flex}
+.wm .g-box[data-generating="true"] .g-field{pointer-events:none}
+.wm .g-field{resize:none;font-family:inherit;line-height:22px}
+
+
+/* Question card (web): Mel asks with fixed answers. Single = tap sends. Multi = tap checks, Send in card. Last row = Type your own. Locks after send. */
+.wm .q-card{width:100%;max-width:560px;box-sizing:border-box;border:1px solid var(--wm-border);border-radius:18px;background:var(--wm-card);padding:16px 12px 10px}
+.wm .q-title{margin:0 8px;font-size:16px;line-height:24px;font-weight:600;color:var(--wm-text)}
+.wm .q-help{margin:2px 8px 10px;font-size:13px;line-height:19px;color:var(--wm-text-2)}
+.wm .q-opts{display:flex;flex-direction:column;gap:2px}
+.wm .q-opt{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;padding:6px 8px;border:0;border-radius:10px;background:none;text-align:left;cursor:pointer;font:inherit;color:var(--wm-text);white-space:nowrap}
+.wm .q-opt:hover{background:#F3F9F6}
+.wm .q-opt:focus-visible{outline:2px solid var(--wm-text);outline-offset:1px}
+.wm .q-key{flex:none;width:28px;height:28px;border-radius:8px;background:var(--wm-cta);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:600}
+.wm .q-key svg{width:14px;height:14px}
+.wm .q-opt[data-on="true"]{background:#F3F9F6}
+.wm .q-opt[data-on="true"] .q-key{background:var(--wm-ok)}
+.wm .q-t{flex:1;min-width:0;display:flex;align-items:baseline;gap:8px;overflow:hidden}
+.wm .q-opt .q-t b{font-size:16px;line-height:22px;font-weight:500;color:#0E2B30}
+.wm .q-t>span{font-size:13px;line-height:18px;color:var(--wm-text-2);overflow:hidden;text-overflow:ellipsis}
+.wm .q-tag{flex:none;font-size:11.5px;line-height:16px;font-weight:600;padding:2px 8px;border-radius:999px;background:#F3F9F6;color:var(--wm-text-2)}
+.wm .q-own .q-key{background:#fff;color:var(--wm-text);box-shadow:inset 0 0 0 1px var(--wm-border)}
+.wm .q-opt.q-own .q-t b{font-weight:500;color:var(--wm-text-2)}
+.wm .q-tag[data-tone="ok"]{background:#E2F5EA;color:#0B7A4D}.wm .q-tag[data-tone="warn"]{background:#FDF1E1;color:#9A5B00}.wm .q-tag[data-tone="info"]{background:#E8F1F6;color:#1F5A7A}
+.wm .q-field{display:flex;align-items:center;gap:12px;padding:6px 8px;border-radius:10px;background:#F3F9F6}
+.wm .q-field input{flex:1;min-width:0;border:0;outline:0;background:none;font:inherit;font-size:14.5px;line-height:20px;color:var(--wm-text)}
+.wm .q-field input::placeholder{color:var(--wm-text-3)}
+.wm .q-go{flex:none;width:30px;height:30px;border-radius:999px;border:0;background:var(--wm-cta);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.wm .q-go svg{width:15px;height:15px}
+.wm .q-foot{display:flex;justify-content:flex-end;padding:10px 8px 4px;margin-top:6px;border-top:1px solid var(--wm-sep)}
+.wm .w-btn[aria-disabled="true"]{background:#DCE8E4;border-color:#DCE8E4;color:#7D9093;cursor:not-allowed}
+.wm .q-card[data-locked="true"] .q-opt{cursor:default}
+.wm .q-card[data-locked="true"] .q-opt:hover{background:none}
+.wm .q-card[data-locked="true"] .q-opt[data-on="false"]{opacity:.42}
+.wm .q-card[data-locked="true"] .q-opt[data-on="true"]{background:#F3F9F6}
+
+
+/* Mel brand layer (Mel brand guidelines): Deep Teal primary + text, Slate secondary, Line borders, Cloud tints, Mint Mist selected, mint focus ring, Night pressed, outline secondary buttons, rounded-square composer buttons */
+.ws-root .g-item--on{background:#E2F5EA}
+.ws-root .g-new:active,.ws-root .g-voice:active,.ws-root .g-btn:not(.g-btn--ghost):active,.ws-root .w-btn:active{background:#08191C}
+.ws-root .g-voice{border-radius:12px}
+.ws-root .g-share,.ws-root .g-btn--ghost,.ws-root .v-sharebtn{background:#FFFFFF;color:#0E2B30;border:1.5px solid #0E2B30}
+.ws-root .g-share:hover,.ws-root .g-btn--ghost:hover,.ws-root .v-sharebtn:hover{background:#F3F9F6}
+.ws-root .v-sharebtn[aria-expanded="true"]{background:#E2F5EA;border-color:#0E2B30}
+.ws-root button:focus-visible,.ws-root a:focus-visible,.ws-root input[type="text"]:focus-visible{outline:none !important;box-shadow:0 0 0 3px #FFFFFF,0 0 0 6px #5ED6A0 !important}
+
+/* Compact cards (web): chat cards cap at 560px and sit left. Tables and the template gallery keep full column width. */
+.ws-root .g-col .rm-card,.ws-root .g-col .sq-card,.ws-root .g-col .m-draft,.ws-root .g-col .m-pkg,.ws-root .g-col .m-crm-card,.ws-root .g-col .g-card{max-width:560px !important;box-sizing:border-box}
+</style>
+</helmet>
+<div class="rm-root wm ws-root"><div class="mk-app">
+<nav class="w-rail" aria-label="App navigation"><span class="ws">C</span><span class="tile on" aria-label="Mel"><svg class="mel-mark" width="24" height="24" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" stroke="#FFFFFF" stroke-width="3" fill="none"><animate attributeName="r" values="13;34;13" dur="2.4s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0.9;0;0.9" dur="2.4s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="13" fill="#FFFFFF"><animate attributeName="r" values="13;15;13" dur="2.4s" repeatCount="indefinite"></animate></circle></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14a6.5 6.5 0 0 1 3 6"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span><span class="ic" style="opacity:.6">…</span><span class="sp"></span><span class="av"></span></nav>
+<main class="g-frame">
+<aside class="g-side" aria-label="Mel">
+<div class="g-shead"><span class="g-brand"><svg class="mel-mark" width="22" height="22" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg><span>mel</span></span><span class="g-sicons"><button class="g-ibtn" aria-label="Search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg></button><button class="g-ibtn" aria-label="Collapse sidebar"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path></svg></button></span></div>
+<button class="g-new" onClick="{{newChat}}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg><span>New chat</span></button>
+<button class="g-nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"></rect><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9M10 14h4"></path></svg><span>Library</span></button>
+<button class="g-nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path><path d="M12 8v4l3 2"></path></svg><span>Routines</span></button>
+<div class="g-label">Chats</div>
+<button class="g-item g-item--on">123 Ocean View Drive</button>
+<button class="g-item">Follow up with Jordan</button>
+<button class="g-item">Listing at 124 Oak Street</button>
+<button class="g-item">Instagram post for Palo Alto</button>
+<button class="g-item">Saturday tour schedule</button>
+<button class="g-seeall">See all</button>
+<div class="g-sp"></div>
+<div class="g-me"><span class="av"></span><span><b>Agent name</b><span><span class="g-cr">10K</span> credits</span></span></div>
+</aside>
+<section class="g-center">
+<div class="g-top"><span class="g-skill"><span class="mb-mark" data-skill="marketing" role="img" aria-label="Mel"><svg viewBox="0 0 120 120" fill="none" aria-hidden="true"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="currentColor"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg></span><span class="w-pill" data-skill="marketing">Marketing</span></span>
+<span class="g-tright"><button class="g-ibtn" aria-label="More"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle></svg></button><button class="g-share"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg><span>Share</span></button></span></div>
+<div class="g-thread" data-scroll="1"><div class="g-col">
+<sc-if value="{{hasLead}}" hint-placeholder-val="{{ false }}"><div class="w-user">{{lead}}</div></sc-if>
+<section class="q-card" data-locked="{{locked}}" aria-label="{{title}}">
+<p class="q-title">{{title}}</p><p class="q-help">{{help}}</p>
+<div class="q-opts" role="group" aria-label="{{title}}">
+<sc-for list="{{opts}}" as="o" hint-placeholder-count="4"><button type="button" class="q-opt" data-on="{{o.on}}" aria-pressed="{{o.on}}" onClick="{{o.pick}}" onKeyDown="{{keys}}"><span class="q-key" aria-hidden="true"><sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if><sc-if value="{{o.off}}" hint-placeholder-val="{{ true }}">{{o.key}}</sc-if></span><span class="q-t"><b>{{o.name}}</b><span>{{o.desc}}</span></span><sc-if value="{{o.hasTag}}" hint-placeholder-val="{{ false }}"><span class="q-tag" data-tone="{{o.tone}}">{{o.tag}}</span></sc-if></button></sc-for>
+<sc-if value="{{ownClosed}}" hint-placeholder-val="{{ true }}"><button type="button" class="q-opt q-own" data-on="false" onClick="{{openOwn}}" onKeyDown="{{keys}}"><span class="q-key" aria-hidden="true">{{ownKey}}</span><span class="q-t"><b>Type your own</b></span></button></sc-if>
+<sc-if value="{{ownOpen}}" hint-placeholder-val="{{ false }}"><div class="q-field"><span class="q-key" aria-hidden="true">{{ownKey}}</span><input type="text" aria-label="Type your own answer" placeholder="Type your own" value="{{own}}" onChange="{{setOwn}}" onKeyDown="{{ownKeys}}"><sc-if value="{{ownGo}}" hint-placeholder-val="{{ false }}"><button type="button" class="q-go" aria-label="Send your answer" onClick="{{send}}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button></sc-if></div></sc-if>
+</div>
+<sc-if value="{{showFoot}}" hint-placeholder-val="{{ false }}"><div class="q-foot"><button type="button" class="w-btn" aria-disabled="{{cantSend}}" onClick="{{send}}">Send</button></div></sc-if>
+</section>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}"><div class="w-user">{{answer}}</div>
+<div class="w-mel"><sc-if value="{{working}}" hint-placeholder-val="{{ true }}"><p class="c-thinking" role="status"><span class="c-trace__spin" aria-hidden="true"></span><span class="c-thinking__text">Thinking…</span></p></sc-if><sc-if value="{{stopped}}" hint-placeholder-val="{{ false }}"><div class="typeset"><p>Stopped. Tell me what to do instead.</p></div></sc-if></div></sc-if>
+</div></div>
+<div class="g-dock"><form class="g-box" aria-label="Message composer" data-typing="{{typing}}" data-generating="{{working}}" onSubmit="{{sendDraft}}">
+<textarea rows="1" class="g-field" aria-label="Message MEL" placeholder="Ask anything" value="{{draft}}" onChange="{{setDraft}}"></textarea>
+<div class="g-brow"><button type="button" class="g-ibtn" aria-label="Attach a file"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+<span class="g-bright"><button type="button" class="g-ibtn" aria-label="Dictate"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></button>
+<button type="submit" class="g-voice w-send" aria-label="Send"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
+<button type="button" class="g-voice w-speak" aria-label="Speak with MEL"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"></path></svg></button>
+<button type="button" class="g-voice w-stop" aria-label="Stop generating" onClick="{{stop}}"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="2"></rect></svg></button>
+</span></div></form></div>
+</section>
+</main>
+</div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+const Q = {"lead": "123 Ocean View Drive", "title": "What do you want to create for 123 Ocean View Drive?", "help": "Pick one or more", "multi": true, "prefix": "Create ", "opts": [{"id": "posts", "name": "Social posts", "desc": "", "say": "social posts"}, {"id": "reels", "name": "Reels", "desc": "", "say": "reels"}, {"id": "video", "name": "Video", "desc": "", "say": "a video"}, {"id": "email", "name": "Emailer", "desc": "", "say": "an emailer"}, {"id": "flyer", "name": "Flyer", "desc": "", "say": "a flyer"}, {"id": "web", "name": "Property website", "desc": "", "say": "a property website"}]};
+const START = {"on": ["posts", "reels"], "sent": true, "answer": "Create social posts and reels", "working": true};
+
+const LETTERS = 'ABCDEFGH';
+function joinList(names) { return names.length === 1 ? names[0] : names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1]; }
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = Object.assign({ on: [], ownOpen: false, own: '', sent: false, answer: '', working: false, stopped: false, draft: '' }, START); }
+  answerText() {
+    const s = this.state;
+    if (!Q.multi) return s.own.trim();
+    const names = Q.opts.filter((o) => s.on.includes(o.id)).map((o) => o.say);
+    if (s.own.trim()) names.push(s.own.trim());
+    return names.length ? Q.prefix + joinList(names) : '';
+  }
+  send() {
+    const s = this.state; if (s.sent) return;
+    const a = this.answerText(); if (!a) return;
+    this.setState({ sent: true, answer: a, working: true, stopped: false });
+  }
+  pickOpt(o) {
+    const s = this.state; if (s.sent) return;
+    if (!Q.multi) { this.setState({ on: [o.id], sent: true, answer: o.send, working: true, stopped: false }); return; }
+    this.setState({ on: s.on.includes(o.id) ? s.on.filter((x) => x !== o.id) : s.on.concat(o.id) });
+  }
+  renderVals() {
+    const s = this.state; const a = this.answerText();
+    const keys = (e) => {
+      const k = String(e.key || '').toUpperCase(); const i = LETTERS.indexOf(k);
+      if (k.length === 1 && i >= 0 && i < Q.opts.length) { e.preventDefault(); this.pickOpt(Q.opts[i]); }
+      else if (k.length === 1 && i === Q.opts.length) { e.preventDefault(); if (!s.sent) this.setState({ ownOpen: true }); }
+      else if (e.key === 'Enter' && Q.multi) { e.preventDefault(); this.send(); }
+    };
+    return {
+      title: Q.title, help: Q.help, hasLead: !!Q.lead, lead: Q.lead || '', locked: s.sent, keys: keys,
+      opts: Q.opts.map((o, i) => { const on = s.on.includes(o.id); return { key: LETTERS[i], name: o.name, desc: o.desc || '', tag: o.tag || '', tone: o.tone || '', hasTag: !!o.tag, on: on, off: !on, pick: () => this.pickOpt(o) }; }),
+      ownKey: LETTERS[Q.opts.length], ownOpen: s.ownOpen, ownClosed: !s.ownOpen, own: s.own,
+      openOwn: () => { if (!s.sent) this.setState({ ownOpen: true }); },
+      setOwn: (e) => this.setState({ own: String(e.target.value) }),
+      ownKeys: (e) => { if (e.key === 'Enter') { e.preventDefault(); this.send(); } else if (e.key === 'Escape') { this.setState({ ownOpen: false, own: '' }); } },
+      ownGo: !Q.multi && !s.sent && !!s.own.trim(),
+      showFoot: Q.multi && !s.sent, cantSend: !a, send: () => this.send(),
+      sent: s.sent, answer: s.answer, working: s.working, stopped: s.stopped,
+      stop: () => this.setState({ working: false, stopped: true }),
+      draft: s.draft, typing: !!s.draft.trim(), setDraft: (e) => this.setState({ draft: String(e.target.value) }),
+      sendDraft: (e) => { e.preventDefault(); }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

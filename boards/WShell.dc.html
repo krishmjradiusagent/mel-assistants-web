@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MEL chat, new chat</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/radius-ui/styles.css">
+<link rel="stylesheet" href="brand/mel-brand.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+button,input{font-family:inherit}
+.ws-root{width:1440px;height:900px;overflow:hidden}
+.mk-app{display:flex;height:900px;background:#14173F;font-family:'Mona Sans',system-ui,sans-serif;color:#0E2B30}
+.w-rail{width:56px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:4px;color:#C9CDEA}
+.w-rail .ws{width:30px;height:30px;border-radius:999px;background:#fff;color:#14173F;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+.w-rail .tile{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+.w-rail .tile.on{background:#222861;border:1px solid #4350A8}
+.w-rail .ic{width:40px;height:34px;display:flex;align-items:center;justify-content:center;opacity:.85}
+.w-rail .sp{flex-grow:1}
+.w-rail .av{width:30px;height:30px;border-radius:999px;background:linear-gradient(135deg,#F6A28B,#7A6BE0)}
+.g-frame{flex:1;min-width:0;margin:12px 12px 12px 0;background:#fff;border-radius:24px;display:flex;overflow:hidden}
+.ic{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* sidebar */
+.g-side{width:260px;flex:none;box-sizing:border-box;background:#F3F9F6;border-right:1px solid #DCE8E4;display:flex;flex-direction:column;padding:12px 10px}
+.g-shead{display:flex;align-items:center;justify-content:space-between;height:36px;padding:0 2px 0 8px;margin-bottom:10px}
+.g-brand{display:inline-flex;align-items:center;gap:7px;font-size:20px;font-weight:600;letter-spacing:-.045em;color:#0E2B30}
+.g-sicons{display:flex;gap:2px}
+.g-ibtn{width:32px;height:32px;border:none;background:none;border-radius:8px;color:#4A5E61;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.g-ibtn:hover{background:#DCE8E4;color:#0E2B30}
+.g-new{height:40px;border:none;border-radius:999px;background:#0E2B30;color:#fff;display:flex;align-items:center;gap:10px;padding:0 16px;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:6px}
+.g-new:hover{background:#173B41}
+.g-nav{height:38px;border:none;background:none;border-radius:10px;display:flex;align-items:center;gap:10px;padding:0 12px;font-size:14px;color:#0E2B30;cursor:pointer;text-align:left;width:100%}
+.g-nav:hover{background:#DCE8E4}
+.g-label{font-size:12.5px;color:#7D9093;padding:18px 12px 6px}
+.g-item{border:none;background:none;text-align:left;border-radius:10px;padding:9px 12px;color:#0E2B30;font-size:13.5px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;width:100%}
+.g-item:hover{background:#DCE8E4}
+.g-item--on{background:#DCE8E4;font-weight:500}
+.g-seeall{border:none;background:none;text-align:left;padding:9px 12px;font-size:13.5px;font-weight:600;color:#4A5E61;cursor:pointer}
+.g-sp{flex:1}
+.g-me{display:flex;align-items:center;gap:10px;padding:8px 8px;border-radius:10px}
+.g-me .av{width:30px;height:30px;border-radius:999px;background:linear-gradient(135deg,#F6A28B,#7A6BE0);flex:none}
+.g-me b{display:block;font-size:13.5px;font-weight:600}
+.g-me>span>span{display:block;font-size:12px;color:#4A5E61}
+.g-me .g-cr{display:inline;color:#0B7A4D;font-weight:600}
+/* center */
+.g-center{flex:1;min-width:0;display:flex;flex-direction:column;position:relative}
+.g-top{height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 20px}
+.g-skill{display:inline-flex;align-items:center;gap:8px}
+.ws-pill{height:22px;border-radius:999px;padding:0 9px;display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;letter-spacing:.04em}
+.g-tright{display:flex;gap:4px;align-items:center}
+.g-share{height:34px;border-radius:999px;border:1px solid #DCE8E4;background:#fff;display:inline-flex;align-items:center;gap:6px;padding:0 14px;font-size:13px;font-weight:500;color:#0E2B30;cursor:pointer}
+.g-thread{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column-reverse;align-items:center;padding:0 24px}
+.g-col{width:100%;max-width:720px;display:flex;flex-direction:column;gap:22px;padding:8px 0 24px}
+.g-user{align-self:flex-end;max-width:80%;background:#F3F9F6;border-radius:22px;padding:12px 18px;font-size:16px;line-height:24px}
+.g-mel{display:flex;flex-direction:column;gap:12px}
+.g-mel p{margin:0;font-size:16px;line-height:24px}
+.g-rows{display:flex;flex-direction:column;gap:2px;margin-left:-10px}
+.g-row{border:none;background:none;text-align:left;display:flex;gap:10px;align-items:baseline;padding:7px 10px;border-radius:8px;font-size:14px;line-height:20px;color:#4A5E61;cursor:pointer}
+.g-row:hover{background:#F3F9F6;color:#0E2B30}
+.g-row i{font-style:normal;color:#7D9093}
+.g-dock{flex:none;display:flex;justify-content:center;padding:0 24px 20px}
+.g-box{width:100%;max-width:720px;box-sizing:border-box;border:1px solid #DCE8E4;border-radius:26px;background:#fff;box-shadow:0 2px 10px rgba(14,43,48,.05);padding:14px 12px 10px 18px;display:flex;flex-direction:column;gap:10px}
+.g-box:focus-within{border-color:#DCE8E4;box-shadow:0 0 0 4px rgba(14,43,48,.05)}
+.g-field{border:none;outline:none;background:none;font-size:15.5px;color:#0E2B30;padding:2px 0;width:100%}
+.g-field::placeholder{color:#7D9093}
+.g-brow{display:flex;align-items:center;justify-content:space-between;margin-left:-6px}
+.g-bright{display:flex;align-items:center;gap:6px}
+.g-voice{width:38px;height:38px;border-radius:999px;border:none;background:#0E2B30;color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.g-voice .ic{width:18px;height:18px}
+/* draft card */
+.g-card{border:1px solid #DCE8E4;border-radius:18px;background:#fff;overflow:hidden}
+.g-chead{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid #DCE8E4;font-size:13.5px}
+.g-chead b{font-weight:600}
+.g-chead span{color:#4A5E61}
+.g-pieces{display:flex;gap:12px;padding:14px;overflow-x:auto}
+.g-piece{width:204px;flex:none;display:flex;flex-direction:column;gap:8px}
+.g-thumb{position:relative;width:204px;height:204px;border-radius:12px;overflow:hidden;background:#F3F9F6}
+.g-thumb--tall{height:256px}
+.g-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.g-exp{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:999px;border:none;background:rgba(255,255,255,.92);color:#0E2B30;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.g-exp .ic{width:14px;height:14px}
+.g-badge{position:absolute;left:8px;bottom:8px;height:22px;border-radius:999px;background:rgba(14,43,48,.75);color:#fff;font-size:11px;font-weight:600;display:inline-flex;align-items:center;gap:4px;padding:0 8px}
+.g-badge .ic{width:10px;height:10px;fill:currentColor;stroke:none}
+.g-cap{font-size:12.5px;line-height:18px;margin:0}
+.g-tags{font-size:12px;line-height:17px;color:#1F5A7A;margin:0}
+.g-cfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-top:1px solid #DCE8E4}
+.g-cfoot span{font-size:12.5px;color:#4A5E61}
+.g-btn{height:32px;border-radius:999px;border:1px solid #0E2B30;background:#0E2B30;color:#fff;padding:0 14px;font-size:13px;font-weight:600;cursor:pointer}
+.g-btn--ghost{background:#fff;color:#0E2B30;border-color:#DCE8E4}
+.g-done{font-size:13px;font-weight:600;color:#0B7A4D}
+/* viewer */
+.g-view{width:600px;flex:none;box-sizing:border-box;border-left:1px solid #DCE8E4;background:#F3F9F6;display:flex;flex-direction:column}
+.g-vtop{height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 10px 0 18px;border-bottom:1px solid #DCE8E4;background:#fff}
+.g-vtitle{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600}
+.g-vtitle span{font-weight:400;color:#4A5E61}
+.g-vbody{flex:1;min-height:0;display:flex;gap:14px;padding:18px}
+.g-strip{display:flex;flex-direction:column;gap:8px;justify-content:center}
+.g-sthumb{width:56px;height:56px;border-radius:8px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;background:none}
+.g-sthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.g-sthumb--on{border-color:#0E2B30}
+.g-stage{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center}
+.g-big{max-width:100%;max-height:560px;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(14,43,48,.12);position:relative}
+.g-big img{display:block;width:420px;height:420px;object-fit:cover}
+.g-big--tall img{width:360px;height:560px}
+.g-vcap{width:100%;max-width:420px;display:flex;flex-direction:column;gap:4px}
+.g-vcap p{margin:0;font-size:13.5px;line-height:20px}
+.g-vcap .g-tags{font-size:13px}
+.ws-intro{width:100%;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-gutter:0px;--radius-card:14px;--radius-tile:10px;--radius-badge:6px;--surface-card:#FFFFFF;--surface-tile:#F3F9F6;--border-card:#DCE8E4;--text-primary:#0E2B30;--text-secondary:#4A5E61;--text-tertiary:#7D9093;--bg-page:#FFFFFF;--status-success-bg:#E2F5EA;--status-success-fg:#0B7A4D;--status-warning-bg:#FDF1E1;--status-warning-fg:#9A5B00;color:#0E2B30}
+.ws-intro .t-body-strong{font-size:14px;line-height:20px;font-weight:600}
+.ws-intro .t-meta{font-size:12.5px;line-height:18px}
+.ws-intro .t-caption{font-size:11.5px;line-height:16px}
+.ws-intro .t-secondary{color:#4A5E61}
+.ws-intro .m-intro{margin-top:4px}
+.ws-intro .m-ic:hover{box-shadow:inset 0 0 0 1px #12A867}
+
+.m-intro{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-4)}
+
+.m-ir{display:flex;gap:var(--space-3);overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--space-gutter) * -1);padding:0 var(--space-gutter);scroll-padding-inline:var(--space-gutter);scrollbar-width:none}
+
+.m-ir::-webkit-scrollbar{display:none}
+
+.m-ic{flex:none;width:280px;scroll-snap-align:start;display:flex;flex-direction:column;padding:0;border:0;border-radius:var(--radius-card);background:var(--surface-card);box-shadow:inset 0 0 0 1px var(--border-card);overflow:hidden;color:var(--text-primary);font:inherit;text-align:left;cursor:pointer}
+
+.m-ic__prev{display:block;aspect-ratio:4/3;background:var(--surface-tile);position:relative;overflow:hidden}
+
+.m-ic__body{display:flex;flex-direction:column;gap:var(--space-1);padding:var(--space-3) var(--space-3) var(--space-4)}
+
+.m-ic__head{display:flex;align-items:center;gap:var(--space-2)}
+
+.m-ic__desc{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
+
+.m-dots{display:flex;justify-content:center;gap:6px}
+
+.m-dots span{width:6px;height:6px;border-radius:50%;background:var(--text-tertiary);opacity:.5}
+
+.m-dots span.m-dot--on{width:16px;border-radius:3px;background:var(--text-primary);opacity:1}
+
+.m-iv{position:absolute;inset:0;box-sizing:border-box;padding:var(--space-4);display:flex;flex-direction:column;justify-content:center;gap:var(--space-2)}
+
+.m-iv b{font-weight:600}
+
+.m-iv--img{padding:0}
+
+.m-iv--img>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+.m-iv--img>img.m-iv__float{inset:auto var(--space-3) var(--space-3) auto;width:38%;height:auto;aspect-ratio:4/5;border-radius:var(--radius-badge);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+
+.m-iv--stats{display:grid;grid-template-columns:1fr 1fr;align-content:center}
+
+.m-iv--stats>div{display:flex;flex-direction:column;padding:var(--space-3);border-radius:var(--radius-tile);background:var(--surface-card)}
+
+.m-iv--steps>div,.m-iv--list>div{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border-radius:var(--radius-tile);background:var(--surface-card)}
+
+.m-iv__dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--text-primary)}
+
+.m-iv__dot--off{background:transparent;box-shadow:inset 0 0 0 1.5px var(--text-tertiary)}
+
+.m-iv__ck{flex:none;display:flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:700}
+
+.m-iv__ck--ok{background:var(--status-success-bg);color:var(--status-success-fg)}
+
+.m-iv__ck--warn{background:var(--status-warning-bg);color:var(--status-warning-fg)}
+
+.m-iv__b{max-width:80%;padding:var(--space-2) var(--space-3);border-radius:14px}
+
+.m-iv__b--in{align-self:flex-start;background:var(--surface-card)}
+
+.m-iv__b--out{align-self:flex-end;background:var(--text-primary);color:var(--bg-page)}
+
+.m-iv--doc{align-items:flex-start}
+
+.m-iv__file{display:flex;align-items:center;gap:var(--space-3);width:100%;box-sizing:border-box;padding:var(--space-3);border-radius:var(--radius-tile);background:var(--surface-card)}
+
+.m-iv__file>div{display:flex;flex-direction:column}
+
+.m-iv__fic{flex:none;width:28px;height:36px;border-radius:4px;background:var(--surface-tile);box-shadow:inset 0 0 0 1px var(--border-card)}
+
+.ws-intro .m-ic{width:196px}
+.ws-intro .m-ic__prev{aspect-ratio:auto;height:112px}
+.ws-intro .m-iv{padding:10px;gap:6px}
+.ws-intro .m-iv--stats>div,.ws-intro .m-iv--steps>div,.ws-intro .m-iv--list>div{padding:5px 8px}
+.ws-intro .m-iv .t-body-strong{font-size:12.5px;line-height:16px}
+.ws-intro .m-iv .t-meta,.ws-intro .m-iv .t-caption{font-size:10.5px;line-height:14px}
+.ws-intro .m-ic__body{padding:10px 12px 12px}
+.ws-intro .m-ic__desc{font-size:12px;line-height:16px}
+.g-landing{flex:1;min-height:0;display:flex;justify-content:center;padding:150px 24px 0;overflow:hidden}
+.g-lcol{width:100%;max-width:760px;display:flex;flex-direction:column;align-items:center;gap:22px}
+.g-lcol .g-dock{padding:0;width:100%}
+.g-lcol .g-box{max-width:760px}
+.ws-hello{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.ws-hello p{margin:0;max-width:540px;font-size:16px;line-height:24px;color:#0E2B30}
+
+/* Mel brand layer (Mel brand guidelines): Deep Teal primary + text, Slate secondary, Line borders, Cloud tints, Mint Mist selected, mint focus ring, Night pressed, outline secondary buttons, rounded-square composer buttons */
+.ws-root .g-item--on{background:#E2F5EA}
+.ws-root .g-new:active,.ws-root .g-voice:active,.ws-root .g-btn:not(.g-btn--ghost):active,.ws-root .w-btn:active{background:#08191C}
+.ws-root .g-voice{border-radius:12px}
+.ws-root .g-share,.ws-root .g-btn--ghost,.ws-root .v-sharebtn{background:#FFFFFF;color:#0E2B30;border:1.5px solid #0E2B30}
+.ws-root .g-share:hover,.ws-root .g-btn--ghost:hover,.ws-root .v-sharebtn:hover{background:#F3F9F6}
+.ws-root .v-sharebtn[aria-expanded="true"]{background:#E2F5EA;border-color:#0E2B30}
+.ws-root button:focus-visible,.ws-root a:focus-visible,.ws-root input[type="text"]:focus-visible{outline:none !important;box-shadow:0 0 0 3px #FFFFFF,0 0 0 6px #5ED6A0 !important}
+</style>
+</helmet>
+<div class="ws-root"><div class="mk-app">
+<nav class="w-rail" aria-label="App navigation"><span class="ws">C</span><span class="tile on" aria-label="Mel"><svg class="mel-mark" width="24" height="24" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" stroke="#FFFFFF" stroke-width="3" fill="none"><animate attributeName="r" values="13;34;13" dur="2.4s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0.9;0;0.9" dur="2.4s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="13" fill="#FFFFFF"><animate attributeName="r" values="13;15;13" dur="2.4s" repeatCount="indefinite"></animate></circle></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14a6.5 6.5 0 0 1 3 6"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></span><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span><span class="ic" style="opacity:.6">…</span><span class="sp"></span><span class="av"></span></nav>
+<main class="g-frame">
+<aside class="g-side" aria-label="Mel">
+<div class="g-shead"><span class="g-brand"><svg class="mel-mark" width="22" height="22" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg><span>mel</span></span><span class="g-sicons"><button class="g-ibtn" aria-label="Search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg></button><button class="g-ibtn" aria-label="Collapse sidebar"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path></svg></button></span></div>
+<button class="g-new" onClick="{{newChat}}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg><span>New chat</span></button>
+<button class="g-nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"></rect><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9M10 14h4"></path></svg><span>Library</span></button>
+<button class="g-nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path><path d="M12 8v4l3 2"></path></svg><span>Routines</span></button>
+<div class="g-label">Chats</div>
+<button class="g-item">Follow up with Jordan</button>
+<button class="g-item">Listing at 124 Oak Street</button>
+<button class="g-item">Instagram post for Palo Alto</button>
+<button class="g-item">Saturday tour schedule</button>
+<button class="g-seeall">See all</button>
+<div class="g-sp"></div>
+<div class="g-me"><span class="av"></span><span><b>Agent name</b><span><span class="g-cr">10K</span> credits</span></span></div>
+</aside>
+<section class="g-center">
+<div class="g-top"><span></span><span></span></div>
+<div class="g-landing"><div class="g-lcol">
+<div class="ws-hello">
+<svg class="mel-mark" width="56" height="56" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#12A867"></path><circle cx="60" cy="60" r="13" stroke="#FFFFFF" stroke-width="3" fill="none"><animate attributeName="r" values="13;34;13" dur="2.4s" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" values="0.9;0;0.9" dur="2.4s" repeatCount="indefinite"></animate></circle><circle cx="60" cy="60" r="13" fill="#FFFFFF"><animate attributeName="r" values="13;15;13" dur="2.4s" repeatCount="indefinite"></animate></circle></svg>
+<p>Hi, I’m MEL, your real estate assistant. I can help with your listings, clients and everyday tasks. What would you like to work on first?</p>
+</div>
+<div class="g-dock"><div class="g-box">
+<input class="g-field" type="text" aria-label="Message MEL" placeholder="Ask anything" value="{{draft}}" onChange="{{setDraft}}">
+<div class="g-brow"><button class="g-ibtn" aria-label="Attach a file"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+<span class="g-bright"><button class="g-ibtn" aria-label="Dictate"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></button>
+<sc-if value="{{hasDraft}}" hint-placeholder-val="{{ false }}"><button class="g-voice" aria-label="Send"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button></sc-if>
+<sc-if value="{{noDraft}}" hint-placeholder-val="{{ true }}"><button class="g-voice" aria-label="Speak with MEL"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"></path></svg></button></sc-if>
+</span></div>
+</div></div>
+<div class="ws-intro"><div class="m-intro"><div class="m-ir" role="list" aria-label="What Mel can do" onScroll="{{onRail}}"><button type="button" class="m-ic" role="listitem" onClick="{{pickCard0}}" aria-label="Marketing: Posts, reels, flyers and emails for any listing."><span class="m-ic__prev"><div class="m-iv m-iv--img"><img src="assets/98c1fbbe43ee7d787d33fa99d920e3b0.jpg" alt=""/><img class="m-iv__float" src="assets/983c5180450d00ab3b3303f7217b4037.jpg" alt=""/></div></span><span class="m-ic__body"><span class="m-ic__head"><svg class="mel-mark" width="18" height="18" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#EE6A4C"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg><span class="t-body-strong">Marketing</span></span><span class="t-meta t-secondary m-ic__desc">Posts, reels, flyers and emails for any listing.</span></span></button><button type="button" class="m-ic" role="listitem" onClick="{{pickCard1}}" aria-label="CRM: Import contacts, track leads and draft follow-ups."><span class="m-ic__prev"><div class="m-iv m-iv--stats"><div><b class="t-body-strong">1,216</b><span class="t-caption t-secondary">Imported</span></div><div><b class="t-body-strong">812</b><span class="t-caption t-secondary">Buyers</span></div><div><b class="t-body-strong">404</b><span class="t-caption t-secondary">Sellers</span></div><div><b class="t-body-strong">32</b><span class="t-caption t-secondary">Skipped</span></div></div></span><span class="m-ic__body"><span class="m-ic__head"><svg class="mel-mark" width="18" height="18" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#0FA3B1"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg><span class="t-body-strong">CRM</span></span><span class="t-meta t-secondary m-ic__desc">Import contacts, track leads and draft follow-ups.</span></span></button><button type="button" class="m-ic" role="listitem" onClick="{{pickCard2}}" aria-label="Campaigns: Drip emails and texts that run on their own."><span class="m-ic__prev"><div class="m-iv m-iv--steps"><div><span class="m-iv__dot"></span><span class="t-meta">Day 1 · Email</span></div><div><span class="m-iv__dot"></span><span class="t-meta">Day 3 · Text</span></div><div><span class="m-iv__dot m-iv__dot--off"></span><span class="t-meta t-secondary">Day 7 · Call reminder</span></div></div></span><span class="m-ic__body"><span class="m-ic__head"><svg class="mel-mark" width="18" height="18" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#E9A320"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg><span class="t-body-strong">Campaigns</span></span><span class="t-meta t-secondary m-ic__desc">Drip emails and texts that run on their own.</span></span></button><button type="button" class="m-ic" role="listitem" onClick="{{pickCard3}}" aria-label="Client experience: Keep clients updated and answer their questions."><span class="m-ic__prev"><div class="m-iv m-iv--chat"><span class="m-iv__b m-iv__b--in t-meta">Is the open house still on Saturday?</span><span class="m-iv__b m-iv__b--out t-meta">Yes, 1 to 4 PM. I’ll send the address.</span></div></span><span class="m-ic__body"><span class="m-ic__head"><svg class="mel-mark" width="18" height="18" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#E0588A"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg><span class="t-body-strong">Client experience</span></span><span class="t-meta t-secondary m-ic__desc">Keep clients updated and answer their questions.</span></span></button><button type="button" class="m-ic" role="listitem" onClick="{{pickCard4}}" aria-label="Compliance: Check transaction files and flag what is missing."><span class="m-ic__prev"><div class="m-iv m-iv--list"><div><span class="m-iv__ck m-iv__ck--ok" aria-hidden="true">✓</span><span class="t-meta">Purchase agreement</span></div><div><span class="m-iv__ck m-iv__ck--ok" aria-hidden="true">✓</span><span class="t-meta">Seller disclosures</span></div><div><span class="m-iv__ck m-iv__ck--warn" aria-hidden="true">!</span><span class="t-meta">Inspection report missing</span></div></div></span><span class="m-ic__body"><span class="m-ic__head"><svg class="mel-mark" width="18" height="18" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#4479B3"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg><span class="t-body-strong">Compliance</span></span><span class="t-meta t-secondary m-ic__desc">Check transaction files and flag what is missing.</span></span></button><button type="button" class="m-ic" role="listitem" onClick="{{pickCard5}}" aria-label="Documents: Fill, summarise and send documents for signing."><span class="m-ic__prev"><div class="m-iv m-iv--doc"><div class="m-iv__file"><span class="m-iv__fic" aria-hidden="true"></span><div><span class="t-meta">Purchase agreement.pdf</span><span class="t-caption t-secondary">4 pages</span></div></div><span class="rm-chip t-chip tone-success">Signed · 2 of 2</span></div></span><span class="m-ic__body"><span class="m-ic__head"><svg class="mel-mark" width="18" height="18" viewBox="0 0 120 120" fill="none" aria-hidden="true" style="flex:none;display:block"><path d="M48 8 H72 A40 40 0 0 1 112 48 V72 A40 40 0 0 1 72 112 H19 A11 11 0 0 1 8 101 V48 A40 40 0 0 1 48 8 Z" fill="#9C6B4F"></path><circle cx="60" cy="60" r="13" fill="#FFFFFF"></circle></svg><span class="t-body-strong">Documents</span></span><span class="t-meta t-secondary m-ic__desc">Fill, summarise and send documents for signing.</span></span></button></div><div class="m-dots" aria-hidden="true"><sc-for list="{{dots}}" as="d" hint-placeholder-count="6"><span class="{{d.cls}}"></span></sc-for></div></div></div>
+</div></div>
+</section>
+</main>
+</div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+
+const CARDS = ['Help me with marketing', 'Help me manage my clients', 'Help me set up a campaign', 'Help me keep clients updated', 'Check my compliance', 'Help me with documents'];
+const SKILLS = [
+  { id: 'crm', row: 'Manage clients', color: '#0FA3B1' },
+  { id: 'marketing', row: 'Create posts', color: '#EE6A4C' },
+  { id: 'campaigns', row: 'Run campaigns', color: '#E9A320' },
+  { id: 'clients', row: 'Build client portal', color: '#E0588A' },
+  { id: 'mls', row: 'Explore listings', color: '#8B6BC8' },
+  { id: 'compliance', row: 'Check compliance', color: '#4479B3' },
+  { id: 'document', row: 'Review documents', color: '#9C6B4F' }
+];
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { draft: '', hist: null, card: 0 };
+  }
+  renderVals() {
+    const open = this.state.hist === null ? !!(this.props.historyOpen ?? false) : this.state.hist;
+    const draft = this.state.draft;
+    return {
+      draft: draft,
+      hasDraft: draft.trim().length > 0,
+      noDraft: draft.trim().length === 0,
+      histOpen: open,
+      histClosed: !open,
+      setDraft: (e) => this.setState({ draft: e && e.target ? e.target.value : '' }),
+      toggleHist: () => this.setState({ hist: !open }),
+      newChat: () => this.setState({ draft: '' }),
+      onRail: (e) => { const i = Math.round(e.target.scrollLeft / 208); if (i !== this.state.card) this.setState({ card: i }); },
+      dots: CARDS.map((_, i) => ({ cls: i === this.state.card ? 'm-dot--on' : '' })),
+      pickCard0: () => this.setState({ draft: CARDS[0] }),
+      pickCard1: () => this.setState({ draft: CARDS[1] }),
+      pickCard2: () => this.setState({ draft: CARDS[2] }),
+      pickCard3: () => this.setState({ draft: CARDS[3] }),
+      pickCard4: () => this.setState({ draft: CARDS[4] }),
+      pickCard5: () => this.setState({ draft: CARDS[5] }),
+      skills: SKILLS.map((k) => Object.assign({}, k, { pick: () => this.setState({ draft: k.row }) }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>
